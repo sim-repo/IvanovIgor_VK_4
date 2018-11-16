@@ -1,0 +1,78 @@
+import UIKit
+
+
+
+enum TextThreshold: Int {
+    case short = 180
+    case middle = 500
+    case big = 1000
+}
+
+
+enum ContentVolume{
+    case def
+    
+    case label
+    case text
+    case bigText
+    case photo1
+    case photo1MidText
+    case photo1BigText
+    
+    case photos2
+    case photos2MidText
+    case photos2BigText
+    
+    case photos3
+    case photos3MidText
+    case photos3BigText
+    
+    case photos4
+    case photos4MidText
+    case photos4BigText
+    
+    case photos5
+    case photos5MidText
+    
+    case photos6
+    case photos6MidText
+
+    case photos7
+    case photos7MidText
+    
+    case photos8
+    case photos8MidText
+}
+
+protocol PresenterProtocol: class {
+    
+    var ds: [ModelProtocol]? {get set}
+    
+    var numberOfSections: Int {get}
+    
+    var view: ViewProtocolDelegate? {get set}
+    
+    func numberOfRowsInSection (section: Int)->Int
+    
+    func getData (indexPath: IndexPath)->ModelProtocol?
+    
+    func sectionName(section: Int)->String
+    
+    func refreshDataSource(with completion: (([String])->Void)?  )
+    
+    func update(object: AnyObject)->Void
+    
+    func remove(object: AnyObject)->Void
+    
+    func getGroupingProperties()->[String]
+    
+    func filterData(_ filterText: String)
+    
+    func getContentVolume(indexPath: IndexPath)->ContentVolume
+
+    func searchData(searchText: String, completion: (()->Void)?)
+    
+    // Handle model changes
+    func setModel(ds: [ModelProtocol])
+    
+}

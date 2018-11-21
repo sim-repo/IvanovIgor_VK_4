@@ -26,7 +26,7 @@ class NewsCollectionController: UIViewController {
     }
     
     private func setupPresenter(){
-        presenter = Configurator.shared.getPresenter(viewController: self) {
+        presenter = Configurator.shared.getPresenter(viewController: self, loadType: .diskFirst) {
         self.refreshDataSource()
         self.collectionView.reloadData()
         }

@@ -44,7 +44,7 @@ class FriendsController: UIViewController {
     }
     
     private func setupPresenter(){
-        presenter = Configurator.shared.getPresenter(viewController: self, completion: nil)
+        presenter = Configurator.shared.getPresenter(viewController: self, loadType: .diskFirst, completion: nil) //TODO loadType перенести в координатор
         self.refreshDataSource()
         self.tableView.reloadData()
     }

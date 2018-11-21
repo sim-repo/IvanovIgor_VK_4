@@ -4,7 +4,11 @@ import SwiftyJSON
 
 class MyPhotos : BaseModel{
 
-    var photoURL:String? {
+    enum Sorting: String {
+        case id
+    }
+    
+    @objc dynamic var photoURL:String? {
         didSet{
             guard photoURL != oldValue
                 else {
@@ -51,5 +55,18 @@ class MyPhotos : BaseModel{
             }
         }
     }
+    
+    // TODO: избавиться от метода -->
+    override func postInit() {
+        
+        if let val = photoURL{
+            let url = URL(string: val)
+            self.notify(url: url, .needDownload){ (data) in
+                self.photo = UIImage(data: data)
+                self.notify(model: self, .didModelChanged)
+            }
+        }
+    }
+    // TODO: избавиться от метода <--
     
 }

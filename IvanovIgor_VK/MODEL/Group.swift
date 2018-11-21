@@ -16,6 +16,8 @@ class Group : BaseModel{
     @objc dynamic var name: String = ""
     @objc dynamic var desc: String = ""
     var image50: UIImage?
+    var image200: UIImage?
+    
     @objc dynamic var imageURL50:  String? {
         didSet{
             guard imageURL50 != oldValue
@@ -32,8 +34,6 @@ class Group : BaseModel{
         }
     }
     
-    
-    var image200: UIImage?
     @objc dynamic var imageURL200: String? {
         didSet{
             guard imageURL200 != oldValue
@@ -92,6 +92,28 @@ class Group : BaseModel{
             setImageURL200(val: json["photo_200"].stringValue)
         }
     }
+    
+    // TODO: избавиться от метода -->
+    override func postInit() {
+        
+        if let val = imageURL50{
+            let url = URL(string: val)
+            self.notify(url: url, .needDownload){ (data) in
+                self.image50 = UIImage(data: data)
+                self.notify(model: self, .didModelChanged)
+            }
+        }
+        
+        if let val = imageURL200{
+            let url = URL(string: val)
+            self.notify(url: url,.needDownload) { (data) in
+                self.image200 = UIImage(data: data)
+                self.notify(model: self, .didModelChanged)
+            }
+        }
+    }
+    // TODO: избавиться от метода <--
+    
 }
 
 

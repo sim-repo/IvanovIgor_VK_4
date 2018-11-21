@@ -18,12 +18,27 @@ public class MyPhotosPresenter: BasePresenter {
         AlamofireNetworkManager.doGet(clazz: MyPhotos.self, presenter: self, urlPath: urlPath, params: params, completion: completion)
     }
     
+    override func loadFromDisk(completion: (()->Void)? = nil){
+        guard let ds = DatabaseService.realmLoad(clazz: MyPhotos.self, sortField: MyPhotos.Sorting.id.rawValue)?.toArray(ofType: MyPhotos.self)
+            else { return }
+        if ds.count != 0 {
+            setModel(ds: ds, didLoadedFrom: .diskFirst)
+            ds.forEach({$0.postInit()}) //TODO: избавиться
+        }
+        completion?()
+    }
+    
+    
+    override func saveModel(ds: [ModelProtocol]) {
+        if let photos = ds as? [MyPhotos] {
+            DatabaseService.realmSave(items: photos, config: DatabaseService.configuration, update: true)
+        }
+    }
     
     override func sortModel(_ ds: [ModelProtocol]) -> [ModelProtocol] {
         return ds
     }
-    
-    override func saveModel(ds: [ModelProtocol]) {}
+
     
     override func refreshData()->( [ModelProtocol], [String] ){
         let groupingProps: [String] = []

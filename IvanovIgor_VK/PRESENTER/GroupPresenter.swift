@@ -22,6 +22,7 @@ public class GroupPresenter: BasePresenter {
         guard let ds = DatabaseService.realmLoad(clazz: Group.self, sortField: Group.Sorting.name.rawValue)?.toArray(ofType: Group.self)
             else { return }
         setModel(ds: ds, didLoadedFrom: .diskFirst)
+        ds.forEach({$0.postInit()}) //TODO: избавиться
         completion?()
     }
     

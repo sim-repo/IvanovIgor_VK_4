@@ -35,10 +35,9 @@ class MyGroupsController: UIViewController {
     }
     
     private func setupPresenter(){
-        presenter = Configurator.shared.getPresenter(viewController: self){
-            self.refreshDataSource()
-            self.collectionView.reloadData()
-        }
+        presenter = Configurator.shared.getPresenter(viewController: self, loadType: .diskFirst) //TODO loadType перенести в координатор
+        self.refreshDataSource()
+        self.collectionView.reloadData()
     }
     
     private func setupShowLetter(){

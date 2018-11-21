@@ -15,6 +15,7 @@ class MyFriend : BaseModel{
     @objc dynamic var firstName: String = ""
     @objc dynamic var lastName: String = ""
     var profilePictureImage50: UIImage?
+    var profilePictureImage200: UIImage?
     
     @objc dynamic var profilePictureURL50: String? {
         didSet{
@@ -31,7 +32,7 @@ class MyFriend : BaseModel{
             }
         }
     }
-    var profilePictureImage200: UIImage?
+    
     @objc dynamic var profilePictureURL200: String? {
         didSet{
             guard profilePictureURL200 != oldValue
@@ -90,7 +91,7 @@ class MyFriend : BaseModel{
     }
     
     
-    // temporary >>>
+    // TODO: избавиться от метода -->
     override func postInit() {
         
         if let val = profilePictureURL50{
@@ -109,7 +110,7 @@ class MyFriend : BaseModel{
             }
         }
     }
-    // temporary <<<
+    // TODO: избавиться от метода <--
     
     
 }

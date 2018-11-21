@@ -19,7 +19,7 @@ class AllGroupsTableController: UITableViewController {
     }
     
     private func setupPresenter(){
-        presenter = Configurator.shared.getPresenter(viewController: self){
+        presenter = Configurator.shared.getPresenter(viewController: self, loadType: .networkFirst){ //TODO loadType перенести в координатор
             self.refreshDataSource()
             self.tableView.reloadData()
         }

@@ -20,6 +20,7 @@ public class FriendPresenter: BasePresenter {
         guard let ds = DatabaseService.realmLoad(clazz: MyFriend.self, sortField: MyFriend.Sorting.firstName.rawValue)?.toArray(ofType: MyFriend.self)
             else { return }
         setModel(ds: ds, didLoadedFrom: .diskFirst)
+        ds.forEach({$0.postInit()}) //TODO: избавиться
         completion?()
     }
     

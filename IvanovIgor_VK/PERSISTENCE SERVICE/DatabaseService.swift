@@ -13,7 +13,7 @@ class DatabaseService {
         do {
             let realm = try Realm(configuration: config)
             
-            print(realm.configuration.fileURL ?? "")
+           // print(realm.configuration.fileURL ?? "")
             
             try realm.write {
                 realm.add(items, update: update)

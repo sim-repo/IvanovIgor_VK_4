@@ -7,12 +7,12 @@ class Configurator {
     private lazy var view2presenter: [String:BasePresenter] = [:]
     
     
-    func getPresenter(viewController: ViewProtocolDelegate, completion: (()->Void)?)->BasePresenter?{
+    func getPresenter(viewController: ViewProtocolDelegate, loadType: LoadModelType, completion: (()->Void)? = nil)->BasePresenter?{
         let clazz = viewController.className()
         var res: BasePresenter? = view2presenter[clazz]
         
         if res == nil {
-            res = createPresenter(viewController, completion)
+            res = createPresenter(viewController, loadType, completion)
         } else {
             res?.postPreloading(view: viewController, completion: completion)
         }
@@ -20,7 +20,7 @@ class Configurator {
     }
     
     
-    private func createPresenter(_ viewController: ViewProtocolDelegate, _ completion: (()->Void)? = nil) -> BasePresenter? {
+    private func createPresenter(_ viewController: ViewProtocolDelegate, _ loadType: LoadModelType, _ completion: (()->Void)? = nil) -> BasePresenter? {
         var presenter: BasePresenter?
         
         switch viewController {
@@ -41,23 +41,23 @@ class Configurator {
             else { return nil }
         
         view2presenter[String(describing: viewController.self)] = res
-        res.setup(view: viewController, completion: completion, .networkFirst)
+        res.setup(view: viewController, completion: completion, loadType)
         return res
     }
     
     
-    public func preloadPresenter(for futureViewController: String, _ completion: (()->Void)? = nil) -> BasePresenter? {
+    public func preloadPresenter(for futureViewController: String, loadType: LoadModelType,_ completion: (()->Void)? = nil) -> BasePresenter? {
         var presenter: BasePresenter?
     
         switch futureViewController {
         case String(describing: FriendsController.self):
-            presenter = FriendPresenter(completion: completion, .networkFirst)
+            presenter = FriendPresenter(completion: completion, loadType)
         case String(describing: MyGroupsController.self):
-            presenter = GroupPresenter(completion: completion, .networkFirst)
+            presenter = GroupPresenter(completion: completion, loadType)
         case String(describing: AllGroupsTableController.self):
-            presenter = AllGroupPresenter(completion: completion, .networkFirst)
+            presenter = AllGroupPresenter(completion: completion, loadType)
         case String(describing: MyPhotoController.self):
-            presenter = MyPhotosPresenter(completion: completion, .networkFirst)
+            presenter = MyPhotosPresenter(completion: completion, loadType)
         default:
             fatalError("Configurator: getPresenter - no presenter has found")
         }

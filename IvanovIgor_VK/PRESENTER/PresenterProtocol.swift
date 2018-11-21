@@ -51,8 +51,6 @@ enum LoadModelType{
 
 protocol PresenterProtocol: class {
     
-   // var ds: [ModelProtocol]? {get set}
-    
     var numberOfSections: Int {get}
     
     var view: ViewProtocolDelegate? {get set}

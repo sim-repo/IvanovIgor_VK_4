@@ -4,9 +4,6 @@ import UIKit
 
 public class BasePresenter: PresenterProtocol {
 
-    
-    
-    
     weak var view: ViewProtocolDelegate?
     
     private var sortedDataSource: [ModelProtocol] = []
@@ -19,9 +16,6 @@ public class BasePresenter: PresenterProtocol {
         return sectionsOffset.count
     }
     
-    
-    // Задание 5: рефакторинг >>>
-    
     init(){
         NotificationCenter.default.add(observer: self, selector: #selector(onNeedDownload(_:)), notification: .needDownload)
         NotificationCenter.default.add(observer: self, selector: #selector(onDidModelChanged(_:)), notification: .didModelChanged)
@@ -30,9 +24,9 @@ public class BasePresenter: PresenterProtocol {
     
     // constructor for preloading
     // view doesn't exists yet
-    convenience init(completion: (()->Void)?, _ type: LoadModelType) {
+    convenience init(completion: (()->Void)?, _ loadType: LoadModelType) {
         self.init()
-        loadModel(completion: completion, type)
+        loadModel(loadType, completion)
     }
     
     func postPreloading(view: ViewProtocolDelegate, completion: (()->Void)?){
@@ -41,12 +35,40 @@ public class BasePresenter: PresenterProtocol {
     }
     
     // view already exists
-    func setup(view: ViewProtocolDelegate, completion: (()->Void)?, _ type: LoadModelType){
+    func setup(view: ViewProtocolDelegate, completion: (()->Void)?, _ loadType: LoadModelType){
         self.view = view
-        loadModel(completion: completion, type)
+        loadModel(loadType, completion)
     }
     
-    // Задание 5: рефакторинг  <<<
+
+    
+    private final func loadModel(_ loadType: LoadModelType, _ completion: (()->Void)?) {
+        switch loadType {
+        case .diskFirst:
+            print("Loading from disk...")
+            let outerCompletion = {[weak self] in
+                if self?.sortedDataSource.count == 0 {
+                    print("Trying loading from network...")
+                    self?.loadFromNetwork(completion: completion)
+                } else {
+                    completion?()
+                }
+            }
+            loadFromDisk(completion: outerCompletion)
+        case .networkFirst:
+            print("Loading from network...")
+            let outerCompletion = {[weak self] in
+                if self?.sortedDataSource.count == 0 {
+                    print("Trying loading from disk...")
+                    self?.loadFromDisk(completion: completion)
+                } else {
+                    completion?()
+                }
+            }
+            loadFromNetwork(completion: outerCompletion)
+        }
+    }
+    
    
     
     //MARK: ***** model 2 presentation functions *****
@@ -69,17 +91,6 @@ public class BasePresenter: PresenterProtocol {
         guard let indexPath = getIndexPath(model: model)
             else { return }
         view?.reloadCell(indexPath: indexPath)
-    }
-    
-    
-    final func loadModel(completion: (()->Void)?, _ type: LoadModelType){
-        
-        switch type {
-        case .diskFirst:
-            loadFromDisk(completion: completion)
-        case .networkFirst:
-            loadFromNetwork(completion: completion)
-        }
     }
     
     
@@ -113,6 +124,7 @@ public class BasePresenter: PresenterProtocol {
     func refreshData()->( [AnyObject], [String] ){
         return ([],[])
     }
+    // TODO: избавиться от метода <--
     
     func update(object: AnyObject)->Void {
         fatalError("Override Error: this method must be overriding by child classes")

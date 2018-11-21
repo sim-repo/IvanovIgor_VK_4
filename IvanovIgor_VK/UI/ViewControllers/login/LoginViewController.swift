@@ -41,11 +41,11 @@ class LoginViewController: UIViewController {
         webview.load(request)
     }
     
-     // Задание 5: рефакторинг >>>
     private func setupPresenter(completion: (()->Void)?){
-        presenter = Configurator.shared.preloadPresenter(for: String(describing: FriendsController.self), completion)
+        presenter = Configurator.shared.preloadPresenter(for: String(describing: FriendsController.self),
+                                                         loadType: .diskFirst,
+                                                         completion)
     }
-     // Задание 5: рефакторинг <<<
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         return true // Задание 6.1: анимация

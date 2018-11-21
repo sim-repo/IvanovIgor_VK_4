@@ -9,10 +9,11 @@ protocol ModelProtocol: class {
     func postInit() // temporary
 }
 
- // Задание 5: рефакторинг >>>
 extension ModelProtocol {
     
     func notify(url: URL?, _ notificationType: Model2PresenterNotification, completion: ((_ image: Data)->Void)? = nil){
+        guard let url = url else {return}
+        guard let completion = completion else {return}
         NotificationCenter.default.post(notification: notificationType, object: nil, userInfo: ["url": url, "completion": completion])
     }
     
@@ -20,7 +21,7 @@ extension ModelProtocol {
         NotificationCenter.default.post(notification: notificationType, object: nil, userInfo: ["model": model])
     }
 }
- // Задание 5: рефакторинг <<<
+
 
 class BaseModel: Object, ModelProtocol {
     

@@ -25,7 +25,7 @@ class AlamofireNetworkManager{
             case .success(let val):
                 let arr:[T]? = parseJSON(val)
                 if let arr = arr {
-                    presenter.setModel(ds: arr)
+                    presenter.setModel(ds: arr, didLoadedFrom: .networkFirst)
                 }
                 completion?()
             case .failure(let err):
@@ -57,7 +57,13 @@ class AlamofireNetworkManager{
     
     private static func parseJSON<T: ModelProtocol>(_ val: Any)->[T]?{
         let json = JSON(val)
-        let res = json["response"]["items"].arrayValue.map{ T(json: $0) }
+        var res: [T] = []
+        let arr = json["response"]["items"].arrayValue
+        for j in arr {
+            let t: T = T()
+            t.setup(json: j)
+            res.append(t)
+        }
         return res
     }
     

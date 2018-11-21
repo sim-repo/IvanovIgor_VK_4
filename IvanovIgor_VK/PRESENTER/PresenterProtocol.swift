@@ -44,9 +44,14 @@ enum ContentVolume{
     case photos8MidText
 }
 
+enum LoadModelType{
+    case networkFirst
+    case diskFirst
+}
+
 protocol PresenterProtocol: class {
     
-    var ds: [ModelProtocol]? {get set}
+   // var ds: [ModelProtocol]? {get set}
     
     var numberOfSections: Int {get}
     
@@ -72,7 +77,8 @@ protocol PresenterProtocol: class {
 
     func searchData(searchText: String, completion: (()->Void)?)
     
-    // Handle model changes
-    func setModel(ds: [ModelProtocol])
+    func saveModel(ds: [ModelProtocol])
+    
+    func setModel(ds: [ModelProtocol], didLoadedFrom: LoadModelType)
     
 }

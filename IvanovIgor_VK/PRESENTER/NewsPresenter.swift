@@ -4,16 +4,22 @@ import Foundation
 
 public class NewsPresenter: BasePresenter {
     
-    override func loadModel(completion: (()->Void)?){
+    
+    
+    override func loadFromNetwork(completion: (()->Void)? = nil){
         let allNews = News.allList()
-        var groupingProps: [String] = []
-        for news in allNews {
-            news.tags?.forEach({ tag in
-                groupingProps.append(tag)
-            })
-        }
-        setup(_sortedDataSource: allNews, _groupingProperties: groupingProps)
+        setModel(ds: allNews, didLoadedFrom: .diskFirst)
     }
+    
+    
+    override func loadFromDisk(completion: (()->Void)? = nil){
+      
+    }
+    
+    override func sortModel(_ ds: [ModelProtocol]) -> [ModelProtocol] {
+        return ds
+    }
+    
     
     override func refreshData()->( [ModelProtocol], [String] ){
         var res: [News]
@@ -38,7 +44,7 @@ public class NewsPresenter: BasePresenter {
         let news = getData(indexPath: indexPath) as! News
         
         guard let _ = news.images?.count else {
-            guard let desc = news.description else { return .def }
+            guard let desc = news.desc else { return .def }
             
             if desc.count <= 180 {
                 return .text
@@ -50,7 +56,7 @@ public class NewsPresenter: BasePresenter {
         }
         
         let imageCount: Int = news.images?.count ?? 0
-        let txtCount: Int = news.description?.count ?? 0
+        let txtCount: Int = news.desc?.count ?? 0
         
         let short = TextThreshold.short.rawValue
         let mid = TextThreshold.middle.rawValue

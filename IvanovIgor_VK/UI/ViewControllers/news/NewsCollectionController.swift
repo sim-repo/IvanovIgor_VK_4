@@ -73,7 +73,7 @@ extension NewsCollectionController: UICollectionViewDataSource, UICollectionView
                 c.postImageView.userActivityType = .look
                 c.likeImageView.userActivityType = .like
                 
-                c.text.text = news.description
+                c.text.text = news.desc
                 c.postImageView.image = news.images?[0] ?? UIImage(named:"apple")
                 cell = c
                 c.likeImageView.boundMetrics = c.likeNumber

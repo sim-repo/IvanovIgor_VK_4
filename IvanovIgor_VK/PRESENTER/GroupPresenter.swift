@@ -1,73 +1,47 @@
 import Foundation
 import Alamofire
 
-
 var gGroups: [Group] = []
-
 
 public class GroupPresenter: BasePresenter {
     
-    
     let urlPath: String = "groups.get"
     
-    override func loadModel(completion: (()->Void)?=nil ){
-        
+    override func loadFromNetwork(completion: (()->Void)? = nil){
         let params: Parameters = [
             "access_token": Session.shared.token,
             "extended": "1",
             "fields":["description","members_count","photo_50","photo_200"],
             "v": "5.80"
         ]
-        
         AlamofireNetworkManager.doGet(clazz: Group.self, presenter: self, urlPath: urlPath, params: params, completion: completion)
     }
     
-    override func setModel(ds: [ModelProtocol]) {
-        let groups = ds as? [Group]
-        if let gr = groups {
-            self.ds = gr.sorted(by: { $0.name < $1.name })
+    
+    override func loadFromDisk(completion: (()->Void)? = nil){
+        guard let ds = DatabaseService.realmLoad(clazz: Group.self, sortField: Group.Sorting.name.rawValue)?.toArray(ofType: Group.self)
+            else { return }
+        setModel(ds: ds, didLoadedFrom: .diskFirst)
+        completion?()
+    }
+    
+    
+    override func saveModel(ds: [ModelProtocol]) {
+        if let groups = ds as? [Group] {
+            DatabaseService.realmSave(items: groups, config: DatabaseService.configuration, update: true)
         }
     }
     
-    // ДЗ 4 >>>
-    // сохранять то, что было получено из сети
-    func savePersistence(groups: [Group]?){
-        guard let groups = groups
-            else {
-                return
-        }
-        for g in groups {
-           GroupPersistence(name: g.name,
-                            desc: g.description,
-                            imageURL50: g.imageURL50 ?? "",
-                            imageURL200: g.imageURL200 ?? "")
-        }
+    
+    override func sortModel(_ ds: [ModelProtocol]) -> [ModelProtocol] {
+        guard let groups = ds as? [Group]
+            else {return ds}
+        return groups.sorted(by: {$0.name < $1.name })
     }
-    
-    // подгружать в случае,если нет сети
-    func loadPersistence()->[Group]?{
-        var res: [Group]? = []
-        guard let recs = GroupPersistence.loadPersistence()
-            else {
-                return nil
-        }
-        
-        for r in recs {
-            let group = Group(id:r.id,
-                              name: r.name,
-                              description: r.desc,
-                              imageURL50: r.imageURL50,
-                              imageURL200: r.imageURL200)
-            res?.append(group)
-        }
-        return res
-    }
-    // ДЗ 4 <<<
-    
-    
+
     override func refreshData()->( [ModelProtocol], [String] ){
         
-        guard var tempGroups = ds as? [Group] ?? loadPersistence() else {
+        guard var tempGroups = getModel() as? [Group] else {
             return ([], [])
         }
         
@@ -88,14 +62,12 @@ public class GroupPresenter: BasePresenter {
     override func update(object: AnyObject)->Void {
         let group = object as! Group
         group.isMember = true
-        loadModel()
     }
     
     
     override func remove(object: AnyObject) {
         let group = object as! Group
         group.isMember = false
-        loadModel()
     }
     
 }

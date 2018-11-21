@@ -3,7 +3,7 @@ import SwiftyJSON
 
 
 class MyPhotos : BaseModel{
-    
+
     var photoURL:String? {
         didSet{
             guard photoURL != oldValue
@@ -21,8 +21,23 @@ class MyPhotos : BaseModel{
     }
     var photo: UIImage?
     
-    required init(json: JSON?) {
-        super.init(json: json)
+    convenience init(json: JSON?) {
+        self.init()
+        setup(json: json)
+    }
+    
+    convenience init(id: Int, photoURL: String) {
+        self.init()
+        self.id = id
+        setPhotoURL(photoURL)
+    }
+    
+    func setPhotoURL(_ url: String){
+        self.photoURL = url
+    }
+    
+    
+    override func setup(json: JSON?){
         if let json = json {
             self.id = json["id"].intValue
             let arr = json["sizes"].arrayValue.map{ $0 }
@@ -35,16 +50,6 @@ class MyPhotos : BaseModel{
                 }
             }
         }
-    }
-    
-    convenience init(id: Int, photoURL: String) {
-        self.init(json: nil)
-        self.id = id
-        setPhotoURL(photoURL)
-    }
-    
-    func setPhotoURL(_ url: String){
-        self.photoURL = url
     }
     
 }

@@ -3,8 +3,10 @@ import SwiftyJSON
 import RealmSwift
 
 protocol ModelProtocol: class {
-    var id: Int? {get set}
-    init(json: JSON?)
+    func getId()->Int
+    func setup(json: JSON?)
+    init() // need for AlamofireNetworkManager.parseJSON
+    func postInit() // temporary
 }
 
  // Задание 5: рефакторинг >>>
@@ -20,7 +22,22 @@ extension ModelProtocol {
 }
  // Задание 5: рефакторинг <<<
 
-class BaseModel: ModelProtocol{
-    var id: Int?
-    required init(json: JSON?) {}
+class BaseModel: Object, ModelProtocol {
+    
+    @objc dynamic var id = 0
+    
+    func getId()->Int{
+        return id
+    }
+    func setup(json: JSON?) {}
+    func postInit() {}
+    
+    
+    enum Key: String {
+        case id
+    }
+    
+    override static func primaryKey() -> String? {
+        return Key.id.rawValue
+    }
 }

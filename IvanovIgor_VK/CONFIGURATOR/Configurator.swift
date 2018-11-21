@@ -41,7 +41,7 @@ class Configurator {
             else { return nil }
         
         view2presenter[String(describing: viewController.self)] = res
-        res.setup(view: viewController, completion: completion)
+        res.setup(view: viewController, completion: completion, .networkFirst)
         return res
     }
     
@@ -51,13 +51,13 @@ class Configurator {
     
         switch futureViewController {
         case String(describing: FriendsController.self):
-            presenter = FriendPresenter(completion: completion)
+            presenter = FriendPresenter(completion: completion, .networkFirst)
         case String(describing: MyGroupsController.self):
-            presenter = GroupPresenter(completion: completion)
+            presenter = GroupPresenter(completion: completion, .networkFirst)
         case String(describing: AllGroupsTableController.self):
-            presenter = AllGroupPresenter(completion: completion)
+            presenter = AllGroupPresenter(completion: completion, .networkFirst)
         case String(describing: MyPhotoController.self):
-            presenter = MyPhotosPresenter(completion: completion)
+            presenter = MyPhotosPresenter(completion: completion, .networkFirst)
         default:
             fatalError("Configurator: getPresenter - no presenter has found")
         }

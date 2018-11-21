@@ -9,15 +9,9 @@ public class AllGroupPresenter: BasePresenter {
     let urlPath: String = "groups.search"
     
     
-    override func loadModel(completion: (()->Void)?){
-        let groups = gGroups.filter({$0.isMember == false})
-        var groupingProps: [String] = []
-        for group in groups {
-            groupingProps.append(group.name)
-        }
-        setup(_sortedDataSource: groups, _groupingProperties: groupingProps)
+    override func loadFromNetwork(completion: (()->Void)? = nil){
+       
     }
-    
     
     func sendRequest(txtSearch: String, completion: (() -> Void)?){
         let params: Parameters = [
@@ -26,20 +20,22 @@ public class AllGroupPresenter: BasePresenter {
             "count":10,
             "v": "5.80"
         ]
-        
         AlamofireNetworkManager.doGet(clazz: Group.self, presenter: self, urlPath: urlPath, params: params, completion: completion)
     }
     
-    override func setModel(ds: [ModelProtocol]) {
-        let groups = ds as? [Group]
-        if let gr = groups {
-            self.ds = gr.sorted(by: { $0.name < $1.name })
-        }
+    
+    override func saveModel(ds: [ModelProtocol]) {}
+    
+    
+    override func sortModel(_ ds: [ModelProtocol]) -> [ModelProtocol] {
+        guard let groups = ds as? [Group]
+            else {return ds}
+        return groups.sorted(by: {$0.name < $1.name })
     }
     
     override func refreshData()->( [ModelProtocol], [String] ){
         
-        guard var tempGroups = ds as? [Group] else {
+        guard var tempGroups = getModel() as? [Group] else {
             return ([], [])
         }
         
@@ -61,7 +57,7 @@ public class AllGroupPresenter: BasePresenter {
     
     
     override func searchData(searchText: String, completion: (() -> Void)?) {
-        ds?.removeAll()
+        removeModel()
         guard searchText != "" else
         {
             completion?()

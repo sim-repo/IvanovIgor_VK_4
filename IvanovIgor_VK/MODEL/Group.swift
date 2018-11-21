@@ -3,10 +3,20 @@ import UIKit
 
 
 class Group : BaseModel{
-    var name: String!
-    var description:String!
+    
+    enum Sorting: String {
+        case name
+    }
+    
+    enum Ignored: String{
+        case image50
+        case image200
+    }
+    
+    @objc dynamic var name: String = ""
+    @objc dynamic var desc: String = ""
     var image50: UIImage?
-    var imageURL50:  String? {
+    @objc dynamic var imageURL50:  String? {
         didSet{
             guard imageURL50 != oldValue
                 else {
@@ -24,7 +34,7 @@ class Group : BaseModel{
     
     
     var image200: UIImage?
-    var imageURL200: String? {
+    @objc dynamic var imageURL200: String? {
         didSet{
             guard imageURL200 != oldValue
                 else {
@@ -39,27 +49,21 @@ class Group : BaseModel{
             }
         }
     }
-    var isMember: Bool = false
+    
+    @objc dynamic var isMember: Bool = false
 
     
-    required init(json: JSON?) {
-        super.init(json: json)
-        if let json = json {
-            self.id = json["id"].intValue
-            self.name = json["name"].stringValue
-            self.description = json["description"].stringValue
-            
-            setImageURL50(val: json["photo_50"].stringValue)
-            setImageURL200(val: json["photo_200"].stringValue)
-        }
+    convenience init(json: JSON?) {
+        self.init()
+        setup(json: json)
     }
     
     
     convenience init(id: Int, name: String, description: String, imageURL50: String, imageURL200: String) {
-        self.init(json: nil)
+        self.init()
         self.id = id
         self.name = name
-        self.description = description
+        self.desc = description
         
         setImageURL50(val: imageURL50)
         setImageURL200(val: imageURL200)
@@ -71,6 +75,22 @@ class Group : BaseModel{
     
     func setImageURL200(val: String?) {
         self.imageURL200 = val
+    }
+    
+    override static func ignoredProperties() -> [String] {
+        return [Ignored.image50.rawValue,
+                Ignored.image200.rawValue]
+    }
+    
+    override func setup(json: JSON?){
+        if let json = json {
+            self.id = json["id"].intValue
+            self.name = json["name"].stringValue
+            self.desc = json["description"].stringValue
+            
+            setImageURL50(val: json["photo_50"].stringValue)
+            setImageURL200(val: json["photo_200"].stringValue)
+        }
     }
 }
 

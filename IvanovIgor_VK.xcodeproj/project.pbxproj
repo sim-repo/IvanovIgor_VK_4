@@ -29,14 +29,12 @@
 		049540A0216B45ED001D008A /* NewsSectionFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0495409F216B45ED001D008A /* NewsSectionFooter.swift */; };
 		049540A2216B5D9D001D008A /* News4PhotosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049540A1216B5D9D001D008A /* News4PhotosCell.swift */; };
 		049540A4216B7C85001D008A /* GroupFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049540A3216B7C85001D008A /* GroupFlowLayout.swift */; };
-		049B6763219C10B90066428B /* MyFriend+Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049B6762219C10B90066428B /* MyFriend+Persistence.swift */; };
-		049B6765219C11880066428B /* Group+Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049B6764219C11880066428B /* Group+Persistence.swift */; };
-		049B6767219C11E00066428B /* MyPhotos+Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049B6766219C11E00066428B /* MyPhotos+Persistence.swift */; };
-		049B676A219C151C0066428B /* RealmHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049B6769219C151C0066428B /* RealmHelper.swift */; };
 		049B67A8219D99670066428B /* NotificationCenter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049B67A7219D99670066428B /* NotificationCenter+Extensions.swift */; };
 		049B67AB219DCBEF0066428B /* Configurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049B67AA219DCBEF0066428B /* Configurator.swift */; };
 		04B8144521650CD700491859 /* MyGroupsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B8144421650CD700491859 /* MyGroupsController.swift */; };
 		04B8144721650EDC00491859 /* MyGroupCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B8144621650EDC00491859 /* MyGroupCollectionCell.swift */; };
+		04E71EA421A4026C006553F4 /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E71EA321A4026C006553F4 /* DatabaseService.swift */; };
+		04E71EA721A43E06006553F4 /* Realm+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E71EA621A43E06006553F4 /* Realm+Extensions.swift */; };
 		04EDA93C215A510B00426C8C /* Friends.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04EDA93B215A510B00426C8C /* Friends.storyboard */; };
 		04EDA93E215A51A000426C8C /* Groups.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04EDA93D215A51A000426C8C /* Groups.storyboard */; };
 		04EDA944215A735100426C8C /* FriendDetailsCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EDA943215A735100426C8C /* FriendDetailsCollectionController.swift */; };
@@ -104,14 +102,12 @@
 		0495409F216B45ED001D008A /* NewsSectionFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSectionFooter.swift; sourceTree = "<group>"; };
 		049540A1216B5D9D001D008A /* News4PhotosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News4PhotosCell.swift; sourceTree = "<group>"; };
 		049540A3216B7C85001D008A /* GroupFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupFlowLayout.swift; sourceTree = "<group>"; };
-		049B6762219C10B90066428B /* MyFriend+Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MyFriend+Persistence.swift"; sourceTree = "<group>"; };
-		049B6764219C11880066428B /* Group+Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Group+Persistence.swift"; sourceTree = "<group>"; };
-		049B6766219C11E00066428B /* MyPhotos+Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MyPhotos+Persistence.swift"; sourceTree = "<group>"; };
-		049B6769219C151C0066428B /* RealmHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmHelper.swift; sourceTree = "<group>"; };
 		049B67A7219D99670066428B /* NotificationCenter+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationCenter+Extensions.swift"; sourceTree = "<group>"; };
 		049B67AA219DCBEF0066428B /* Configurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurator.swift; sourceTree = "<group>"; };
 		04B8144421650CD700491859 /* MyGroupsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupsController.swift; sourceTree = "<group>"; };
 		04B8144621650EDC00491859 /* MyGroupCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupCollectionCell.swift; sourceTree = "<group>"; };
+		04E71EA321A4026C006553F4 /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
+		04E71EA621A43E06006553F4 /* Realm+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Realm+Extensions.swift"; sourceTree = "<group>"; };
 		04EDA93B215A510B00426C8C /* Friends.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Friends.storyboard; sourceTree = "<group>"; };
 		04EDA93D215A51A000426C8C /* Groups.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Groups.storyboard; sourceTree = "<group>"; };
 		04EDA943215A735100426C8C /* FriendDetailsCollectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendDetailsCollectionController.swift; sourceTree = "<group>"; };
@@ -184,23 +180,20 @@
 			path = "Custom Nav Controller";
 			sourceTree = "<group>";
 		};
-		049B6768219C12230066428B /* Persistence */ = {
-			isa = PBXGroup;
-			children = (
-				049B6762219C10B90066428B /* MyFriend+Persistence.swift */,
-				049B6764219C11880066428B /* Group+Persistence.swift */,
-				049B6766219C11E00066428B /* MyPhotos+Persistence.swift */,
-				049B6769219C151C0066428B /* RealmHelper.swift */,
-			);
-			path = Persistence;
-			sourceTree = "<group>";
-		};
 		049B67A9219DCBCD0066428B /* CONFIGURATOR */ = {
 			isa = PBXGroup;
 			children = (
 				049B67AA219DCBEF0066428B /* Configurator.swift */,
 			);
 			path = CONFIGURATOR;
+			sourceTree = "<group>";
+		};
+		04E71EA521A40275006553F4 /* PERSISTENCE SERVICE */ = {
+			isa = PBXGroup;
+			children = (
+				04E71EA321A4026C006553F4 /* DatabaseService.swift */,
+			);
+			path = "PERSISTENCE SERVICE";
 			sourceTree = "<group>";
 		};
 		04EDA939215A50C700426C8C /* UI */ = {
@@ -340,6 +333,7 @@
 			children = (
 				161D8303218F2DAF00FA83B4 /* IvanovIgor_VK.entitlements */,
 				160455632157C0FA003A6ED7 /* AppDelegate.swift */,
+				04E71EA521A40275006553F4 /* PERSISTENCE SERVICE */,
 				162D958D219F71D6008A896B /* EXTENSIONS */,
 				049B67A9219DCBCD0066428B /* CONFIGURATOR */,
 				16DFC5BC2195BB5A00C86A3D /* NETWORK SERVICE */,
@@ -360,7 +354,6 @@
 				1604557D2157F8B8003A6ED7 /* Group.swift */,
 				1636C9412162067B00F8B68D /* News.swift */,
 				16E9409C21784C7400390927 /* MyPhotos.swift */,
-				049B6768219C12230066428B /* Persistence */,
 			);
 			path = MODEL;
 			sourceTree = "<group>";
@@ -393,6 +386,7 @@
 			isa = PBXGroup;
 			children = (
 				049B67A7219D99670066428B /* NotificationCenter+Extensions.swift */,
+				04E71EA621A43E06006553F4 /* Realm+Extensions.swift */,
 			);
 			path = EXTENSIONS;
 			sourceTree = "<group>";
@@ -608,7 +602,6 @@
 				160455662157C0FA003A6ED7 /* LoginViewController.swift in Sources */,
 				044766B1216CDA1400B465E9 /* News6PhotosCell.swift in Sources */,
 				049B67A8219D99670066428B /* NotificationCenter+Extensions.swift in Sources */,
-				049B6763219C10B90066428B /* MyFriend+Persistence.swift in Sources */,
 				044B5BFE217746AB00B79291 /* NavController.swift in Sources */,
 				1636C9422162067B00F8B68D /* News.swift in Sources */,
 				0495409E216B4513001D008A /* News3PhotosCell.swift in Sources */,
@@ -633,7 +626,6 @@
 				046636212174946200630FBE /* GradientView.swift in Sources */,
 				044B5C042177683E00B79291 /* CustomSegue.swift in Sources */,
 				164473922177C5F700625120 /* CircularTransition.swift in Sources */,
-				049B6767219C11E00066428B /* MyPhotos+Persistence.swift in Sources */,
 				049B67AB219DCBEF0066428B /* Configurator.swift in Sources */,
 				0445073F216B91C800803508 /* NewsPresenter.swift in Sources */,
 				04EDA94F215A75F400426C8C /* FriendDetailsCollectionCell.swift in Sources */,
@@ -653,6 +645,7 @@
 				04EDA944215A735100426C8C /* FriendDetailsCollectionController.swift in Sources */,
 				16103F0A2168AD72009AC52A /* BasePresenter.swift in Sources */,
 				16DFC5BE2195C80100C86A3D /* ModelProtocol.swift in Sources */,
+				04E71EA721A43E06006553F4 /* Realm+Extensions.swift in Sources */,
 				044766B7216DEFB400B465E9 /* CarouselFlowLayout.swift in Sources */,
 				160455642157C0FA003A6ED7 /* AppDelegate.swift in Sources */,
 				16103F0C2168D28B009AC52A /* AllGroupPresenter.swift in Sources */,
@@ -662,8 +655,7 @@
 				044B5C06217768E600B79291 /* FriendPhotoController.swift in Sources */,
 				1636C94521620B2700F8B68D /* NewsCollectionCell.swift in Sources */,
 				16EC282D21901BAC00DF0728 /* ViewProtocolDelegate.swift in Sources */,
-				049B6765219C11880066428B /* Group+Persistence.swift in Sources */,
-				049B676A219C151C0066428B /* RealmHelper.swift in Sources */,
+				04E71EA421A4026C006553F4 /* DatabaseService.swift in Sources */,
 				16E9409F21784D6200390927 /* MyPhotosCollectionController.swift in Sources */,
 				16E9409D21784C7400390927 /* MyPhotos.swift in Sources */,
 			);

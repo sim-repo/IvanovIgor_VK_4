@@ -3,8 +3,9 @@ import UIKit
 
 
 public class BasePresenter: PresenterProtocol {
+
     
-    var ds: [ModelProtocol]?
+    
     
     weak var view: ViewProtocolDelegate?
     
@@ -29,9 +30,9 @@ public class BasePresenter: PresenterProtocol {
     
     // constructor for preloading
     // view doesn't exists yet
-    convenience init(completion: (()->Void)?) {
+    convenience init(completion: (()->Void)?, _ type: LoadModelType) {
         self.init()
-        loadModel(completion: completion)
+        loadModel(completion: completion, type)
     }
     
     func postPreloading(view: ViewProtocolDelegate, completion: (()->Void)?){
@@ -40,9 +41,9 @@ public class BasePresenter: PresenterProtocol {
     }
     
     // view already exists
-    func setup(view: ViewProtocolDelegate, completion: (()->Void)?){
+    func setup(view: ViewProtocolDelegate, completion: (()->Void)?, _ type: LoadModelType){
         self.view = view
-        loadModel(completion: completion)
+        loadModel(completion: completion, type)
     }
     
     // Задание 5: рефакторинг  <<<
@@ -67,22 +68,41 @@ public class BasePresenter: PresenterProtocol {
         
         guard let indexPath = getIndexPath(model: model)
             else { return }
-        
         view?.reloadCell(indexPath: indexPath)
     }
     
     
-    
+    final func loadModel(completion: (()->Void)?, _ type: LoadModelType){
+        
+        switch type {
+        case .diskFirst:
+            loadFromDisk(completion: completion)
+        case .networkFirst:
+            loadFromNetwork(completion: completion)
+        }
+    }
     
     
     //MARK: ***** overriding functions *****
     
-    func loadModel(completion:(()->Void)?){
+    func setModel(ds: [ModelProtocol], didLoadedFrom: LoadModelType) {
+        self.sortedDataSource = sortModel(ds)
+        
+        // early has loaded
+        switch didLoadedFrom {
+            case .diskFirst:
+                return // data stored already
+            case .networkFirst:
+                saveModel(ds: ds)
+        }
+    }
+    
+    func loadFromDisk(completion: (()->Void)? = nil){
         fatalError("Override Error: this method must be overriding by child classes")
     }
     
-    func setModel(ds: [ModelProtocol]) {
-        self.ds = ds
+    func loadFromNetwork(completion: (()->Void)? = nil){
+        fatalError("Override Error: this method must be overriding by child classes")
     }
     
     func refreshData()->( [ModelProtocol], [String] ){
@@ -114,6 +134,14 @@ public class BasePresenter: PresenterProtocol {
         fatalError("Override Error: this method must be overriding by child classes")
     }
     
+    func saveModel(ds: [ModelProtocol]) {
+        fatalError("Override Error: this method must be overriding by child classes")
+    }
+    
+    func sortModel(_ ds: [ModelProtocol]) -> [ModelProtocol]{
+        fatalError("Override Error: this method must be overriding by child classes")
+    }
+    
     
     //MARK: ***** final functions *****
     
@@ -130,14 +158,14 @@ public class BasePresenter: PresenterProtocol {
     
    
     
-    final func refreshDataSource(with completion: (([String])->Void)? ) {
+    public final func refreshDataSource(with completion: (([String])->Void)? ) {
         (sortedDataSource,groupingProperties) = refreshData()
         setup(_sortedDataSource: sortedDataSource, _groupingProperties: groupingProperties)
         completion?(groupingProperties)
     }
     
     
-    final func numberOfRowsInSection(section: Int) -> Int {
+    public final func numberOfRowsInSection(section: Int) -> Int {
         guard sectionsOffset.count > 0
             else {
                 return sortedDataSource.count
@@ -157,7 +185,7 @@ public class BasePresenter: PresenterProtocol {
     final func getData(indexPath: IndexPath) -> ModelProtocol? {
         guard sectionsOffset.count > 0
             else {
-                    return sortedDataSource[indexPath.row]
+                return sortedDataSource[indexPath.row]
             }
         let offset = sectionsOffset[indexPath.section]
         
@@ -170,7 +198,8 @@ public class BasePresenter: PresenterProtocol {
     }
     
     private final func getIndexPath(model: ModelProtocol) -> IndexPath?{
-        guard let sortedIdx = sortedDataSource.firstIndex(where: { $0.id == model.id })
+        
+        guard let sortedIdx = sortedDataSource.firstIndex(where: { $0.getId() == model.getId() })
             else {return nil}
         
         if sectionsOffset.count == 0 {
@@ -190,23 +219,34 @@ public class BasePresenter: PresenterProtocol {
     }
     
     
-    final func sectionName(section: Int)->String {
+    public final func sectionName(section: Int)->String {
         let idx = sectionsTitle[section].rawValue
         return String(Alphabet.titles[idx])
     }
     
-    final func getGroupingProperties() -> [String] {
+    public final func getGroupingProperties() -> [String] {
         return groupingProperties
     }
     
     
-    func filterData(_ filterText: String) {
+    public func filterData(_ filterText: String) {
         filteredText = !filterText.isEmpty ? filterText : nil
     }
     
 
-    func handleWillChanges(url: URL?, completion: ((_: Data) -> Void)?) {
+    public func handleWillChanges(url: URL?, completion: ((_: Data) -> Void)?) {
         AlamofireNetworkManager.doGet(url: url, completion: completion)
     }
+    
+    
+    func getModel()->[ModelProtocol] {
+        return sortedDataSource
+    }
+    
+    func removeModel(){
+        sortedDataSource.removeAll()
+    }
+    
+    
     
 }

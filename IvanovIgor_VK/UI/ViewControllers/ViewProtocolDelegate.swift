@@ -7,5 +7,7 @@ import Foundation
 protocol ViewProtocolDelegate : class {
     func reloadCells()
     func reloadCell(indexPath: IndexPath)
+    func reloadCell(_ deletions: [IndexPath], _ insertions: [IndexPath], _ updates: [IndexPath])
     func className()->String
+    func refreshDataSource()
 }

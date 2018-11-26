@@ -95,11 +95,41 @@ public class BasePresenter: PresenterProtocol {
         view?.reloadCell(indexPath: indexPath)
     }
     
-    func onDidModelChanged(model: ModelProtocol){
-        guard let indexPath = getIndexPath(model: model)
-            else { return }
-        view?.reloadCell(indexPath: indexPath)
+    
+    func onDidModelChanged<T: ModelProtocol>(_ results: Results<T>, _ deletions: [Int], _ insertions: [Int], _ modifications: [Int]){
+        
+        var indexPathsDelete: [IndexPath] = []
+        for idx in deletions {
+            let model = results[idx]
+            if let indexPath = getIndexPath(model: model) {
+                indexPathsDelete.append(indexPath)
+            }
+        }
+        
+        var indexPathsInsert: [IndexPath] = []
+        for idx in insertions {
+            let model = results[idx]
+            if let indexPath = getIndexPath(model: model) {
+                indexPathsInsert.append(indexPath)
+            }
+        }
+        
+        var indexPathsUpdate: [IndexPath] = []
+        for idx in modifications {
+            let model = results[idx]
+            if let indexPath = getIndexPath(model: model) {
+                indexPathsUpdate.append(indexPath)
+            }
+        }
+        
+        view?.reloadCell(indexPathsDelete, indexPathsInsert, indexPathsUpdate)
+        
+       //guard let indexPath = getIndexPath(model: model)
+       //     else { return }
+        view?.refreshDataSource()
+       // view?.reloadCell(indexPath: indexPath)
     }
+    
     
     func setModel(ds: [ModelProtocol], didLoadedFrom: LoadModelType) {
       

@@ -185,6 +185,7 @@ extension FriendsController: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        print("title")
         return presenter?.sectionName(section: section)
     }
     
@@ -302,6 +303,8 @@ extension FriendsController: UITextFieldDelegate {
 
 
 extension FriendsController: ViewProtocolDelegate{
+   
+    
     func className() -> String {
         return String(describing: FriendsController.self)
     }
@@ -309,6 +312,14 @@ extension FriendsController: ViewProtocolDelegate{
     func reloadCell(indexPath: IndexPath) {
         tableView.beginUpdates()
         tableView.reloadRows(at: [indexPath], with: .automatic)
+        tableView.endUpdates();
+    }
+    
+    func reloadCell(_ deletions: [IndexPath], _ insertions: [IndexPath], _ updates: [IndexPath]) {
+        tableView.beginUpdates()
+      //  tableView.deleteRows(at: deletions, with: .automatic)
+      //  tableView.insertRows(at: insertions, with: .automatic)
+        tableView.reloadRows(at: updates, with: .automatic)
         tableView.endUpdates();
     }
     

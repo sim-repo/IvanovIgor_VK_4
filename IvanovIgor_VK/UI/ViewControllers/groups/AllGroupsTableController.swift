@@ -111,6 +111,10 @@ extension AllGroupsTableController: UISearchBarDelegate{
 
 
 extension AllGroupsTableController: ViewProtocolDelegate {
+    func reloadCell(_ deletions: [IndexPath], _ insertions: [IndexPath], _ updates: [IndexPath]) {
+        
+    }
+    
     
     func className() -> String {
         return String(describing: AllGroupsTableController.self)

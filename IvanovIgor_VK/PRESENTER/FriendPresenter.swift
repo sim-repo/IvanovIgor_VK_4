@@ -127,12 +127,8 @@ public class FriendPresenter: BasePresenter {
                 self?.modelLoadImages()
               
             case let .update(results, deletions, insertions, modifications):
-                for idx in modifications {
-                     print("download: \(results[idx].firstName)")
-                    self?.onDidModelChanged(model: results[idx])
-                }
+                self?.onDidModelChanged(results, deletions, insertions, modifications)
 
-                
             case .error(let error):
                 print(error)
                 

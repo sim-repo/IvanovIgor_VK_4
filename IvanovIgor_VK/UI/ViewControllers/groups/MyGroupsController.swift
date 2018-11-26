@@ -263,6 +263,10 @@ extension MyGroupsController: UISearchBarDelegate{
 
 // MARK: Refresh Protocol Delegate
 extension MyGroupsController: ViewProtocolDelegate {
+    func reloadCell(_ deletions: [IndexPath], _ insertions: [IndexPath], _ updates: [IndexPath]) {
+        
+    }
+    
     
     func className() -> String {
         return String(describing: MyGroupsController.self)

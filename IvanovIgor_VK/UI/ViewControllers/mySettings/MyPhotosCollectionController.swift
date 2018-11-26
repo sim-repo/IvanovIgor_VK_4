@@ -121,6 +121,12 @@ class MyPhotosCollectionController: UICollectionViewController , UIViewControlle
 
 extension MyPhotosCollectionController: ViewProtocolDelegate{
     
+    
+    func reloadCell(_ deletions: [IndexPath], _ insertions: [IndexPath], _ updates: [IndexPath]) {
+        
+    }
+    
+    
     func className() -> String {
         return String(describing: self)
     }

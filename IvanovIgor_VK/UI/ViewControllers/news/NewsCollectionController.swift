@@ -189,6 +189,10 @@ extension NewsCollectionController: UICollectionViewDataSource, UICollectionView
 
 // MARK: Refresh Protocol Delegate
 extension NewsCollectionController: ViewProtocolDelegate {
+    func reloadCell(_ deletions: [IndexPath], _ insertions: [IndexPath], _ updates: [IndexPath]) {
+        
+    }
+    
     func className() -> String {
         return String(describing: self)
     }

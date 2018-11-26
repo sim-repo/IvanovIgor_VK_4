@@ -15,19 +15,15 @@ class AlamofireNetworkManager{
     }()
     
     
-    public static func doGet<T: ModelProtocol>(clazz: T.Type , presenter: PresenterProtocol?, urlPath: String?, params: Parameters, completion: (()->Void)? = nil ){
-        guard let presenter = presenter
-            else {return}
-        guard let urlPath = urlPath
-            else {return}
+    public static func request<T: ModelProtocol>(clazz: T.Type , urlPath: String, params: Parameters, completion: (([T])->Void)? = nil ){
+
         AlamofireNetworkManager.sharedManager.request(baseURL + urlPath, method: .get, parameters: params).responseJSON{ response in
             switch response.result {
             case .success(let val):
                 let arr:[T]? = parseJSON(val)
                 if let arr = arr {
-                    presenter.setModel(ds: arr, didLoadedFrom: .networkFirst)
+                    completion?(arr)
                 }
-                completion?()
             case .failure(let err):
                 print(err)
             }
@@ -35,12 +31,11 @@ class AlamofireNetworkManager{
     }
     
     
-    public static func doGet(url: URL?, completion: ((_: Data) -> Void)?){
+    public static func downloadImage(url: URL?, completion: ((_: Data) -> Void)?){
         guard let url = url
             else {
                 return
-        }
-        
+            }
         Alamofire.request(url).response{ (response) in
             guard response.error == nil
                 else {
@@ -51,6 +46,26 @@ class AlamofireNetworkManager{
     
             if let data = response.data {
                 completion?(data)
+            }
+        }
+    }
+    
+    
+    public static func downloadImage(url: URL?, idx: Int, imageFieldIndex: Int, completion: ((_: Data, _: Int, _: Int) -> Void)?){
+        guard let url = url
+            else {
+                return
+        }
+        Alamofire.request(url).response{ (response) in
+            guard response.error == nil
+                else {
+                    //print(response.error?.localizedDescription)
+                    fatalError(response.error!.localizedDescription) // only for test
+                    return
+            }
+            
+            if let data = response.data {
+                completion?(data, idx, imageFieldIndex)
             }
         }
     }

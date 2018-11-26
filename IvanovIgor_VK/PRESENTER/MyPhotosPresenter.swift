@@ -1,9 +1,10 @@
 import Foundation
 import Alamofire
-
+import RealmSwift
 
 public class MyPhotosPresenter: BasePresenter {
     let urlPath: String = "photos.getAll"
+    var realmData: Results<MyPhotos>?
     
 
     override func loadFromNetwork(completion: (()->Void)? = nil){
@@ -15,25 +16,31 @@ public class MyPhotosPresenter: BasePresenter {
             "v": "5.80"
         ]
         
-        AlamofireNetworkManager.doGet(clazz: MyPhotos.self, presenter: self, urlPath: urlPath, params: params, completion: completion)
-    }
-    
-    override func loadFromDisk(completion: (()->Void)? = nil){
-        guard let ds = DatabaseService.realmLoad(clazz: MyPhotos.self, sortField: MyPhotos.Sorting.id.rawValue)?.toArray(ofType: MyPhotos.self)
-            else { return }
-        if ds.count != 0 {
-            setModel(ds: ds, didLoadedFrom: .diskFirst)
-            ds.forEach({$0.postInit()}) //TODO: избавиться
+        let outerCompletion: (([ModelProtocol]) -> Void)? = {[weak self] (arr: [ModelProtocol]) in
+            self?.setModel(ds: arr, didLoadedFrom: .networkFirst)
+            completion?()
         }
-        completion?()
+        AlamofireNetworkManager.request(clazz: MyPhotos.self, urlPath: urlPath, params: params, completion: outerCompletion)
     }
     
     
     override func saveModel(ds: [ModelProtocol]) {
         if let photos = ds as? [MyPhotos] {
             DatabaseService.realmSave(items: photos, config: DatabaseService.configuration, update: true)
+            realmNotify()
         }
     }
+    
+    
+    override func loadFromDisk(completion: (()->Void)? = nil){        
+        guard let data = realmLoadData()
+            else { return }
+        let ds = data.toArray(ofType: MyPhotos.self)
+        setModel(ds: ds, didLoadedFrom: .diskFirst)
+        realmNotify()
+        completion?()
+    }
+    
     
     override func sortModel(_ ds: [ModelProtocol]) -> [ModelProtocol] {
         return ds
@@ -43,6 +50,34 @@ public class MyPhotosPresenter: BasePresenter {
     override func refreshData()->( [ModelProtocol], [String] ){
         let groupingProps: [String] = []
         return (getModel(), groupingProps)
+    }
+    
+    
+    func realmNotify(){
+        guard self.realmToken == nil
+            else { return }
+        
+        if realmData == nil {
+            realmData = realmLoadData()
+        }
+        if realmData == nil {
+            fatalError("realmNotify: realmData is nil")
+        }
+        self.realmToken = realmData?.observe {  (changes: RealmCollectionChange) in
+            switch changes {
+            case let .update(results, deletions, insertions, modifications):
+                print(results, deletions, insertions, modifications)
+            case .error(let error):
+                print(error)
+            default: break
+            }
+            print("данные изменились")
+        }
+    }
+    
+    
+    func realmLoadData()->Results<MyPhotos>?{
+        return DatabaseService.realmLoad(clazz: MyPhotos.self, sortField: MyPhotos.Sorting.id.rawValue)
     }
     
 }

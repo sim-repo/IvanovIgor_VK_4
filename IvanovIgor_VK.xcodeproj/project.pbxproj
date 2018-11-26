@@ -365,9 +365,9 @@
 				16103F092168AD72009AC52A /* BasePresenter.swift */,
 				160C90A521678AF200535DB2 /* FriendPresenter.swift */,
 				16103F072168ACD0009AC52A /* GroupPresenter.swift */,
+				0474124D2191867400C4CC0B /* MyPhotosPresenter.swift */,
 				16103F0B2168D28B009AC52A /* AllGroupPresenter.swift */,
 				0445073E216B91C800803508 /* NewsPresenter.swift */,
-				0474124D2191867400C4CC0B /* MyPhotosPresenter.swift */,
 			);
 			path = PRESENTER;
 			sourceTree = "<group>";

@@ -8,7 +8,6 @@ public class AllGroupPresenter: BasePresenter {
     
     let urlPath: String = "groups.search"
     
-    
     override func loadFromNetwork(completion: (()->Void)? = nil){
        
     }
@@ -20,7 +19,11 @@ public class AllGroupPresenter: BasePresenter {
             "count":10,
             "v": "5.80"
         ]
-        AlamofireNetworkManager.doGet(clazz: Group.self, presenter: self, urlPath: urlPath, params: params, completion: completion)
+        let outerCompletion: (([ModelProtocol]) -> Void)? = {[weak self] (arr: [ModelProtocol]) in
+            self?.setModel(ds: arr, didLoadedFrom: .networkFirst)
+            completion?()
+        }
+        AlamofireNetworkManager.request(clazz: Group.self, urlPath: urlPath, params: params, completion: outerCompletion)
     }
     
     
@@ -65,4 +68,5 @@ public class AllGroupPresenter: BasePresenter {
         }
         sendRequest(txtSearch: searchText, completion: completion)
     }
+    
 }

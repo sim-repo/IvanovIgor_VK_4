@@ -6,7 +6,6 @@ protocol ModelProtocol: class {
     func getId()->Int
     func setup(json: JSON?)
     init() // need for AlamofireNetworkManager.parseJSON
-    func postInit() // temporary
 }
 
 extension ModelProtocol {

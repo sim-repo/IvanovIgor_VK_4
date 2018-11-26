@@ -9,12 +9,11 @@ public class NewsPresenter: BasePresenter {
     override func loadFromNetwork(completion: (()->Void)? = nil){
         let allNews = News.allList()
         setModel(ds: allNews, didLoadedFrom: .diskFirst)
+        completion?()
     }
     
     
-    override func loadFromDisk(completion: (()->Void)? = nil){
-      
-    }
+    override func loadFromDisk(completion: (()->Void)? = nil){}
     
     override func sortModel(_ ds: [ModelProtocol]) -> [ModelProtocol] {
         return ds

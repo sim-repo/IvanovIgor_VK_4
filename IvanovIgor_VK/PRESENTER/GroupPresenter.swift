@@ -1,11 +1,15 @@
 import Foundation
 import Alamofire
+import RealmSwift
 
 var gGroups: [Group] = []
 
 public class GroupPresenter: BasePresenter {
     
     let urlPath: String = "groups.get"
+    var realmData: Results<Group>?
+    
+    
     
     override func loadFromNetwork(completion: (()->Void)? = nil){
         let params: Parameters = [
@@ -14,23 +18,29 @@ public class GroupPresenter: BasePresenter {
             "fields":["description","members_count","photo_50","photo_200"],
             "v": "5.80"
         ]
-        AlamofireNetworkManager.doGet(clazz: Group.self, presenter: self, urlPath: urlPath, params: params, completion: completion)
-    }
-    
-    
-    override func loadFromDisk(completion: (()->Void)? = nil){
-        guard let ds = DatabaseService.realmLoad(clazz: Group.self, sortField: Group.Sorting.name.rawValue)?.toArray(ofType: Group.self)
-            else { return }
-        setModel(ds: ds, didLoadedFrom: .diskFirst)
-        ds.forEach({$0.postInit()}) //TODO: избавиться
-        completion?()
+        let outerCompletion: (([ModelProtocol]) -> Void)? = {[weak self] (arr: [ModelProtocol]) in
+            self?.setModel(ds: arr, didLoadedFrom: .networkFirst)
+            completion?()
+        }
+        AlamofireNetworkManager.request(clazz: Group.self, urlPath: urlPath, params: params, completion: outerCompletion)
     }
     
     
     override func saveModel(ds: [ModelProtocol]) {
         if let groups = ds as? [Group] {
             DatabaseService.realmSave(items: groups, config: DatabaseService.configuration, update: true)
+            realmNotify()
         }
+    }
+    
+    
+    override func loadFromDisk(completion: (()->Void)? = nil){        
+        guard let data = realmLoadData()
+            else { return }
+        let ds = data.toArray(ofType: Group.self)
+        setModel(ds: ds, didLoadedFrom: .diskFirst)
+        realmNotify()
+        completion?()
     }
     
     
@@ -40,6 +50,7 @@ public class GroupPresenter: BasePresenter {
         return groups.sorted(by: {$0.name < $1.name })
     }
 
+    
     override func refreshData()->( [ModelProtocol], [String] ){
         
         guard var tempGroups = getModel() as? [Group] else {
@@ -69,6 +80,34 @@ public class GroupPresenter: BasePresenter {
     override func remove(object: AnyObject) {
         let group = object as! Group
         group.isMember = false
+    }
+    
+    
+    func realmNotify(){
+        guard self.realmToken == nil
+            else { return }
+        
+        if realmData == nil {
+            realmData = realmLoadData()
+        }
+        if realmData == nil {
+            fatalError("realmNotify: realmData is nil")
+        }
+        self.realmToken = realmData?.observe {  (changes: RealmCollectionChange) in
+            switch changes {
+            case let .update(results, deletions, insertions, modifications):
+                print(results, deletions, insertions, modifications)
+            case .error(let error):
+                print(error)
+            default: break
+            }
+            print("данные изменились")
+        }
+    }
+    
+    
+    func realmLoadData()->Results<Group>?{
+        return DatabaseService.realmLoad(clazz: Group.self, sortField: Group.Sorting.name.rawValue)
     }
     
 }

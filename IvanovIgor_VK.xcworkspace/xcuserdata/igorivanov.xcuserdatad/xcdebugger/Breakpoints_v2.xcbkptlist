@@ -15,8 +15,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "61"
             endingLineNumber = "61"
-            landmarkName = "GroupPresenter"
-            landmarkType = "3">
+            landmarkName = "refreshData()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -138,13 +138,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/PRESENTER/BasePresenter.swift"
-            timestampString = "564443358.593372"
+            timestampString = "564764265.219841"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "18"
-            endingLineNumber = "18"
-            landmarkName = "numberOfSections"
-            landmarkType = "24">
+            startingLineNumber = "20"
+            endingLineNumber = "20"
+            landmarkName = "BasePresenter"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -218,60 +218,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/NETWORK SERVICE/AlamofireNetworkManager.swift"
-            timestampString = "564097850.710972"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
-            landmarkName = "doGet(clazz:presenter:urlPath:params:completion:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Any&gt;) -&gt; () in static IvanovIgor_VK.AlamofireNetworkManager.doGet&lt;A where A: IvanovIgor_VK.ModelProtocol&gt;(clazz: A.Type, presenter: Swift.Optional&lt;IvanovIgor_VK.PresenterProtocol&gt;, urlPath: Swift.Optional&lt;Swift.String&gt;, params: Swift.Dictionary&lt;Swift.String, Any&gt;, completion: Swift.Optional&lt;() -&gt; ()&gt;) -&gt; ()"
-                  moduleName = "IvanovIgor_VK"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/igorivanov/Downloads/IvanovIgor_VK_2/IvanovIgor_VK/NETWORK%20SERVICE/AlamofireNetworkManager.swift"
-                  timestampString = "563521614.664402"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "25"
-                  endingLineNumber = "25"
-                  offsetFromSymbolStart = "104">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Any&gt;) -&gt; () in static IvanovIgor_VK.AlamofireNetworkManager.doGet&lt;A where A: IvanovIgor_VK.ModelProtocol&gt;(clazz: A.Type, presenter: Swift.Optional&lt;IvanovIgor_VK.PresenterProtocol&gt;, urlPath: Swift.Optional&lt;Swift.String&gt;, params: Swift.Dictionary&lt;Swift.String, Any&gt;, completion: Swift.Optional&lt;() -&gt; ()&gt;) -&gt; ()"
-                  moduleName = "IvanovIgor_VK"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/igorivanov/Downloads/IvanovIgor_VK_2/IvanovIgor_VK/NETWORK%20SERVICE/AlamofireNetworkManager.swift"
-                  timestampString = "563521614.667025"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "25"
-                  endingLineNumber = "25"
-                  offsetFromSymbolStart = "128">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "IvanovIgor_VK/NETWORK SERVICE/AlamofireNetworkManager.swift"
             timestampString = "564097850.711004"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "26"
             endingLineNumber = "26"
-            landmarkName = "doGet(clazz:presenter:urlPath:params:completion:)"
+            landmarkName = "request(clazz:urlPath:params:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -303,7 +255,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "24"
             endingLineNumber = "24"
-            landmarkName = "doGet(clazz:presenter:urlPath:params:completion:)"
+            landmarkName = "request(clazz:urlPath:params:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -319,8 +271,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "34"
             endingLineNumber = "34"
-            landmarkName = "doGet(clazz:presenter:urlPath:params:completion:)"
-            landmarkType = "7">
+            landmarkName = "AlamofireNetworkManager"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -335,8 +287,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "19"
             endingLineNumber = "19"
-            landmarkName = "profilePictureURL50"
-            landmarkType = "24">
+            landmarkName = "MyFriend"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -362,13 +314,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/PRESENTER/BasePresenter.swift"
-            timestampString = "564443358.593547"
+            timestampString = "564764265.219987"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "145"
-            endingLineNumber = "145"
-            landmarkName = "BasePresenter"
-            landmarkType = "3">
+            startingLineNumber = "147"
+            endingLineNumber = "147"
+            landmarkName = "refreshData()"
+            landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -410,11 +362,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/PRESENTER/BasePresenter.swift"
-            timestampString = "564443358.593585"
+            timestampString = "564764265.220027"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "157"
-            endingLineNumber = "157"
+            startingLineNumber = "159"
+            endingLineNumber = "159"
+            landmarkName = "remove(object:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IvanovIgor_VK/PRESENTER/BasePresenter.swift"
+            timestampString = "564764265.22006"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "190"
+            endingLineNumber = "190"
             landmarkName = "setup(_sortedDataSource:_groupingProperties:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -426,29 +394,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/PRESENTER/BasePresenter.swift"
-            timestampString = "564443358.5936199"
+            timestampString = "564764265.220093"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "188"
-            endingLineNumber = "188"
-            landmarkName = "getData(indexPath:)"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
+            landmarkName = "remove(object:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "IvanovIgor_VK/PRESENTER/BasePresenter.swift"
-            timestampString = "564443358.593655"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "159"
-            endingLineNumber = "159"
-            landmarkName = "BasePresenter"
-            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -473,28 +425,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "IvanovIgor_VK/NETWORK SERVICE/AlamofireNetworkManager.swift"
-            timestampString = "564097850.711839"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "19"
-            endingLineNumber = "19"
-            landmarkName = "doGet(clazz:presenter:urlPath:params:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/PRESENTER/BasePresenter.swift"
-            timestampString = "564443358.593709"
+            timestampString = "564764265.220143"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
             landmarkName = "BasePresenter"
             landmarkType = "3">
          </BreakpointContent>
@@ -506,11 +442,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/PRESENTER/BasePresenter.swift"
-            timestampString = "564443358.593743"
+            timestampString = "564764265.220175"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
             landmarkName = "BasePresenter"
             landmarkType = "3">
             <Locations>
@@ -559,7 +495,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "23"
             endingLineNumber = "23"
-            landmarkName = "doGet(clazz:presenter:urlPath:params:completion:)"
+            landmarkName = "request(clazz:urlPath:params:completion:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -601,22 +537,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "IvanovIgor_VK/NETWORK SERVICE/AlamofireNetworkManager.swift"
-            timestampString = "564097850.712077"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
-            landmarkName = "doGet(clazz:presenter:urlPath:params:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/PRESENTER/AllGroupPresenter.swift"
             timestampString = "564443358.593796"
             startingColumnNumber = "9223372036854775807"
@@ -639,7 +559,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "27"
             endingLineNumber = "27"
-            landmarkName = "doGet(clazz:presenter:urlPath:params:completion:)"
+            landmarkName = "request(clazz:urlPath:params:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -745,22 +665,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "IvanovIgor_VK/PRESENTER/BasePresenter.swift"
-            timestampString = "564443358.593888"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
-            landmarkName = "refreshData()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/MODEL/MyPhotos.swift"
             timestampString = "564433646.17057"
             startingColumnNumber = "9223372036854775807"
@@ -842,12 +746,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/PRESENTER/BasePresenter.swift"
-            timestampString = "564443358.5939471"
+            timestampString = "564764265.2203389"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
-            landmarkName = "setModel(ds:didLoadedFrom:)"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
+            landmarkName = "onDidModelChanged(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -858,28 +762,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/PRESENTER/BasePresenter.swift"
-            timestampString = "564443358.593982"
+            timestampString = "564764265.220402"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
-            landmarkName = "loadFromNetwork(completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "IvanovIgor_VK/PRESENTER/BasePresenter.swift"
-            timestampString = "564443358.594016"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
-            landmarkName = "setModel(ds:didLoadedFrom:)"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "onDidModelChanged(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -986,12 +874,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/PRESENTER/BasePresenter.swift"
-            timestampString = "564443358.594101"
+            timestampString = "564764265.220481"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "149"
-            endingLineNumber = "149"
-            landmarkName = "setup(_sortedDataSource:_groupingProperties:)"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
+            landmarkName = "refreshData()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1018,7 +906,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/UI/ViewControllers/friends/FriendsController.swift"
-            timestampString = "564097850.713799"
+            timestampString = "564764265.220525"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "34"
@@ -1039,7 +927,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "12"
             endingLineNumber = "12"
-            landmarkName = "getPresenter(viewController:completion:)"
+            landmarkName = "getPresenter(viewController:loadType:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1055,7 +943,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "17"
             endingLineNumber = "17"
-            landmarkName = "getPresenter(viewController:completion:)"
+            landmarkName = "getPresenter(viewController:loadType:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1066,7 +954,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/UI/ViewControllers/friends/FriendsController.swift"
-            timestampString = "564097850.7139471"
+            timestampString = "564764265.220575"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "35"
@@ -1082,13 +970,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/UI/ViewControllers/friends/FriendsController.swift"
-            timestampString = "564097850.713989"
+            timestampString = "564764265.220606"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "149"
-            endingLineNumber = "149"
-            landmarkName = "numberOfSections(in:)"
-            landmarkType = "7">
+            startingLineNumber = "150"
+            endingLineNumber = "150"
+            landmarkName = "FriendsController"
+            landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1098,23 +986,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/UI/ViewControllers/friends/FriendsController.swift"
-            timestampString = "564097850.714031"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "159"
-            endingLineNumber = "159"
-            landmarkName = "tableView(_:cellForRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "IvanovIgor_VK/UI/ViewControllers/friends/FriendsController.swift"
-            timestampString = "564097850.714071"
+            timestampString = "564764265.220636"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "160"
@@ -1130,11 +1002,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/UI/ViewControllers/friends/FriendsController.swift"
-            timestampString = "564097850.714112"
+            timestampString = "564764265.220664"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IvanovIgor_VK/UI/ViewControllers/friends/FriendsController.swift"
+            timestampString = "564764265.220693"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
             landmarkName = "setupAlphabetSearchControl()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1146,13 +1034,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/UI/ViewControllers/friends/FriendsController.swift"
-            timestampString = "564097850.714152"
+            timestampString = "564764265.220721"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
-            landmarkName = "deinit"
-            landmarkType = "7">
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "FriendsController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1183,7 +1071,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "67"
             endingLineNumber = "67"
-            landmarkName = "preloadPresenter(for:_:)"
+            landmarkName = "preloadPresenter(for:loadType:_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1194,11 +1082,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/UI/ViewControllers/friends/FriendsController.swift"
-            timestampString = "564097850.714336"
+            timestampString = "564764265.220768"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "138"
-            endingLineNumber = "138"
+            startingLineNumber = "139"
+            endingLineNumber = "139"
             landmarkName = "refreshDataSource()"
             landmarkType = "7">
             <Locations>
@@ -1247,7 +1135,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "19"
             endingLineNumber = "19"
-            landmarkName = "getPresenter(viewController:completion:)"
+            landmarkName = "getPresenter(viewController:loadType:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1258,11 +1146,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/UI/ViewControllers/friends/FriendsController.swift"
-            timestampString = "564097850.714406"
+            timestampString = "564764265.220809"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
             landmarkName = "setupPresenter()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1274,13 +1162,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/UI/ViewControllers/friends/FriendsController.swift"
-            timestampString = "564097850.71444"
+            timestampString = "564764265.22084"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
-            landmarkName = "setupAlphabetSearchControl()"
-            landmarkType = "7">
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "FriendsController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1354,12 +1242,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/PRESENTER/BasePresenter.swift"
-            timestampString = "564443358.594388"
+            timestampString = "564764265.2208869"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "onNeedDownload(_:)"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "loadModel(_:_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1370,12 +1258,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/PRESENTER/BasePresenter.swift"
-            timestampString = "564443358.594424"
+            timestampString = "564764265.220919"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
-            landmarkName = "onNeedDownload(_:)"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "loadModel(_:_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1386,12 +1274,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/PRESENTER/BasePresenter.swift"
-            timestampString = "564443358.594458"
+            timestampString = "564764265.2209491"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
-            landmarkName = "onDidModelChanged(_:)"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "loadModel(_:_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1407,8 +1295,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "14"
             endingLineNumber = "14"
-            landmarkName = "ModelProtocol"
-            landmarkType = "21">
+            landmarkName = "notify(url:_:completion:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1423,8 +1311,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "18"
             endingLineNumber = "18"
-            landmarkName = "ModelProtocol"
-            landmarkType = "21">
+            landmarkName = "notify(url:_:completion:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1439,7 +1327,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "33"
             endingLineNumber = "33"
-            landmarkName = "createPresenter(_:_:)"
+            landmarkName = "createPresenter(_:_:_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1455,7 +1343,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "37"
             endingLineNumber = "37"
-            landmarkName = "createPresenter(_:_:)"
+            landmarkName = "createPresenter(_:_:_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

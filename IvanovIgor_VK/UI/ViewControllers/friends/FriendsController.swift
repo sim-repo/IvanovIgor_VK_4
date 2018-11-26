@@ -19,7 +19,6 @@ class FriendsController: UIViewController {
     @IBOutlet weak var loupeImageView: UIImageView!
     @IBOutlet weak var loupeCenterXConstraint: NSLayoutConstraint!
     @IBOutlet weak var loupeLeadingXConstraint: NSLayoutConstraint!
-    
     @IBOutlet weak var searchTextWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var searchTextCenterDxConstraint: NSLayoutConstraint!
     @IBOutlet weak var searchTextCenterXConstraint: NSLayoutConstraint!
@@ -36,10 +35,10 @@ class FriendsController: UIViewController {
      //   setupStandardSearchController()
         searchTextField.delegate = self  // Задание 6.5: анимация
         searchTextWidth = searchTextWidthConstraint.constant // Задание 6.5: анимация
-
     }
     
     deinit {
+        presenter?.viewDeinit()
         presenter = nil
     }
     

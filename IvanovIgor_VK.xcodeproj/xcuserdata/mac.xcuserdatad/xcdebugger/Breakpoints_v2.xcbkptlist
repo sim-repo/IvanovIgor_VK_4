@@ -333,8 +333,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "15"
             endingLineNumber = "15"
-            landmarkName = "loadFromDisk(completion:)"
-            landmarkType = "7">
+            landmarkName = "NewsPresenter"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

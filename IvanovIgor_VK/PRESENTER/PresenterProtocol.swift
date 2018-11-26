@@ -1,5 +1,5 @@
 import UIKit
-
+import RealmSwift
 
 
 enum TextThreshold: Int {
@@ -77,6 +77,6 @@ protocol PresenterProtocol: class {
     
     func saveModel(ds: [ModelProtocol])
     
-    func setModel(ds: [ModelProtocol], didLoadedFrom: LoadModelType)
+    func viewDeinit()
     
 }

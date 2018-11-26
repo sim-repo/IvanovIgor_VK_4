@@ -13,7 +13,7 @@ class DatabaseService {
         do {
             let realm = try Realm(configuration: config)
             
-           // print(realm.configuration.fileURL ?? "")
+            print(realm.configuration.fileURL ?? "")
             
             try realm.write {
                 realm.add(items, update: update)
@@ -31,11 +31,11 @@ class DatabaseService {
         var res: Results<Element>?
         do {
             let realm = try Realm()
+            print(realm.configuration.fileURL ?? "")
             res = realm.objects(clazz).sorted(byKeyPath: sortField)
         } catch {
             print(error.localizedDescription)
         }
         return res
     }
- 
 }

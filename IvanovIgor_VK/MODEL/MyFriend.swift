@@ -12,6 +12,11 @@ class MyFriend : BaseModel{
         case profilePictureImage200
     }
     
+    enum Images: Int{
+        case profilePictureImage50
+        case profilePictureImage200
+    }
+    
     @objc dynamic var firstName: String = ""
     @objc dynamic var lastName: String = ""
     var profilePictureImage50: UIImage?
@@ -89,28 +94,6 @@ class MyFriend : BaseModel{
             setProfilePictureURL200(val: json["photo_200_orig"].stringValue)
         }
     }
-    
-    
-    // TODO: избавиться от метода -->
-    override func postInit() {
-        
-        if let val = profilePictureURL50{
-            let url = URL(string: val)
-            self.notify(url: url, .needDownload){ (data) in
-                self.profilePictureImage50 = UIImage(data: data)
-                self.notify(model: self, .didModelChanged)
-            }
-        }
-        
-        if let val = profilePictureURL200{
-            let url = URL(string: val)
-            self.notify(url: url,.needDownload) { (data) in
-                self.profilePictureImage200 = UIImage(data: data)
-                self.notify(model: self, .didModelChanged)
-            }
-        }
-    }
-    // TODO: избавиться от метода <--
     
     
 }

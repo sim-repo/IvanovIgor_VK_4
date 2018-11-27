@@ -14,10 +14,7 @@ enum Alphabet: Int, CaseIterable {
 
     static func convert(by char: Character) -> Alphabet {
         let index = Alphabet.titles.firstIndex(of: char) ?? Å.rawValue
-        //if let idx = index {
-            return Alphabet(rawValue: index)!
-       // }
-        return Alphabet.A
+        return Alphabet(rawValue: index)!
     }
     
     static func getLetter(with stroke: String)->Alphabet {

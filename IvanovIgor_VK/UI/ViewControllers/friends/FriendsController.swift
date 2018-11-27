@@ -185,7 +185,6 @@ extension FriendsController: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        print("title")
         return presenter?.sectionName(section: section)
     }
     
@@ -257,7 +256,6 @@ extension FriendsController: UISearchBarDelegate{
         refreshDataSource()
         tableView.reloadData()
     }
-    
 }
 
 
@@ -309,26 +307,24 @@ extension FriendsController: ViewProtocolDelegate{
         return String(describing: FriendsController.self)
     }
     
-    func reloadCell(indexPath: IndexPath) {
+    func optimReloadCell(indexPath: IndexPath) {
         tableView.beginUpdates()
         tableView.reloadRows(at: [indexPath], with: .automatic)
         tableView.endUpdates();
     }
     
-    func reloadCell(_ deletions: [IndexPath], _ insertions: [IndexPath], _ updates: [IndexPath]) {
+    func optimReloadCells(_ deletions: [IndexPath], _ insertions: [IndexPath], _ updates: [IndexPath]) {
         tableView.beginUpdates()
-      //  tableView.deleteRows(at: deletions, with: .automatic)
-      //  tableView.insertRows(at: insertions, with: .automatic)
+        tableView.deleteRows(at: deletions, with: .automatic)
+        tableView.insertRows(at: insertions, with: .automatic)
         tableView.reloadRows(at: updates, with: .automatic)
         tableView.endUpdates();
     }
     
-    
+    // called when changed grouping field
     func reloadCells() {
-        tableView.beginUpdates()
-        let indexPaths = tableView.indexPathsForVisibleRows!
-        tableView.reloadRows(at: indexPaths, with: .automatic)
-        tableView.endUpdates();
+        refreshDataSource()
+        self.tableView.reloadData()
     }
     
 }

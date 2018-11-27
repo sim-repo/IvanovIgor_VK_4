@@ -107,7 +107,7 @@ public class GroupPresenter: BasePresenter {
     
     
     func realmLoadData()->Results<Group>?{
-        return DatabaseService.realmLoad(clazz: Group.self, sortField: Group.Sorting.name.rawValue)
+        return DatabaseService.realmLoad(clazz: Group.self)
     }
     
 }

@@ -122,7 +122,7 @@ class MyPhotosCollectionController: UICollectionViewController , UIViewControlle
 extension MyPhotosCollectionController: ViewProtocolDelegate{
     
     
-    func reloadCell(_ deletions: [IndexPath], _ insertions: [IndexPath], _ updates: [IndexPath]) {
+    func optimReloadCells(_ deletions: [IndexPath], _ insertions: [IndexPath], _ updates: [IndexPath]) {
         
     }
     
@@ -131,7 +131,7 @@ extension MyPhotosCollectionController: ViewProtocolDelegate{
         return String(describing: self)
     }
     
-    func reloadCell(indexPath: IndexPath) {
+    func optimReloadCell(indexPath: IndexPath) {
         collectionView?.reloadItems(at: [indexPath])
     }
     

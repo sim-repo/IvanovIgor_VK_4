@@ -45,7 +45,7 @@ public class FriendPresenter: BasePresenter {
     override func sortModel(_ ds: [ModelProtocol]) -> [ModelProtocol] {
         guard let friends = ds as? [MyFriend]
             else {return ds}
-        return friends.sorted(by: {$0.firstName < $1.firstName })
+        return friends.sorted(by: {$0.getSortingField() < $1.getSortingField() })
     }
     
     
@@ -56,35 +56,34 @@ public class FriendPresenter: BasePresenter {
         }
         
         if let filteredText  = filteredText {
-            tempFriends = friends.filter({$0.firstName.lowercased().contains(filteredText.lowercased())})
+            tempFriends = friends.filter({$0.getSortingField().lowercased().contains(filteredText.lowercased())})
         } else {
             tempFriends = friends
         }
         
         var groupingProps: [String] = []
         for friend in tempFriends {
-            groupingProps.append(friend.firstName )
+            groupingProps.append(friend.getSortingField() )
         }
         return (tempFriends, groupingProps)
     }
     
 
     
-    
     func prepareCompletion()-> (Data, Int, Int)->Void  {
         let completion: (Data, Int, Int)->Void = { [weak self] (data, idx, imageFieldIndex) in
             let friend = self?.sortedDataSource[idx] as! MyFriend
             
             switch imageFieldIndex {
-            case MyFriend.Images.profilePictureImage50.rawValue:
+            case MyFriend.ImagesType.profilePictureImage50.rawValue:
                 friend.profilePictureImage50 = UIImage(data: data)
-            case MyFriend.Images.profilePictureImage200.rawValue:
+            case MyFriend.ImagesType.profilePictureImage200.rawValue:
                 friend.profilePictureImage200 = UIImage(data: data)
             default:
                 fatalError("prepareCompletion") // only for test
             }
             guard let indexPath = self?.getIndexPath(model: friend) else {return}
-            self?.view?.reloadCell(indexPath: indexPath)
+            self?.view?.optimReloadCell(indexPath: indexPath)
         }
         return completion
     }
@@ -97,19 +96,19 @@ public class FriendPresenter: BasePresenter {
             else { return }
         
         for (idx, friend) in friends.enumerated() {
+            friend.updateXSortingField(val: friend.getSortingField())
             let completion = prepareCompletion()
             if let val = friend.profilePictureURL50 {
                 let url = URL(string: val)!
-                AlamofireNetworkManager.downloadImage(url: url, idx: idx, imageFieldIndex: MyFriend.Images.profilePictureImage50.rawValue,completion: completion)
+                AlamofireNetworkManager.downloadImage(url: url, idx: idx, imageFieldIndex: MyFriend.ImagesType.profilePictureImage50.rawValue,completion: completion)
             }
             if let val = friend.profilePictureURL200 {
                 let url = URL(string: val)!
-                AlamofireNetworkManager.downloadImage(url: url, idx: idx, imageFieldIndex: MyFriend.Images.profilePictureImage200.rawValue,completion: completion)
+                AlamofireNetworkManager.downloadImage(url: url, idx: idx, imageFieldIndex: MyFriend.ImagesType.profilePictureImage200.rawValue,completion: completion)
             }
         }
     }
     
-   
     
     func realmNotify(){
         guard self.realmToken == nil
@@ -127,7 +126,17 @@ public class FriendPresenter: BasePresenter {
                 self?.modelLoadImages()
               
             case let .update(results, deletions, insertions, modifications):
-                self?.onDidModelChanged(results, deletions, insertions, modifications)
+                var forceRealod = false
+                if deletions.count == 0 && insertions.count == 0 && modifications.count > 0 {
+                    for idx in modifications {
+                        let obj = self?.sortedDataSource.first(where: {$0.getId() == results[idx].getId()}) as? MyFriend
+                        if results[idx].getSortingField() != obj?.getXSortingField() {
+                            obj?.updateXSortingField(val: results[idx].getSortingField())
+                            forceRealod = true
+                        }
+                    }
+                }
+                self?.onDidModelChanged(results, deletions, insertions, modifications, forceFullReload: forceRealod)
 
             case .error(let error):
                 print(error)
@@ -137,9 +146,7 @@ public class FriendPresenter: BasePresenter {
         }
     }
     
-    
     func realmLoadData()->Results<MyFriend>?{
-        return DatabaseService.realmLoad(clazz: MyFriend.self, sortField: MyFriend.Sorting.firstName.rawValue)
+        return DatabaseService.realmLoad(clazz: MyFriend.self)
     }
-    
 }

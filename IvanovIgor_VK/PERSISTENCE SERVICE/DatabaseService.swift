@@ -27,12 +27,12 @@ class DatabaseService {
         return nil
     }
     
-    static func realmLoad<Element: Object>(clazz: Element.Type, sortField: String) -> Results<Element>? {
+    static func realmLoad<Element: Object>(clazz: Element.Type) -> Results<Element>? {
         var res: Results<Element>?
         do {
             let realm = try Realm()
             print(realm.configuration.fileURL ?? "")
-            res = realm.objects(clazz).sorted(byKeyPath: sortField)
+            res = realm.objects(clazz)
         } catch {
             print(error.localizedDescription)
         }

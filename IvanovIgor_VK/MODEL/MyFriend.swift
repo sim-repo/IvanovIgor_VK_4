@@ -3,97 +3,98 @@ import SwiftyJSON
 
 class MyFriend : BaseModel{
     
-    enum Sorting: String {
+    enum FriendSortType: String {
         case firstName
+        case lastName
     }
     
-    enum Ignored: String{
+    enum IgnoredType: String{
         case profilePictureImage50
         case profilePictureImage200
+        case xFirstName
     }
     
-    enum Images: Int{
+    enum ImagesType: Int{
         case profilePictureImage50
         case profilePictureImage200
     }
     
     @objc dynamic var firstName: String = ""
+    
     @objc dynamic var lastName: String = ""
+    @objc dynamic var profilePictureURL50: String?
+    @objc dynamic var profilePictureURL200: String?
+    
     var profilePictureImage50: UIImage?
     var profilePictureImage200: UIImage?
-    
-    @objc dynamic var profilePictureURL50: String? {
-        didSet{
-            guard profilePictureURL50 != oldValue
-                else {
-                    return
-            }
-            if let val = profilePictureURL50{
-                let url = URL(string: val)
-                self.notify(url: url, .needDownload){ (data) in
-                    self.profilePictureImage50 = UIImage(data: data)
-                    self.notify(model: self, .didModelChanged)
-                }
-            }
-        }
-    }
-    
-    @objc dynamic var profilePictureURL200: String? {
-        didSet{
-            guard profilePictureURL200 != oldValue
-                else {
-                    return
-            }
-            if let val = profilePictureURL200{
-                let url = URL(string: val)
-                self.notify(url: url,.needDownload) { (data) in
-                    self.profilePictureImage200 = UIImage(data: data)
-                    self.notify(model: self, .didModelChanged)
-                }
-            }
-        }
-    }
-    
     var photos:[String] = []
+    
+    // service fields
+    var xFirstName: String = ""
+    var xLastName: String = ""
+    var sorting: FriendSortType = .firstName
     
     convenience init(json: JSON?){
         self.init()
         setup(json: json)
     }
     
-    convenience init(id: Int, firstName: String, lastName: String, profilePictureURL50: String, profilePictureURL200: String) {
-        self.init()
-        self.id = id
-        self.firstName = firstName
-        self.lastName = lastName
-        
-        setProfilePictureURL50(val: profilePictureURL50)
-        setProfilePictureURL200(val: profilePictureURL200)
+//    convenience init(id: Int, firstName: String, lastName: String, profilePictureURL50: String, profilePictureURL200: String) {
+//        self.init()
+//        self.id = id
+//        self.firstName = firstName
+//        self.lastName = lastName
+//        self.profilePictureURL200 = profilePictureURL50
+//        self.profilePictureURL200 = profilePictureURL200
+//    }
+    
+    func getSortingField()->String {
+        switch sorting {
+        case .firstName:
+            return self.firstName
+        case .lastName:
+            return self.lastName
+        }
     }
     
-    func setProfilePictureURL50(val: String?) {
-        self.profilePictureURL50 = val
+    func getXSortingField()->String {
+        switch sorting {
+        case .firstName:
+            return self.xFirstName
+        case .lastName:
+            return self.xLastName
+        }
     }
     
-    func setProfilePictureURL200(val: String?) {
-        self.profilePictureURL200 = val
+    func updateXSortingField(val: String) {
+        switch sorting {
+        case .firstName:
+            xFirstName = val
+        case .lastName:
+            xLastName = val
+        }
     }
     
     override static func ignoredProperties() -> [String] {
-        return [Ignored.profilePictureImage50.rawValue,
-                Ignored.profilePictureImage200.rawValue]
+        return [IgnoredType.profilePictureImage50.rawValue,
+                IgnoredType.profilePictureImage200.rawValue,
+                IgnoredType.xFirstName.rawValue]
+    }
+    
+    override static func indexedProperties() -> [String]{
+        return [FriendSortType.firstName.rawValue]
     }
     
     override func setup(json: JSON?){
         if let json = json {
             self.id = json["id"].intValue
             self.firstName = json["first_name"].stringValue
+            self.xFirstName = firstName
             self.lastName = json["last_name"].stringValue
-            
-            setProfilePictureURL50(val: json["photo_50"].stringValue)
-            setProfilePictureURL200(val: json["photo_200_orig"].stringValue)
+            self.profilePictureURL50 = json["photo_50"].stringValue
+            self.profilePictureURL200 = json["photo_200_orig"].stringValue
         }
     }
-    
-    
 }
+
+

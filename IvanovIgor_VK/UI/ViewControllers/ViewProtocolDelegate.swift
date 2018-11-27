@@ -6,8 +6,8 @@ import Foundation
 // по заврешении асинхронных заданий в самом presenter
 protocol ViewProtocolDelegate : class {
     func reloadCells()
-    func reloadCell(indexPath: IndexPath)
-    func reloadCell(_ deletions: [IndexPath], _ insertions: [IndexPath], _ updates: [IndexPath])
+    func optimReloadCell(indexPath: IndexPath)
+    func optimReloadCells(_ deletions: [IndexPath], _ insertions: [IndexPath], _ updates: [IndexPath])
     func className()->String
     func refreshDataSource()
 }

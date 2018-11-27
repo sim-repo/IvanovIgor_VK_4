@@ -18,7 +18,6 @@ class LoginViewController: UIViewController {
         }
     }
     
-    
     var presenter: PresenterProtocol?
     
     override func viewDidLoad() {
@@ -43,7 +42,7 @@ class LoginViewController: UIViewController {
     
     private func setupPresenter(completion: (()->Void)?){
         presenter = Configurator.shared.preloadPresenter(for: String(describing: FriendsController.self),
-                                                         loadType: .diskFirst,
+                                                         loadType: .networkFirst,
                                                          completion)
     }
     

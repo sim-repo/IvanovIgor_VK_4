@@ -111,7 +111,7 @@ extension AllGroupsTableController: UISearchBarDelegate{
 
 
 extension AllGroupsTableController: ViewProtocolDelegate {
-    func reloadCell(_ deletions: [IndexPath], _ insertions: [IndexPath], _ updates: [IndexPath]) {
+    func optimReloadCells(_ deletions: [IndexPath], _ insertions: [IndexPath], _ updates: [IndexPath]) {
         
     }
     
@@ -120,7 +120,7 @@ extension AllGroupsTableController: ViewProtocolDelegate {
         return String(describing: AllGroupsTableController.self)
     }
     
-    func reloadCell(indexPath: IndexPath) {
+    func optimReloadCell(indexPath: IndexPath) {
         tableView.beginUpdates()
         tableView.reloadRows(at: [indexPath], with: .automatic)
         tableView.endUpdates();

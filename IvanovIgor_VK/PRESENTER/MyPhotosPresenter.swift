@@ -77,7 +77,7 @@ public class MyPhotosPresenter: BasePresenter {
     
     
     func realmLoadData()->Results<MyPhotos>?{
-        return DatabaseService.realmLoad(clazz: MyPhotos.self, sortField: MyPhotos.Sorting.id.rawValue)
+        return DatabaseService.realmLoad(clazz: MyPhotos.self)
     }
     
 }

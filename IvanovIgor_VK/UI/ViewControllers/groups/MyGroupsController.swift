@@ -263,7 +263,7 @@ extension MyGroupsController: UISearchBarDelegate{
 
 // MARK: Refresh Protocol Delegate
 extension MyGroupsController: ViewProtocolDelegate {
-    func reloadCell(_ deletions: [IndexPath], _ insertions: [IndexPath], _ updates: [IndexPath]) {
+    func optimReloadCells(_ deletions: [IndexPath], _ insertions: [IndexPath], _ updates: [IndexPath]) {
         
     }
     
@@ -272,7 +272,7 @@ extension MyGroupsController: ViewProtocolDelegate {
         return String(describing: MyGroupsController.self)
     }
     
-    func reloadCell(indexPath: IndexPath) {
+    func optimReloadCell(indexPath: IndexPath) {
         collectionView.reloadItems(at: [indexPath])
     }
     

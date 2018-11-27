@@ -189,7 +189,7 @@ extension NewsCollectionController: UICollectionViewDataSource, UICollectionView
 
 // MARK: Refresh Protocol Delegate
 extension NewsCollectionController: ViewProtocolDelegate {
-    func reloadCell(_ deletions: [IndexPath], _ insertions: [IndexPath], _ updates: [IndexPath]) {
+    func optimReloadCells(_ deletions: [IndexPath], _ insertions: [IndexPath], _ updates: [IndexPath]) {
         
     }
     
@@ -198,7 +198,7 @@ extension NewsCollectionController: ViewProtocolDelegate {
     }
     
     
-    func reloadCell(indexPath: IndexPath) {
+    func optimReloadCell(indexPath: IndexPath) {
         collectionView.reloadItems(at: [indexPath])
     }
     

@@ -7,9 +7,11 @@ public class BasePresenter: PresenterProtocol {
     weak var view: ViewProtocolDelegate?
     
     var sortedDataSource: [ModelProtocol] = []
+    
     private var sectionsOffset: [Int] = []
     private var groupingProperties: [String] = []
     private var sectionsTitle: [Alphabet] = []
+    
     internal var filteredText: String?
     internal var realmToken: NotificationToken?
     
@@ -26,7 +28,7 @@ public class BasePresenter: PresenterProtocol {
     
     // constructor for preloading
     // view doesn't exists yet
-    convenience init(completion: (()->Void)?, _ loadType: LoadModelType) {
+    convenience init(_ loadType: LoadModelType, completion: (()->Void)? ) {
         self.init()
         loadModel(loadType, completion)
     }
@@ -37,13 +39,12 @@ public class BasePresenter: PresenterProtocol {
     }
     
     // view already exists
-    func setup(view: ViewProtocolDelegate, completion: (()->Void)?, _ loadType: LoadModelType){
+    func setup(view: ViewProtocolDelegate, _ loadType: LoadModelType, completion: (()->Void)? ){
         self.view = view
         loadModel(loadType, completion)
     }
     
 
-    
     private final func loadModel(_ loadType: LoadModelType, _ completion: (()->Void)?) {
         switch loadType {
         case .diskFirst:
@@ -92,28 +93,50 @@ public class BasePresenter: PresenterProtocol {
         
         guard let indexPath = getIndexPath(model: model)
             else { return }
-        view?.reloadCell(indexPath: indexPath)
+        view?.optimReloadCell(indexPath: indexPath)
     }
     
     
-    func onDidModelChanged<T: ModelProtocol>(_ results: Results<T>, _ deletions: [Int], _ insertions: [Int], _ modifications: [Int]){
+    func onDidModelChanged<T: ModelProtocol>(_ results: Results<T>, _ deletions: [Int], _ insertions: [Int], _ modifications: [Int], forceFullReload: Bool){
         
-        var indexPathsDelete: [IndexPath] = []
-        for idx in deletions {
-            let model = results[idx]
-            if let indexPath = getIndexPath(model: model) {
-                indexPathsDelete.append(indexPath)
-            }
+        // changed key or grouping field >>>
+        if forceFullReload {
+            self.sortedDataSource = sortModel(self.sortedDataSource)
+            view?.reloadCells()
+            return
         }
         
-        var indexPathsInsert: [IndexPath] = []
-        for idx in insertions {
-            let model = results[idx]
-            if let indexPath = getIndexPath(model: model) {
-                indexPathsInsert.append(indexPath)
+        if deletions.count > 0 {
+            var indexPathsDelete: [IndexPath] = []
+            for idx in deletions {
+                let model = results[idx]
+                if let indexPath = getIndexPath(model: model) {
+                    indexPathsDelete.append(indexPath)
+                }
             }
+            self.sortedDataSource = sortModel(self.sortedDataSource)
+            view?.reloadCells()
+            return
         }
         
+        if insertions.count > 0 {
+            var indexPathsInsert: [IndexPath] = []
+            for idx in insertions {
+                let model = results[idx]
+                if let indexPath = getIndexPath(model: model) {
+                    indexPathsInsert.append(indexPath)
+                }
+            }
+            // call full reload of view
+            self.sortedDataSource = sortModel(self.sortedDataSource)
+            view?.reloadCells()
+            return
+        }
+        // changed key or grouping field <<<
+        
+        
+        // changed any other fields,
+        // reactive refresh
         var indexPathsUpdate: [IndexPath] = []
         for idx in modifications {
             let model = results[idx]
@@ -122,12 +145,9 @@ public class BasePresenter: PresenterProtocol {
             }
         }
         
-        view?.reloadCell(indexPathsDelete, indexPathsInsert, indexPathsUpdate)
-        
-       //guard let indexPath = getIndexPath(model: model)
-       //     else { return }
-        view?.refreshDataSource()
-       // view?.reloadCell(indexPath: indexPath)
+        if indexPathsUpdate.count > 0 {
+            view?.optimReloadCells([], [], indexPathsUpdate)
+        }
     }
     
     

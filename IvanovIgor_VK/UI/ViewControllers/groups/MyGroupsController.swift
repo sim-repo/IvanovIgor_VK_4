@@ -73,7 +73,7 @@ class MyGroupsController: UIViewController {
         guard let presenter = presenter
         else {return}
         lettersSearchControl.delegate = self
-        lettersSearchControl.updateControl(with: presenter.getGroupingProperties())
+        lettersSearchControl.updateControl(with: presenter.getGroupByProperties())
     }
     
     private func setupStandardSearchController(){

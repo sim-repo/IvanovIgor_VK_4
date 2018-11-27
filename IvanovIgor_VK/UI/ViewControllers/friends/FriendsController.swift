@@ -12,6 +12,8 @@ class FriendsController: UIViewController {
     @IBOutlet weak var lettersSearchControl: LettersSearchControl!
     @IBOutlet weak var letterShowConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var pickerView: UIPickerView!
+    private let sortingViewDS = ["Apple","Microsoft","Samsung","Android", "Google"]
     
     
     // Задание 6.5: анимация >>>
@@ -35,6 +37,9 @@ class FriendsController: UIViewController {
      //   setupStandardSearchController()
         searchTextField.delegate = self  // Задание 6.5: анимация
         searchTextWidth = searchTextWidthConstraint.constant // Задание 6.5: анимация
+        
+        pickerView.dataSource = self
+        pickerView.delegate = self
     }
     
     deinit {
@@ -53,7 +58,7 @@ class FriendsController: UIViewController {
         guard let presenter = presenter
             else {return}
         lettersSearchControl.delegate = self
-        lettersSearchControl.updateControl(with: presenter.getGroupingProperties())
+        lettersSearchControl.updateControl(with: presenter.getGroupByProperties())
     }
     
     
@@ -133,6 +138,12 @@ class FriendsController: UIViewController {
     }
     // Задание 6.5: анимация <<<
 
+
+    @IBAction func pressFilterButton(_ sender: Any) {
+        pickerView.isHidden = !pickerView.isHidden
+    }
+    
+    
     public func refreshDataSource(){
         presenter?.refreshDataSource(){ [unowned self] (names) in
             self.lettersSearchControl.updateControl(with: names)
@@ -326,5 +337,32 @@ extension FriendsController: ViewProtocolDelegate{
         refreshDataSource()
         self.tableView.reloadData()
     }
+    
+}
+
+
+extension FriendsController: UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return presenter?.getGroupByDataSource().count ?? 0
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return presenter?.getGroupByDataSource()[row]
+    }
+    
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        pickerView.isHidden = true
+        if let s = presenter?.getGroupByDataSource()[row] {
+            presenter?.changeGroupBy(by: s) //TODO
+        }
+        
+    }
+    
+    
     
 }

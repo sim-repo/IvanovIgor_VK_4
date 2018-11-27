@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EwU-Sy-A1P">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EwU-Sy-A1P">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -76,11 +76,15 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <pickerView hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K78-3M-rwq">
+                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </pickerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HHR-BF-0Mq" userLabel="SearchView">
                                 <rect key="frame" x="0.0" y="88" width="375" height="40"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="26r-xs-MTS">
-                                        <rect key="frame" x="0.0" y="8" width="337.66666666666669" height="24"/>
+                                        <rect key="frame" x="37.666666666666657" y="8" width="300" height="24"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="search"/>
@@ -108,6 +112,14 @@
                                             <action selector="pressButtonSearchCancel:" destination="wy2-9j-26N" eventType="touchUpInside" id="7yo-bN-6EU"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kdT-GW-n5W">
+                                        <rect key="frame" x="8" y="8" width="23" height="23"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="filter"/>
+                                        <connections>
+                                            <action selector="pressFilterButton:" destination="wy2-9j-26N" eventType="touchUpInside" id="1mr-9Y-sHY"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.79909565699999996" green="0.80776578619999995" blue="0.83377617390000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
@@ -115,9 +127,9 @@
                                     <constraint firstItem="GF5-3E-TcN" firstAttribute="centerX" secondItem="HHR-BF-0Mq" secondAttribute="centerX" id="H6i-xJ-Bpf"/>
                                     <constraint firstItem="26r-xs-MTS" firstAttribute="top" secondItem="HHR-BF-0Mq" secondAttribute="top" constant="8" id="INe-8R-1DU"/>
                                     <constraint firstItem="26r-xs-MTS" firstAttribute="leading" secondItem="GF5-3E-TcN" secondAttribute="trailing" constant="16" id="Np8-ld-nLb"/>
-                                    <constraint firstItem="26r-xs-MTS" firstAttribute="centerX" secondItem="HHR-BF-0Mq" secondAttribute="centerX" multiplier="0.9" id="S5N-U3-Akh"/>
+                                    <constraint firstItem="26r-xs-MTS" firstAttribute="centerX" secondItem="HHR-BF-0Mq" secondAttribute="centerX" id="S5N-U3-Akh"/>
                                     <constraint firstAttribute="height" constant="40" id="f3h-3q-qIE"/>
-                                    <constraint firstItem="26r-xs-MTS" firstAttribute="width" secondItem="HHR-BF-0Mq" secondAttribute="width" multiplier="0.9" id="fkS-ZY-Wib"/>
+                                    <constraint firstItem="26r-xs-MTS" firstAttribute="width" secondItem="HHR-BF-0Mq" secondAttribute="width" multiplier="0.8" id="fkS-ZY-Wib"/>
                                     <constraint firstItem="26r-xs-MTS" firstAttribute="centerX" secondItem="HHR-BF-0Mq" secondAttribute="centerX" id="oNq-pf-BoA"/>
                                     <constraint firstItem="huH-ON-3HO" firstAttribute="leading" secondItem="26r-xs-MTS" secondAttribute="trailing" constant="8" id="sSM-Cf-a9p"/>
                                     <constraint firstItem="huH-ON-3HO" firstAttribute="centerY" secondItem="HHR-BF-0Mq" secondAttribute="centerY" id="suE-Ua-ZXh"/>
@@ -133,8 +145,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="K78-3M-rwq" firstAttribute="top" secondItem="CS5-kt-znK" secondAttribute="top" id="1Hu-T6-4JD"/>
+                            <constraint firstItem="K78-3M-rwq" firstAttribute="trailing" secondItem="CS5-kt-znK" secondAttribute="trailing" id="2Js-Jg-mB1"/>
                             <constraint firstAttribute="trailing" secondItem="Zgs-gl-RFK" secondAttribute="trailing" id="5rP-lP-tPf"/>
                             <constraint firstItem="HHR-BF-0Mq" firstAttribute="leading" secondItem="CS5-kt-znK" secondAttribute="leading" id="8LK-jT-FhE"/>
+                            <constraint firstItem="K78-3M-rwq" firstAttribute="bottom" secondItem="CS5-kt-znK" secondAttribute="bottom" id="ASX-pK-4Cu"/>
                             <constraint firstItem="HHR-BF-0Mq" firstAttribute="top" secondItem="CS5-kt-znK" secondAttribute="top" id="Rfn-1d-cI4"/>
                             <constraint firstAttribute="bottomMargin" secondItem="Zgs-gl-RFK" secondAttribute="bottom" id="XPu-rb-X9A"/>
                             <constraint firstItem="hW6-Lh-N0x" firstAttribute="leading" secondItem="as6-xi-Gks" secondAttribute="trailing" constant="-25" id="Xc2-In-fac"/>
@@ -142,6 +157,7 @@
                             <constraint firstAttribute="trailing" secondItem="HHR-BF-0Mq" secondAttribute="trailing" id="jkl-yE-c0C"/>
                             <constraint firstItem="Zgs-gl-RFK" firstAttribute="top" secondItem="as6-xi-Gks" secondAttribute="top" id="sFW-Hn-gbq"/>
                             <constraint firstItem="hW6-Lh-N0x" firstAttribute="trailing" secondItem="CS5-kt-znK" secondAttribute="trailing" id="uZf-kL-hBV"/>
+                            <constraint firstItem="K78-3M-rwq" firstAttribute="leading" secondItem="CS5-kt-znK" secondAttribute="leading" id="vZt-Fl-Agr"/>
                             <constraint firstItem="hW6-Lh-N0x" firstAttribute="centerY" secondItem="as6-xi-Gks" secondAttribute="centerY" id="xW8-Np-Po9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="CS5-kt-znK"/>
@@ -154,6 +170,7 @@
                         <outlet property="loupeCenterXConstraint" destination="H6i-xJ-Bpf" id="v5f-Xu-9K9"/>
                         <outlet property="loupeImageView" destination="GF5-3E-TcN" id="BE7-TQ-IKa"/>
                         <outlet property="loupeLeadingXConstraint" destination="Np8-ld-nLb" id="EeB-Fi-DPP"/>
+                        <outlet property="pickerView" destination="K78-3M-rwq" id="5nw-xv-OyL"/>
                         <outlet property="searchTextCenterDxConstraint" destination="S5N-U3-Akh" id="6T7-4I-LnM"/>
                         <outlet property="searchTextCenterXConstraint" destination="oNq-pf-BoA" id="8Qd-bO-BhX"/>
                         <outlet property="searchTextField" destination="26r-xs-MTS" id="k86-vw-t7h"/>
@@ -164,7 +181,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FDE-JJ-86j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1290" y="-40"/>
+            <point key="canvasLocation" x="1288.8" y="-40.64039408866995"/>
         </scene>
         <!--Friend Details Collection Controller-->
         <scene sceneID="EXW-kd-IIK">
@@ -408,6 +425,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="filter" width="32" height="32"/>
         <image name="girl" width="1600" height="900"/>
         <image name="search" width="32" height="32"/>
         <image name="tb_oval" width="26" height="26"/>

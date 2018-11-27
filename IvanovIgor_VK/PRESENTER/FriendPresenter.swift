@@ -8,6 +8,7 @@ public class FriendPresenter: BasePresenter {
     var realmData: Results<MyFriend>?
     
     
+    
     override func loadFromNetwork(completion: (()->Void)? = nil){
         let params: Parameters = [
         "access_token": Session.shared.token,
@@ -110,6 +111,23 @@ public class FriendPresenter: BasePresenter {
     }
     
     
+    override func getGroupByDataSource() -> [String] {
+        return [MyFriend.FriendGroupByType.firstName.rawValue, MyFriend.FriendGroupByType.lastName.rawValue]
+    }
+    
+    override func changeGroupBy(by fieldName: String) {
+        for m in self.sortedDataSource {
+            if let f = m as? MyFriend {
+                f.sorting = MyFriend.FriendGroupByType(rawValue: fieldName)! //TODO
+            }
+        }
+        self.redrawUI()
+    }
+    
+    
+    
+    var count = 0
+    
     func realmNotify(){
         guard self.realmToken == nil
             else { return }
@@ -131,6 +149,19 @@ public class FriendPresenter: BasePresenter {
                     for idx in modifications {
                         let obj = self?.sortedDataSource.first(where: {$0.getId() == results[idx].getId()}) as? MyFriend
                         if results[idx].getSortingField() != obj?.getXSortingField() {
+                            
+                            
+                            
+                            self?.count += 1
+                            if self?.count == 4 {
+                                self?.loadFromNetwork(){
+                                    self?.redrawUI()
+                                }
+                                return
+                            }
+                            
+                            
+                            
                             obj?.updateXSortingField(val: results[idx].getSortingField())
                             forceRealod = true
                         }

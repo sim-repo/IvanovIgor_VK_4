@@ -9,19 +9,19 @@
 import UIKit
 
 enum Alphabet: Int, CaseIterable {
-    case А,Б,В,Г,Д,Е,Ж,З,И,К,Л,М,Н,О,П,Р,С,Т,У,Ф,Х,Ц,Ч,Ш,Щ,Ы,Э,Ю,Я,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z
-    static let titles: [Character] = ["А","Б","В","Г","Д","Е","Ж","З","И","К","Л","М","Н","О","П","Р","С","Т","У","Ф","Х","Ц","Ч","Ш","Щ","Ы","Э","Ю","Я","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+    case А,Б,В,Г,Д,Е,Ж,З,И,К,Л,М,Н,О,П,Р,С,Т,У,Ф,Х,Ц,Ч,Ш,Щ,Ы,Э,Ю,Я,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,Å
+    static let titles: [Character] = ["А","Б","В","Г","Д","Е","Ж","З","И","К","Л","М","Н","О","П","Р","С","Т","У","Ф","Х","Ц","Ч","Ш","Щ","Ы","Э","Ю","Я","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","Å"]
 
     static func convert(by char: Character) -> Alphabet {
-        let index = Alphabet.titles.firstIndex(of: char)
-        if let idx = index {
-            return Alphabet(rawValue: idx)!
-        }
+        let index = Alphabet.titles.firstIndex(of: char) ?? Å.rawValue
+        //if let idx = index {
+            return Alphabet(rawValue: index)!
+       // }
         return Alphabet.A
     }
     
     static func getLetter(with stroke: String)->Alphabet {
-        let ch = stroke.uppercased().first!
+        let ch = stroke.uppercased().first ?? "Å"
         return Alphabet.convert(by: ch)
     }
     

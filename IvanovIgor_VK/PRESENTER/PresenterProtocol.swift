@@ -67,8 +67,6 @@ protocol PresenterProtocol: class {
     
     func remove(object: AnyObject)->Void
     
-    func getGroupingProperties()->[String]
-    
     func filterData(_ filterText: String)
     
     func getContentVolume(indexPath: IndexPath)->ContentVolume
@@ -78,5 +76,11 @@ protocol PresenterProtocol: class {
     func saveModel(ds: [ModelProtocol])
     
     func viewDeinit()
+    
+    func getGroupByProperties()->[String]
+    
+    func changeGroupBy(by fieldName: String)
+    
+    func getGroupByDataSource()->[String]
     
 }

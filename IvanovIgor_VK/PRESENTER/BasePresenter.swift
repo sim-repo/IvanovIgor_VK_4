@@ -3,6 +3,7 @@ import UIKit
 import RealmSwift
 
 public class BasePresenter: PresenterProtocol {
+   
 
     weak var view: ViewProtocolDelegate?
     
@@ -43,6 +44,8 @@ public class BasePresenter: PresenterProtocol {
         self.view = view
         loadModel(loadType, completion)
     }
+    
+    
     
 
     private final func loadModel(_ loadType: LoadModelType, _ completion: (()->Void)?) {
@@ -97,12 +100,18 @@ public class BasePresenter: PresenterProtocol {
     }
     
     
+    open func redrawUI(){
+        self.sortedDataSource = sortModel(self.sortedDataSource)
+        view?.reloadCells()
+    }
+    
+    
+    
     func onDidModelChanged<T: ModelProtocol>(_ results: Results<T>, _ deletions: [Int], _ insertions: [Int], _ modifications: [Int], forceFullReload: Bool){
         
         // changed key or grouping field >>>
         if forceFullReload {
-            self.sortedDataSource = sortModel(self.sortedDataSource)
-            view?.reloadCells()
+            redrawUI()
             return
         }
         
@@ -114,8 +123,7 @@ public class BasePresenter: PresenterProtocol {
                     indexPathsDelete.append(indexPath)
                 }
             }
-            self.sortedDataSource = sortModel(self.sortedDataSource)
-            view?.reloadCells()
+            redrawUI()
             return
         }
         
@@ -128,8 +136,7 @@ public class BasePresenter: PresenterProtocol {
                 }
             }
             // call full reload of view
-            self.sortedDataSource = sortModel(self.sortedDataSource)
-            view?.reloadCells()
+            redrawUI()
             return
         }
         // changed key or grouping field <<<
@@ -211,6 +218,17 @@ public class BasePresenter: PresenterProtocol {
     func sortModel(_ ds: [ModelProtocol]) -> [ModelProtocol]{
         fatalError("Override Error: this method must be overriding by child classes")
     }
+    
+    func getGroupByDataSource() -> [String] {
+        fatalError("Override Error: this method must be overriding by child classes")
+    }
+    
+    
+    func changeGroupBy(by fieldName: String) {
+        fatalError("Override Error: this method must be overriding by child classes")
+    }
+    
+    
     
     
     //MARK: ***** final functions *****
@@ -299,7 +317,7 @@ public class BasePresenter: PresenterProtocol {
         realmToken?.invalidate()
     }
     
-    public final func getGroupingProperties() -> [String] {
+    public final func getGroupByProperties() -> [String] {
         return groupingProperties
     }
     

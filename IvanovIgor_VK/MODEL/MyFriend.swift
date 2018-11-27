@@ -3,7 +3,7 @@ import SwiftyJSON
 
 class MyFriend : BaseModel{
     
-    enum FriendSortType: String {
+    enum FriendGroupByType: String {
         case firstName
         case lastName
     }
@@ -20,7 +20,6 @@ class MyFriend : BaseModel{
     }
     
     @objc dynamic var firstName: String = ""
-    
     @objc dynamic var lastName: String = ""
     @objc dynamic var profilePictureURL50: String?
     @objc dynamic var profilePictureURL200: String?
@@ -32,7 +31,7 @@ class MyFriend : BaseModel{
     // service fields
     var xFirstName: String = ""
     var xLastName: String = ""
-    var sorting: FriendSortType = .firstName
+    var sorting: FriendGroupByType = .firstName
     
     convenience init(json: JSON?){
         self.init()
@@ -82,7 +81,7 @@ class MyFriend : BaseModel{
     }
     
     override static func indexedProperties() -> [String]{
-        return [FriendSortType.firstName.rawValue]
+        return [FriendGroupByType.firstName.rawValue]
     }
     
     override func setup(json: JSON?){

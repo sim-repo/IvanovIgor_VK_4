@@ -71,18 +71,26 @@ public class FriendPresenter: BasePresenter {
     
 
     func prepareCompletion()-> (Data, Int, Int)->Void  {
-        let completion: (Data, Int, Int)->Void = { [weak self] (data, idx, imageFieldIndex) in
-            let friend = self?.sortedDataSource[idx] as! MyFriend
+        let completion: (Data, Int, Int)->Void = { [weak self] (data, id, imageFieldIndex) in
+            
+            guard let friend = self?.sortedDataSource.first(where: { $0.getId() == id }) as? MyFriend
+                else {
+                    fatalError("only for test")
+                }
             
             switch imageFieldIndex {
-            case MyFriend.FriendImagesType.profilePictureImage50.rawValue:
-                friend.profilePictureImage50 = UIImage(data: data)
-            case MyFriend.FriendImagesType.profilePictureImage200.rawValue:
-                friend.profilePictureImage200 = UIImage(data: data)
+            case MyFriend.FriendImagesType.image50.rawValue:
+                friend.image50 = UIImage(data: data)
+            case MyFriend.FriendImagesType.image200.rawValue:
+                friend.image200 = UIImage(data: data)
             default:
                 fatalError("prepareCompletion") // only for test
             }
-            guard let indexPath = self?.getIndexPath(model: friend) else {return}
+            guard let indexPath = self?.getIndexPath(model: friend)
+                else {
+                    //fatalError("only for test")
+                    return
+                }
             self?.view?.optimReloadCell(indexPath: indexPath)
         }
         return completion
@@ -90,25 +98,36 @@ public class FriendPresenter: BasePresenter {
     
     
     
-    override func modelLoadImages(){
+    
+    override func modelLoadImages(arr: [ModelProtocol]?, index: Int? = nil){
         print("async loading images...")
-        guard let friends = self.sortedDataSource as? [MyFriend]
-            else { return }
+        guard let friends = arr as? [MyFriend]
+            else {
+                fatalError("only for test")
+                return
+            }
         
-        for (idx, friend) in friends.enumerated() {
+        if arr?.count == 1 {
+            guard index != nil
+                else {
+                   fatalError("only for test")
+                }
+        }
+        
+        for friend in friends {
             friend.updateXGroupByField(val: friend.getGroupByField())
             let completion = prepareCompletion()
             
-            if let val = friend.profilePictureURL50 {
+            if let val = friend.imageURL50 {
                 let url = URL(string: val)!
-                AlamofireNetworkManager.downloadImage(url: url, idx: idx,
-                                                      imageFieldIndex: MyFriend.FriendImagesType.profilePictureImage50.rawValue,
+                AlamofireNetworkManager.downloadImage(url: url, id: friend.getId(),
+                                                      imageFieldIndex: MyFriend.FriendImagesType.image50.rawValue,
                                                       completion)
             }
-            if let val = friend.profilePictureURL200 {
+            if let val = friend.imageURL200 {
                 let url = URL(string: val)!
-                AlamofireNetworkManager.downloadImage(url: url, idx: idx,
-                                                      imageFieldIndex: MyFriend.FriendImagesType.profilePictureImage200.rawValue,
+                AlamofireNetworkManager.downloadImage(url: url, id: friend.getId(),
+                                                      imageFieldIndex: MyFriend.FriendImagesType.image200.rawValue,
                                                       completion)
             }
         }
@@ -118,6 +137,7 @@ public class FriendPresenter: BasePresenter {
     override func getGroupByDataSource() -> [String] {
         return [MyFriend.FriendGroupByType.firstName.rawValue, MyFriend.FriendGroupByType.lastName.rawValue]
     }
+    
     
     override func changeGroupBy(by fieldName: String) {
         for element in self.sortedDataSource {

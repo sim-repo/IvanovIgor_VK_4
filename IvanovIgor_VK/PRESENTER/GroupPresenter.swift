@@ -73,8 +73,11 @@ public class GroupPresenter: BasePresenter {
     
     
     func prepareCompletion()-> (Data, Int, Int)->Void  {
-        let completion: (Data, Int, Int)->Void = { [weak self] (data, idx, imageFieldIndex) in
-            let group = self?.sortedDataSource[idx] as! Group
+        let completion: (Data, Int, Int)->Void = { [weak self] (data, id, imageFieldIndex) in
+            guard let group = self?.sortedDataSource.first(where: { $0.getId() == id }) as? Group
+            else {
+                fatalError("only for test")
+            }
             
             switch imageFieldIndex {
             case Group.GroupImagesType.image50.rawValue:
@@ -92,24 +95,34 @@ public class GroupPresenter: BasePresenter {
     
     
     
-    override func modelLoadImages(){
+    override func modelLoadImages(arr: [ModelProtocol]?, index: Int? = nil){
         print("async loading images...")
-        guard let groups = self.sortedDataSource as? [Group]
-            else { return }
+        guard let groups = arr as? [Group]
+            else {
+                fatalError("only for test")
+                return
+        }
         
-        for (idx, group) in groups.enumerated() {
+        if arr?.count == 1 {
+            guard index != nil
+                else {
+                    fatalError("only for test")
+            }
+        }
+        
+        for group in groups {
             group.updateXGroupByField(val: group.getGroupByField())
             let completion = prepareCompletion()
             
             if let val = group.imageURL50 {
                 let url = URL(string: val)!
-                AlamofireNetworkManager.downloadImage(url: url, idx: idx,
+                AlamofireNetworkManager.downloadImage(url: url, id: group.getId(),
                                                       imageFieldIndex: Group.GroupImagesType.image50.rawValue,
                                                       completion)
             }
             if let val = group.imageURL200 {
                 let url = URL(string: val)!
-                AlamofireNetworkManager.downloadImage(url: url, idx: idx,
+                AlamofireNetworkManager.downloadImage(url: url, id: group.getId(),
                                                       imageFieldIndex: Group.GroupImagesType.image200.rawValue,
                                                       completion)
             }

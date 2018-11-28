@@ -36,7 +36,7 @@ class FriendDetailsCollectionController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FriendDetailsCollectionCell", for: indexPath) as! FriendDetailsCollectionCell
             if let friend = friend {
-                cell.friendPhotoImageView.image = friend.profilePictureImage200
+                cell.friendPhotoImageView.image = friend.image200
                 cell.firstNameLabel.text = friend.firstName
                 cell.lastNameLabel.text = friend.lastName
             }

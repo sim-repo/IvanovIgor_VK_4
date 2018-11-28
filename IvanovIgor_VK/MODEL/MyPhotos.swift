@@ -12,6 +12,11 @@ class MyPhotos : BaseModel{
         case image
     }
     
+    enum PhotosIgnored: String{
+        case xId
+        case groupBy
+    }
+    
     @objc dynamic var imageURL:String?
     var image: UIImage?
     
@@ -26,13 +31,13 @@ class MyPhotos : BaseModel{
     
     override func setup(json: JSON?){
         if let json = json {
-            self.id = json["id"].intValue
+            id = json["id"].intValue
             let arr = json["sizes"].arrayValue.map{ $0 }
             
             for element in arr {
                 let type = element["type"].stringValue
                 if type == "m" {
-                    self.imageURL = element["url"].stringValue
+                    imageURL = element["url"].stringValue
                 }
             }
         }
@@ -57,6 +62,12 @@ class MyPhotos : BaseModel{
         case .id:
             xId = val
         }
+    }
+    
+    override static func ignoredProperties() -> [String] {
+        return [PhotosIgnored.xId.rawValue,
+                PhotosIgnored.groupBy.rawValue
+        ]
     }
     
 }

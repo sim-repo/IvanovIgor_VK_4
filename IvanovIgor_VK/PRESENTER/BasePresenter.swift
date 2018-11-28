@@ -170,7 +170,7 @@ public class BasePresenter: PresenterProtocol {
         fatalError("Override Error: this method must be overriding by child classes")
     }
     
-    func modelLoadImages(){
+    func modelLoadImages(arr: [ModelProtocol]?, index: Int? = nil){
         fatalError("Override Error: this method must be overriding by child classes")
     }
     
@@ -265,6 +265,8 @@ public class BasePresenter: PresenterProtocol {
         return groupingProperties
     }
     
+    
+    
     final func realmNotify<T: BaseModel>(realmData: inout Results<T>?){
         guard self.realmToken == nil
             else { return }
@@ -278,7 +280,7 @@ public class BasePresenter: PresenterProtocol {
         self.realmToken = realmData?.observe { [weak self] (changes: RealmCollectionChange) in
             switch changes {
             case .initial(_):
-                self?.modelLoadImages()
+                self?.modelLoadImages(arr: self?.sortedDataSource)
                 
             case let .update(results, deletions, insertions, modifications):
                 var forceRealod = false
@@ -286,9 +288,12 @@ public class BasePresenter: PresenterProtocol {
                     for idx in modifications {
                         let obj = self?.sortedDataSource.first(where: {$0.getId() == results[idx].getId()}) as? MyFriend
                         if results[idx].getGroupByField() != obj?.getXGroupByField() {
-                            
                             obj?.updateXGroupByField(val: results[idx].getGroupByField())
                             forceRealod = true
+                        }
+                        if results[idx].isImageURLChanged() {
+                            let obj = results[idx]
+                            self?.modelLoadImages(arr: [obj], index: idx)
                         }
                     }
                 }

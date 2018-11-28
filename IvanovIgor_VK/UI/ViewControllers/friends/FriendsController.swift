@@ -175,7 +175,7 @@ extension FriendsController: UITableViewDelegate, UITableViewDataSource {
         
         let friend = data as! MyFriend
         cell.name = friend.firstName + " "+friend.lastName
-        cell.photoImage = friend.profilePictureImage50
+        cell.photoImage = friend.image50
 
         return cell
     }

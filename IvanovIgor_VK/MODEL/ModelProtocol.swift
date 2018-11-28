@@ -9,6 +9,8 @@ protocol ModelProtocol: class {
     func getGroupByField()->String
     func getXGroupByField()->String
     func updateXGroupByField(val: String)
+    func updateXImages()
+    func isImageURLChanged()->Bool
 }
 
 class BaseModel: Object, ModelProtocol {
@@ -39,5 +41,12 @@ class BaseModel: Object, ModelProtocol {
     }
     
     func updateXGroupByField(val: String) {
+    }
+    
+    func updateXImages() {
+    }
+    
+    func isImageURLChanged() -> Bool {
+        return false
     }
 }

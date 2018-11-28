@@ -54,16 +54,24 @@ public class MyPhotosPresenter: BasePresenter {
     
     
     func prepareCompletion()-> (Data, Int, Int)->Void  {
-        let completion: (Data, Int, Int)->Void = { [weak self] (data, idx, imageFieldIndex) in
-            let photo = self?.sortedDataSource[idx] as! MyPhotos
+        let completion: (Data, Int, Int)->Void = { [weak self] (data, id, imageFieldIndex) in
+
+            guard let photo = self?.sortedDataSource.first(where: { $0.getId() == id }) as? MyPhotos
+                else {
+                    fatalError("only for test")
+                }
+            
             
             switch imageFieldIndex {
             case MyPhotos.PhotosImagesType.image.rawValue:
                 photo.image = UIImage(data: data)
             default:
-                fatalError("prepareCompletion") // only for test
+                fatalError("only for test")
             }
-            guard let indexPath = self?.getIndexPath(model: photo) else {return}
+            guard let indexPath = self?.getIndexPath(model: photo)
+                else {
+                    fatalError("only for test")
+                }
             self?.view?.optimReloadCell(indexPath: indexPath)
         }
         return completion
@@ -71,18 +79,27 @@ public class MyPhotosPresenter: BasePresenter {
     
     
     
-    override func modelLoadImages(){
+    override func modelLoadImages(arr: [ModelProtocol]?, index: Int? = nil){
         print("async loading images...")
-        guard let photos = self.sortedDataSource as? [MyPhotos]
-            else { return }
+        guard let photos = arr as? [MyPhotos]
+            else {
+                fatalError("only for test")
+            }
         
-        for (idx, photo) in photos.enumerated() {
+        if arr?.count == 1 {
+            guard index != nil
+                else {
+                    fatalError("only for test")
+                }
+        }
+        
+        for photo in photos {
             photo.updateXSortingField(val: photo.getGroupByField())
             let completion = prepareCompletion()
             
             if let val = photo.imageURL {
                 let url = URL(string: val)!
-                AlamofireNetworkManager.downloadImage(url: url, idx: idx,
+                AlamofireNetworkManager.downloadImage(url: url, id: photo.getId(),
                                                       imageFieldIndex: MyPhotos.PhotosImagesType.image.rawValue,
                                                       completion)
             }
@@ -93,6 +110,7 @@ public class MyPhotosPresenter: BasePresenter {
     override func getGroupByDataSource() -> [String] {
         return [MyPhotos.PhotosGroupByType.id.rawValue]
     }
+    
     
     override func changeGroupBy(by fieldName: String) {
         for element in self.sortedDataSource {

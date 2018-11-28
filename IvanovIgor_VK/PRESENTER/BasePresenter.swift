@@ -21,12 +21,6 @@ public class BasePresenter: PresenterProtocol {
         return sectionsOffset.count
     }
     
-    init(){
-        NotificationCenter.default.add(observer: self, selector: #selector(onNeedDownload(_:)), notification: .needDownload)
-        NotificationCenter.default.add(observer: self, selector: #selector(onDidModelChanged(_:)), notification: .didModelChanged)
-    }
-    
-    
     // constructor for preloading
     // view doesn't exists yet
     convenience init(_ loadType: LoadModelType, completion: (()->Void)? ) {
@@ -118,46 +112,19 @@ public class BasePresenter: PresenterProtocol {
     }
     
     
-    
-    //MARK: ***** model 2 presentation functions *****
-    
-    @objc func onNeedDownload(_ notification: Notification){
-        guard let url = notification.userInfo!["url"] as? URL
-            else { return }
-        
-        guard let completion = notification.userInfo!["completion"] as? ((_: Data) -> Void)
-            else { return }
-        
-        AlamofireNetworkManager.downloadImage(url: url, completion)
-    }
-    
-    
-    @objc func onDidModelChanged(_ notification: Notification){
-        guard let model = notification.userInfo!["model"] as? ModelProtocol
-            else { return }
-        
-        guard let indexPath = getIndexPath(model: model)
-            else { return }
-        view?.optimReloadCell(indexPath: indexPath)
-    }
-    
-    
     open func redrawUI(){
         self.sortedDataSource = sortModel(self.sortedDataSource)
         view?.reloadCells()
     }
     
     
-    
     func onDidModelChanged<T: ModelProtocol>(_ results: Results<T>, _ deletions: [Int], _ insertions: [Int], _ modifications: [Int], forceFullReload: Bool){
         
-        // changed key or grouping field >>>
+        // changed key or grouping field
         if forceFullReload || insertions.count > 0 || deletions.count > 0 {
             redrawUI()
             return
         }
-        // changed key or grouping field <<<
-        
         
         // changed any other fields,
         // reactive refresh
@@ -168,10 +135,12 @@ public class BasePresenter: PresenterProtocol {
                 indexPathsUpdate.append(indexPath)
             }
         }
+        guard indexPathsUpdate.count > 0
+            else {
+                fatalError("no indexPaths in array") // only for testing
+            }
         
-        if indexPathsUpdate.count > 0 {
-            view?.optimReloadCells([], [], indexPathsUpdate)
-        }
+        view?.optimReloadCells([], [], indexPathsUpdate)
     }
     
     

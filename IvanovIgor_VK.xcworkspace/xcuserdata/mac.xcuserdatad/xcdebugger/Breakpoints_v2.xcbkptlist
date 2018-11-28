@@ -170,12 +170,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/PRESENTER/BasePresenter.swift"
-            timestampString = "565092382.179306"
+            timestampString = "565093407.571215"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "200"
-            endingLineNumber = "200"
-            landmarkName = "onDidModelChanged(_:_:_:_:forceFullReload:)"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
+            landmarkName = "setModel(ds:didLoadedFrom:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -346,7 +346,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/PRESENTER/BasePresenter.swift"
-            timestampString = "565092382.1797971"
+            timestampString = "565093407.571599"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "14"
@@ -408,12 +408,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/PRESENTER/BasePresenter.swift"
-            timestampString = "565092382.1801"
+            timestampString = "565093407.571846"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "244"
-            endingLineNumber = "244"
-            landmarkName = "getContentVolume(indexPath:)"
+            startingLineNumber = "219"
+            endingLineNumber = "219"
+            landmarkName = "sendRequest(searchText:completion:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -456,13 +456,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/PRESENTER/BasePresenter.swift"
-            timestampString = "565092382.180359"
+            timestampString = "565093407.572068"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "201"
-            endingLineNumber = "201"
-            landmarkName = "BasePresenter"
-            landmarkType = "3">
+            startingLineNumber = "176"
+            endingLineNumber = "176"
+            landmarkName = "setModel(ds:didLoadedFrom:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -472,13 +472,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/PRESENTER/BasePresenter.swift"
-            timestampString = "565092382.180585"
+            timestampString = "565093407.5724061"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "247"
-            endingLineNumber = "247"
-            landmarkName = "BasePresenter"
-            landmarkType = "3">
+            startingLineNumber = "222"
+            endingLineNumber = "222"
+            landmarkName = "searchData(searchText:completion:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -488,13 +488,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/PRESENTER/BasePresenter.swift"
-            timestampString = "565092382.180806"
+            timestampString = "565093407.572664"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "202"
-            endingLineNumber = "202"
-            landmarkName = "BasePresenter"
-            landmarkType = "3">
+            startingLineNumber = "177"
+            endingLineNumber = "177"
+            landmarkName = "setModel(ds:didLoadedFrom:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -520,28 +520,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/PRESENTER/BasePresenter.swift"
-            timestampString = "565092382.18104"
+            timestampString = "565093407.573099"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "133"
-            endingLineNumber = "133"
-            landmarkName = "BasePresenter"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "IvanovIgor_VK/PRESENTER/BasePresenter.swift"
-            timestampString = "565092382.181264"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "242"
-            endingLineNumber = "242"
-            landmarkName = "remove(object:)"
+            startingLineNumber = "217"
+            endingLineNumber = "217"
+            landmarkName = "sendRequest(searchText:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -552,7 +536,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/PRESENTER/BasePresenter.swift"
-            timestampString = "565092382.181486"
+            timestampString = "565093407.573314"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "53"
@@ -632,7 +616,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/PRESENTER/BasePresenter.swift"
-            timestampString = "565092382.1819561"
+            timestampString = "565093407.5735331"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "54"
@@ -664,13 +648,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/PRESENTER/BasePresenter.swift"
-            timestampString = "565092382.182488"
+            timestampString = "565093407.573737"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "286"
-            endingLineNumber = "286"
-            landmarkName = "setup(_sortedDataSource:_groupingProperties:)"
-            landmarkType = "7">
+            startingLineNumber = "261"
+            endingLineNumber = "261"
+            landmarkName = "BasePresenter"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -792,12 +776,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/PRESENTER/BasePresenter.swift"
-            timestampString = "565092382.182813"
+            timestampString = "565093407.574001"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "288"
-            endingLineNumber = "288"
-            landmarkName = "setup(_sortedDataSource:_groupingProperties:)"
+            startingLineNumber = "263"
+            endingLineNumber = "263"
+            landmarkName = "refreshDataSource(with:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -872,7 +856,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/PRESENTER/BasePresenter.swift"
-            timestampString = "565092382.18312"
+            timestampString = "565093407.5742331"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "56"

@@ -24,20 +24,6 @@ class MyPhotos : BaseModel{
         setup(json: json)
     }
     
-    
-    
-    
-//    convenience init(id: Int, imageURL: String) {
-//        self.init()
-//        self.id = id
-//        setPhotoURL(imageURL)
-//    }
-    
-//    func setPhotoURL(_ url: String){
-//        self.imageURL = url
-//    }
-    
-    
     override func setup(json: JSON?){
         if let json = json {
             self.id = json["id"].intValue

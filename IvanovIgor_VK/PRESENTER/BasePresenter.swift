@@ -152,32 +152,7 @@ public class BasePresenter: PresenterProtocol {
     func onDidModelChanged<T: ModelProtocol>(_ results: Results<T>, _ deletions: [Int], _ insertions: [Int], _ modifications: [Int], forceFullReload: Bool){
         
         // changed key or grouping field >>>
-        if forceFullReload {
-            redrawUI()
-            return
-        }
-        
-        if deletions.count > 0 {
-            var indexPathsDelete: [IndexPath] = []
-            for idx in deletions {
-                let model = results[idx]
-                if let indexPath = getIndexPath(model: model) {
-                    indexPathsDelete.append(indexPath)
-                }
-            }
-            redrawUI()
-            return
-        }
-        
-        if insertions.count > 0 {
-            var indexPathsInsert: [IndexPath] = []
-            for idx in insertions {
-                let model = results[idx]
-                if let indexPath = getIndexPath(model: model) {
-                    indexPathsInsert.append(indexPath)
-                }
-            }
-            // call full reload of view
+        if forceFullReload || insertions.count > 0 || deletions.count > 0 {
             redrawUI()
             return
         }

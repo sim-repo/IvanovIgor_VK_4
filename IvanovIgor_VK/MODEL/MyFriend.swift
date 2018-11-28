@@ -85,10 +85,6 @@ class MyFriend : BaseModel{
             xLastName = val
         }
     }
-    
- 
-    
-   
 }
 
 

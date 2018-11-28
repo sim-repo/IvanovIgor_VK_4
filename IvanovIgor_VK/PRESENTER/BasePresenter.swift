@@ -75,7 +75,49 @@ public class BasePresenter: PresenterProtocol {
         }
     }
     
-   
+    
+    final func realmNotify<T: BaseModel>(realmData: inout Results<T>?){
+        guard self.realmToken == nil
+            else { return }
+        
+        if realmData == nil {
+            realmData = realmLoadData(clazz: T.self)
+        }
+        if realmData == nil {
+            fatalError("realmNotify: realmData is nil")
+        }
+        self.realmToken = realmData?.observe { [weak self] (changes: RealmCollectionChange) in
+            switch changes {
+            case .initial(_):
+                self?.modelLoadImages()
+                
+            case let .update(results, deletions, insertions, modifications):
+                var forceRealod = false
+                if deletions.count == 0 && insertions.count == 0 && modifications.count > 0 {
+                    for idx in modifications {
+                        let obj = self?.sortedDataSource.first(where: {$0.getId() == results[idx].getId()}) as? MyFriend
+                        if results[idx].getSortingField() != obj?.getXSortingField() {
+                            
+                            obj?.updateXSortingField(val: results[idx].getSortingField())
+                            forceRealod = true
+                        }
+                    }
+                }
+                self?.onDidModelChanged(results, deletions, insertions, modifications, forceFullReload: forceRealod)
+                
+            case .error(let error):
+                print(error)
+                
+            default: break
+            }
+        }
+    }
+    
+    final func realmLoadData<T: Object>(clazz: T.Type)->Results<T>?{
+        return DatabaseService.realmLoad(clazz: clazz)
+    }
+    
+    
     
     //MARK: ***** model 2 presentation functions *****
     
@@ -86,7 +128,7 @@ public class BasePresenter: PresenterProtocol {
         guard let completion = notification.userInfo!["completion"] as? ((_: Data) -> Void)
             else { return }
         
-        AlamofireNetworkManager.downloadImage(url: url, completion: completion)
+        AlamofireNetworkManager.downloadImage(url: url, completion)
     }
     
     
@@ -228,7 +270,9 @@ public class BasePresenter: PresenterProtocol {
         fatalError("Override Error: this method must be overriding by child classes")
     }
     
-    
+    func modelLoadImages(){
+        fatalError("Override Error: this method must be overriding by child classes")
+    }
     
     
     //MARK: ***** final functions *****
@@ -328,7 +372,7 @@ public class BasePresenter: PresenterProtocol {
     
 
     public func handleWillChanges(url: URL?, completion: ((_: Data) -> Void)?) {
-        AlamofireNetworkManager.downloadImage(url: url, completion: completion)
+        AlamofireNetworkManager.downloadImage(url: url, completion)
     }
     
     

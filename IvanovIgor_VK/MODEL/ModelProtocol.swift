@@ -6,6 +6,7 @@ protocol ModelProtocol: class {
     func getId()->Int
     func setup(json: JSON?)
     init() // need for AlamofireNetworkManager.parseJSON
+    func getSortingField()->String
 }
 
 extension ModelProtocol {
@@ -39,5 +40,9 @@ class BaseModel: Object, ModelProtocol {
     
     override static func primaryKey() -> String? {
         return Key.id.rawValue
+    }
+    
+    func getSortingField()->String {
+        return ""
     }
 }

@@ -313,7 +313,6 @@ extension FriendsController: UITextFieldDelegate {
 
 extension FriendsController: ViewProtocolDelegate{
    
-    
     func className() -> String {
         return String(describing: FriendsController.self)
     }
@@ -362,7 +361,4 @@ extension FriendsController: UIPickerViewDelegate, UIPickerViewDataSource {
         }
         
     }
-    
-    
-    
 }

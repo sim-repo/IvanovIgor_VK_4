@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/PRESENTER/MyPhotosPresenter.swift"
-            timestampString = "565025678.8640389"
+            timestampString = "565091102.136556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "53"
@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/PRESENTER/MyPhotosPresenter.swift"
-            timestampString = "565025678.86409"
+            timestampString = "565091102.13666"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "53"
@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/PRESENTER/MyPhotosPresenter.swift"
-            timestampString = "565025678.864125"
+            timestampString = "565091102.136719"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "53"
@@ -58,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/PRESENTER/MyPhotosPresenter.swift"
-            timestampString = "565025678.864158"
+            timestampString = "565091102.136784"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "53"
@@ -74,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/PRESENTER/MyPhotosPresenter.swift"
-            timestampString = "565025678.8641911"
+            timestampString = "565091102.13685"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "53"
@@ -90,7 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/PRESENTER/MyPhotosPresenter.swift"
-            timestampString = "565025678.864222"
+            timestampString = "565091102.1369081"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "53"
@@ -106,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/PRESENTER/MyPhotosPresenter.swift"
-            timestampString = "565025678.864253"
+            timestampString = "565091102.136975"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "53"
@@ -122,7 +122,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/PRESENTER/MyPhotosPresenter.swift"
-            timestampString = "565025678.864283"
+            timestampString = "565091102.1370341"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "53"
@@ -138,7 +138,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/PRESENTER/MyPhotosPresenter.swift"
-            timestampString = "565025678.864313"
+            timestampString = "565091102.1370831"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "53"
@@ -154,7 +154,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/UI/ViewControllers/mySettings/MyPhotosCollectionController.swift"
-            timestampString = "565025678.8643481"
+            timestampString = "565091102.1371289"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "84"
@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/PRESENTER/BasePresenter.swift"
-            timestampString = "565025678.864382"
+            timestampString = "565091102.13719"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
+            startingLineNumber = "200"
+            endingLineNumber = "200"
             landmarkName = "onDidModelChanged(_:_:_:_:forceFullReload:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -186,7 +186,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/UI/ViewControllers/mySettings/MyPhotosCollectionController.swift"
-            timestampString = "565025678.864435"
+            timestampString = "565091102.137251"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "39"
@@ -202,7 +202,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/UI/ViewControllers/mySettings/MyPhotosCollectionController.swift"
-            timestampString = "565025678.864468"
+            timestampString = "565091102.1373039"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "46"
@@ -218,7 +218,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/PRESENTER/MyPhotosPresenter.swift"
-            timestampString = "565025678.864498"
+            timestampString = "565091102.137343"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "53"
@@ -234,7 +234,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/PRESENTER/MyPhotosPresenter.swift"
-            timestampString = "565025678.86453"
+            timestampString = "565091102.137388"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "53"
@@ -346,7 +346,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/PRESENTER/BasePresenter.swift"
-            timestampString = "565025678.864789"
+            timestampString = "565091102.13748"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "14"
@@ -376,7 +376,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/PRESENTER/FriendPresenter.swift"
-            timestampString = "565025678.86487"
+            timestampString = "565091102.137553"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "36"
@@ -392,7 +392,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/PRESENTER/FriendPresenter.swift"
-            timestampString = "565025678.864979"
+            timestampString = "565091102.13761"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "18"
@@ -408,11 +408,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/PRESENTER/BasePresenter.swift"
-            timestampString = "565025678.865063"
+            timestampString = "565091102.137655"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "202"
-            endingLineNumber = "202"
+            startingLineNumber = "244"
+            endingLineNumber = "244"
             landmarkName = "getContentVolume(indexPath:)"
             landmarkType = "7">
             <Locations>
@@ -456,11 +456,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/PRESENTER/BasePresenter.swift"
-            timestampString = "565025678.865121"
+            timestampString = "565091102.13771"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "159"
-            endingLineNumber = "159"
+            startingLineNumber = "201"
+            endingLineNumber = "201"
             landmarkName = "BasePresenter"
             landmarkType = "3">
          </BreakpointContent>
@@ -472,11 +472,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/PRESENTER/BasePresenter.swift"
-            timestampString = "565025678.865165"
+            timestampString = "565091102.137754"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "205"
-            endingLineNumber = "205"
+            startingLineNumber = "247"
+            endingLineNumber = "247"
             landmarkName = "BasePresenter"
             landmarkType = "3">
          </BreakpointContent>
@@ -488,11 +488,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/PRESENTER/BasePresenter.swift"
-            timestampString = "565025678.8652149"
+            timestampString = "565091102.137791"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "160"
-            endingLineNumber = "160"
+            startingLineNumber = "202"
+            endingLineNumber = "202"
             landmarkName = "BasePresenter"
             landmarkType = "3">
          </BreakpointContent>
@@ -504,7 +504,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/NETWORK SERVICE/AlamofireNetworkManager.swift"
-            timestampString = "564940783.374981"
+            timestampString = "565091102.1378469"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "86"
@@ -520,11 +520,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/PRESENTER/BasePresenter.swift"
-            timestampString = "565025678.86528"
+            timestampString = "565091102.137886"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
             landmarkName = "BasePresenter"
             landmarkType = "3">
          </BreakpointContent>
@@ -536,11 +536,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/PRESENTER/BasePresenter.swift"
-            timestampString = "565025678.8653311"
+            timestampString = "565091102.137946"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "200"
-            endingLineNumber = "200"
+            startingLineNumber = "242"
+            endingLineNumber = "242"
             landmarkName = "remove(object:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -552,7 +552,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/PRESENTER/BasePresenter.swift"
-            timestampString = "565025678.865382"
+            timestampString = "565091102.138054"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "53"
@@ -600,7 +600,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/PRESENTER/FriendPresenter.swift"
-            timestampString = "565025678.865432"
+            timestampString = "565091102.138109"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "17"
@@ -616,7 +616,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/PRESENTER/FriendPresenter.swift"
-            timestampString = "565025678.865494"
+            timestampString = "565091102.138154"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "9"
@@ -632,11 +632,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/PRESENTER/BasePresenter.swift"
-            timestampString = "565025678.865554"
+            timestampString = "565091102.13824"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
+            startingLineNumber = "166"
+            endingLineNumber = "166"
             landmarkName = "onDidModelChanged(_:_:_:_:forceFullReload:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -648,7 +648,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/PRESENTER/BasePresenter.swift"
-            timestampString = "565025678.865604"
+            timestampString = "565091102.138281"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "54"
@@ -664,7 +664,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/PRESENTER/MyPhotosPresenter.swift"
-            timestampString = "565025678.8656549"
+            timestampString = "565091102.138347"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "34"
@@ -679,28 +679,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "IvanovIgor_VK/PRESENTER/FriendPresenter.swift"
-            timestampString = "565025678.865688"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "170"
-            endingLineNumber = "170"
-            landmarkName = "realmNotify()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/PRESENTER/BasePresenter.swift"
-            timestampString = "565025678.865748"
+            timestampString = "565091102.138401"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
             landmarkName = "onDidModelChanged(_:_:_:_:forceFullReload:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -712,11 +696,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/PRESENTER/BasePresenter.swift"
-            timestampString = "565025678.867197"
+            timestampString = "565091102.138448"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "242"
-            endingLineNumber = "242"
+            startingLineNumber = "286"
+            endingLineNumber = "286"
             landmarkName = "setup(_sortedDataSource:_groupingProperties:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -728,7 +712,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/PRESENTER/FriendPresenter.swift"
-            timestampString = "565025678.867241"
+            timestampString = "565091102.138503"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "96"
@@ -744,11 +728,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/PRESENTER/FriendPresenter.swift"
-            timestampString = "565025678.867285"
+            timestampString = "565091102.138551"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
             landmarkName = "modelLoadImages()"
             landmarkType = "7">
          </BreakpointContent>
@@ -760,7 +744,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/PRESENTER/FriendPresenter.swift"
-            timestampString = "565025678.867327"
+            timestampString = "565091102.1386"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "99"
@@ -776,28 +760,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/PRESENTER/FriendPresenter.swift"
-            timestampString = "565025678.867368"
+            timestampString = "565091102.138661"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "101"
             endingLineNumber = "101"
             landmarkName = "modelLoadImages()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "IvanovIgor_VK/MODEL/MyFriend.swift"
-            timestampString = "565025678.867412"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
-            landmarkName = "setup(json:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -824,7 +792,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/PRESENTER/FriendPresenter.swift"
-            timestampString = "565025678.867483"
+            timestampString = "565091102.138719"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "47"
@@ -840,7 +808,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/UI/ViewControllers/friends/FriendsController.swift"
-            timestampString = "565025678.86752"
+            timestampString = "565091102.1387711"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "143"
@@ -856,12 +824,92 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/PRESENTER/BasePresenter.swift"
-            timestampString = "565025678.867556"
+            timestampString = "565091102.138827"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "244"
-            endingLineNumber = "244"
+            startingLineNumber = "288"
+            endingLineNumber = "288"
             landmarkName = "setup(_sortedDataSource:_groupingProperties:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IvanovIgor_VK/PRESENTER/MyPhotosPresenter.swift"
+            timestampString = "565091102.139922"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "modelLoadImages()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IvanovIgor_VK/PRESENTER/MyPhotosPresenter.swift"
+            timestampString = "565091102.1399601"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "modelLoadImages()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IvanovIgor_VK/PRESENTER/MyPhotosPresenter.swift"
+            timestampString = "565091102.139995"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "loadFromDisk(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IvanovIgor_VK/PRESENTER/NewsPresenter.swift"
+            timestampString = "565090938.30434"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "refreshData()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IvanovIgor_VK/PRESENTER/BasePresenter.swift"
+            timestampString = "565091102.140044"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "loadModel(_:_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

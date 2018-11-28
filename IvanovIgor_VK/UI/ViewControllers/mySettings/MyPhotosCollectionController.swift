@@ -59,7 +59,7 @@ class MyPhotosCollectionController: UICollectionViewController , UIViewControlle
             
             if let photo = data as? MyPhotos {
                 let imageView = cell.viewWithTag(3000) as! UIImageView
-                imageView.image = photo.photo
+                imageView.image = photo.image
             }
         }
         return cell
@@ -95,7 +95,7 @@ class MyPhotosCollectionController: UICollectionViewController , UIViewControlle
         dest.transitioningDelegate = self
         dest.modalPresentationStyle = .custom
         if let photo = presenter?.getData(indexPath: indexPath) as? MyPhotos {
-            dest.myPhotoImage = photo.photo
+            dest.myPhotoImage = photo.image
         }
         //TODO: dest.myPhoto = photo 
     }
@@ -121,12 +121,6 @@ class MyPhotosCollectionController: UICollectionViewController , UIViewControlle
 
 extension MyPhotosCollectionController: ViewProtocolDelegate{
     
-    
-    func optimReloadCells(_ deletions: [IndexPath], _ insertions: [IndexPath], _ updates: [IndexPath]) {
-        
-    }
-    
-    
     func className() -> String {
         return String(describing: self)
     }
@@ -135,10 +129,16 @@ extension MyPhotosCollectionController: ViewProtocolDelegate{
         collectionView?.reloadItems(at: [indexPath])
     }
     
+    func optimReloadCells(_ deletions: [IndexPath], _ insertions: [IndexPath], _ updates: [IndexPath]) {
+        collectionView?.performBatchUpdates({
+            collectionView?.insertItems(at: insertions )
+            collectionView?.deleteItems(at: deletions )
+            collectionView?.reloadItems(at: updates )
+        }, completion: nil)
+    }
+    
     func reloadCells() {
-        let indexPaths = collectionView?.indexPathsForVisibleItems
-        if let indexPaths = indexPaths {
-            collectionView?.reloadItems(at: indexPaths)
-        }
+        refreshDataSource()
+        collectionView?.reloadData()
     }
 }

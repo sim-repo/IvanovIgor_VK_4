@@ -4,41 +4,38 @@ import SwiftyJSON
 
 class MyPhotos : BaseModel{
 
-    enum Sorting: String {
-        case id
+    enum PhotosGroupByType: String {
+        case id = "По поступлению"
     }
     
-    @objc dynamic var photoURL:String? {
-        didSet{
-            guard photoURL != oldValue
-                else {
-                    return
-            }
-            if let val = photoURL{
-                let url = URL(string: val)
-                self.notify(url: url,.needDownload) { (data) in
-                    self.photo = UIImage(data: data)
-                    self.notify(model: self, .didModelChanged)
-                }
-            }
-        }
+    enum PhotosImagesType: Int{
+        case image
     }
-    var photo: UIImage?
+    
+    @objc dynamic var imageURL:String?
+    var image: UIImage?
+    
+    // service fields
+    var xId: String = ""
+    var groupBy: PhotosGroupByType = .id
     
     convenience init(json: JSON?) {
         self.init()
         setup(json: json)
     }
     
-    convenience init(id: Int, photoURL: String) {
-        self.init()
-        self.id = id
-        setPhotoURL(photoURL)
-    }
     
-    func setPhotoURL(_ url: String){
-        self.photoURL = url
-    }
+    
+    
+//    convenience init(id: Int, imageURL: String) {
+//        self.init()
+//        self.id = id
+//        setPhotoURL(imageURL)
+//    }
+    
+//    func setPhotoURL(_ url: String){
+//        self.imageURL = url
+//    }
     
     
     override func setup(json: JSON?){
@@ -49,24 +46,31 @@ class MyPhotos : BaseModel{
             for element in arr {
                 let type = element["type"].stringValue
                 if type == "m" {
-                    let photoURL = element["url"].stringValue
-                    setPhotoURL(photoURL)
+                    self.imageURL = element["url"].stringValue
                 }
             }
         }
     }
     
-    // TODO: избавиться от метода -->
-    override func postInit() {
-        
-        if let val = photoURL{
-            let url = URL(string: val)
-            self.notify(url: url, .needDownload){ (data) in
-                self.photo = UIImage(data: data)
-                self.notify(model: self, .didModelChanged)
-            }
+    override func getSortingField()->String {
+        switch groupBy {
+        case .id:
+            return "\(self.getId())"
         }
     }
-    // TODO: избавиться от метода <--
+    
+    func getXSortingField()->String {
+        switch groupBy {
+        case .id:
+            return "\(self.getId())"
+        }
+    }
+    
+    func updateXSortingField(val: String) {
+        switch groupBy {
+        case .id:
+            xId = val
+        }
+    }
     
 }

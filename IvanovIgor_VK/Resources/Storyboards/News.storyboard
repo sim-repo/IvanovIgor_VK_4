@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iEZ-SF-4Nc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iEZ-SF-4Nc">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -1321,6 +1321,7 @@
                     <navigationItem key="navigationItem" title="Новости" id="Hie-zJ-tUl"/>
                     <size key="freeformSize" width="414" height="2736"/>
                     <connections>
+                        <outlet property="collectionView" destination="GOB-ft-xMQ" id="lmf-Kh-WcN"/>
                         <segue destination="p1K-Ir-UDN" kind="show" identifier="ShowNewsDetailsSegue" id="bqm-Qd-1gq"/>
                     </connections>
                 </viewController>
@@ -1396,7 +1397,7 @@
     <resources>
         <image name="baikal" width="560" height="373"/>
         <image name="eye" width="256" height="256"/>
-        <image name="like" width="1600" height="1600"/>
+        <image name="like" width="32" height="32"/>
         <image name="message" width="256" height="256"/>
         <image name="share" width="256" height="256"/>
         <image name="tb_rectangle" width="24" height="23"/>

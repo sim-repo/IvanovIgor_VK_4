@@ -31,7 +31,7 @@ class AlamofireNetworkManager{
     }
     
     
-    public static func downloadImage(url: URL?, completion: ((_: Data) -> Void)?){
+    public static func downloadImage(url: URL?, _ completion: ((_: Data) -> Void)?){
         guard let url = url
             else {
                 return
@@ -51,7 +51,7 @@ class AlamofireNetworkManager{
     }
     
     
-    public static func downloadImage(url: URL?, idx: Int, imageFieldIndex: Int, completion: ((_: Data, _: Int, _: Int) -> Void)?){
+    public static func downloadImage(url: URL?, idx: Int, imageFieldIndex: Int, _ completion: ((_: Data, _: Int, _: Int) -> Void)?){
         guard let url = url
             else {
                 return

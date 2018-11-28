@@ -9,20 +9,6 @@ protocol ModelProtocol: class {
     func getSortingField()->String
 }
 
-extension ModelProtocol {
-    
-    func notify(url: URL?, _ notificationType: Model2PresenterNotification, completion: ((_ image: Data)->Void)? = nil){
-        guard let url = url else {return}
-        guard let completion = completion else {return}
-        NotificationCenter.default.post(notification: notificationType, object: nil, userInfo: ["url": url, "completion": completion])
-    }
-    
-    func notify(model: ModelProtocol, _ notificationType: Model2PresenterNotification){
-        NotificationCenter.default.post(notification: notificationType, object: nil, userInfo: ["model": model])
-    }
-}
-
-
 class BaseModel: Object, ModelProtocol {
     
     @objc dynamic var id = 0

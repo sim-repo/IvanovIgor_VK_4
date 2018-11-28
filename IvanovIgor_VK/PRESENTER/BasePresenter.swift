@@ -70,46 +70,7 @@ public class BasePresenter: PresenterProtocol {
     }
     
     
-    final func realmNotify<T: BaseModel>(realmData: inout Results<T>?){
-        guard self.realmToken == nil
-            else { return }
-        
-        if realmData == nil {
-            realmData = realmLoadData(clazz: T.self)
-        }
-        if realmData == nil {
-            fatalError("realmNotify: realmData is nil")
-        }
-        self.realmToken = realmData?.observe { [weak self] (changes: RealmCollectionChange) in
-            switch changes {
-            case .initial(_):
-                self?.modelLoadImages()
-                
-            case let .update(results, deletions, insertions, modifications):
-                var forceRealod = false
-                if deletions.count == 0 && insertions.count == 0 && modifications.count > 0 {
-                    for idx in modifications {
-                        let obj = self?.sortedDataSource.first(where: {$0.getId() == results[idx].getId()}) as? MyFriend
-                        if results[idx].getSortingField() != obj?.getXSortingField() {
-                            
-                            obj?.updateXSortingField(val: results[idx].getSortingField())
-                            forceRealod = true
-                        }
-                    }
-                }
-                self?.onDidModelChanged(results, deletions, insertions, modifications, forceFullReload: forceRealod)
-                
-            case .error(let error):
-                print(error)
-                
-            default: break
-            }
-        }
-    }
-    
-    final func realmLoadData<T: Object>(clazz: T.Type)->Results<T>?{
-        return DatabaseService.realmLoad(clazz: clazz)
-    }
+  
     
     
     open func redrawUI(){
@@ -309,14 +270,50 @@ public class BasePresenter: PresenterProtocol {
         return groupingProperties
     }
     
+    final func realmNotify<T: BaseModel>(realmData: inout Results<T>?){
+        guard self.realmToken == nil
+            else { return }
+        
+        if realmData == nil {
+            realmData = realmLoadData(clazz: T.self)
+        }
+        if realmData == nil {
+            fatalError("realmNotify: realmData is nil")
+        }
+        self.realmToken = realmData?.observe { [weak self] (changes: RealmCollectionChange) in
+            switch changes {
+            case .initial(_):
+                self?.modelLoadImages()
+                
+            case let .update(results, deletions, insertions, modifications):
+                var forceRealod = false
+                if deletions.count == 0 && insertions.count == 0 && modifications.count > 0 {
+                    for idx in modifications {
+                        let obj = self?.sortedDataSource.first(where: {$0.getId() == results[idx].getId()}) as? MyFriend
+                        if results[idx].getSortingField() != obj?.getXSortingField() {
+                            
+                            obj?.updateXSortingField(val: results[idx].getSortingField())
+                            forceRealod = true
+                        }
+                    }
+                }
+                self?.onDidModelChanged(results, deletions, insertions, modifications, forceFullReload: forceRealod)
+                
+            case .error(let error):
+                print(error)
+                
+            default: break
+            }
+        }
+    }
+    
+    final func realmLoadData<T: Object>(clazz: T.Type)->Results<T>?{
+        return DatabaseService.realmLoad(clazz: clazz)
+    }
+    
     
     public func filterData(_ filterText: String) {
         filteredText = !filterText.isEmpty ? filterText : nil
-    }
-    
-
-    public func handleWillChanges(url: URL?, completion: ((_: Data) -> Void)?) {
-        AlamofireNetworkManager.downloadImage(url: url, completion)
     }
     
     

@@ -99,6 +99,12 @@ class MyFriend : BaseModel{
     }
     
     
+    override func isURLlessChanded()->Bool {
+        return firstName != xFirstName ||
+                lastName != xLastName
+    }
+    
+    
     override static func ignoredProperties() -> [String] {
         return [FriendIgnored.xFirstName.rawValue,
                 FriendIgnored.xLastName.rawValue,

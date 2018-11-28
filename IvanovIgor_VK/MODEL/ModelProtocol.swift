@@ -11,6 +11,7 @@ protocol ModelProtocol: class {
     func updateXGroupByField(val: String)
     func updateXImages()
     func isImageURLChanged()->Bool
+    func isURLlessChanded()->Bool
 }
 
 class BaseModel: Object, ModelProtocol {
@@ -47,6 +48,10 @@ class BaseModel: Object, ModelProtocol {
     }
     
     func isImageURLChanged() -> Bool {
+        return false
+    }
+    
+    func isURLlessChanded()->Bool {
         return false
     }
 }

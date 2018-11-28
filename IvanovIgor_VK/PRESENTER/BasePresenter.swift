@@ -284,6 +284,8 @@ public class BasePresenter: PresenterProtocol {
                 
             case let .update(results, deletions, insertions, modifications):
                 var forceRealod = false
+                var reloadRightNow = false
+                
                 if deletions.count == 0 && insertions.count == 0 && modifications.count > 0 {
                     for idx in modifications {
                         let obj = self?.sortedDataSource.first(where: {$0.getId() == results[idx].getId()}) as? MyFriend
@@ -295,9 +297,15 @@ public class BasePresenter: PresenterProtocol {
                             let obj = results[idx]
                             self?.modelLoadImages(arr: [obj], index: idx)
                         }
+                        if obj?.isURLlessChanded() ?? false {
+                            reloadRightNow = true
+                        }
                     }
                 }
-                self?.onDidModelChanged(results, deletions, insertions, modifications, forceFullReload: forceRealod)
+                if reloadRightNow || forceRealod {
+                    print("reload right now!")
+                    self?.onDidModelChanged(results, deletions, insertions, modifications, forceFullReload: forceRealod)
+                }
                 
             case .error(let error):
                 print(error)

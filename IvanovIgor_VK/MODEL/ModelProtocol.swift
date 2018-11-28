@@ -6,11 +6,13 @@ protocol ModelProtocol: class {
     func getId()->Int
     func setup(json: JSON?)
     init() // need for AlamofireNetworkManager.parseJSON
-    func getSortingField()->String
+    func getGroupByField()->String
+    func getXGroupByField()->String
+    func updateXGroupByField(val: String)
 }
 
 class BaseModel: Object, ModelProtocol {
-    
+   
     @objc dynamic var id = 0
     
     func getId()->Int{
@@ -28,7 +30,14 @@ class BaseModel: Object, ModelProtocol {
         return Key.id.rawValue
     }
     
-    func getSortingField()->String {
+    func getGroupByField()->String {
         return ""
+    }
+    
+    func getXGroupByField()->String {
+        return ""
+    }
+    
+    func updateXGroupByField(val: String) {
     }
 }

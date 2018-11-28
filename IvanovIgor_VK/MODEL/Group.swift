@@ -41,21 +41,21 @@ class Group : BaseModel{
         }
     }
     
-    override func getSortingField()->String {
+    override func getGroupByField()->String {
         switch groupBy {
         case .name:
             return self.name
         }
     }
     
-    func getXSortingField()->String {
+    override func getXGroupByField()->String {
         switch groupBy {
         case .name:
             return self.name
         }
     }
     
-    func updateXSortingField(val: String) {
+    override func updateXGroupByField(val: String) {
         switch groupBy {
         case .name:
             xName = val

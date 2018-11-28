@@ -46,7 +46,7 @@ public class FriendPresenter: BasePresenter {
     override func sortModel(_ ds: [ModelProtocol]) -> [ModelProtocol] {
         guard let friends = ds as? [MyFriend]
             else {return ds}
-        return friends.sorted(by: { $0.getSortingField() < $1.getSortingField() })
+        return friends.sorted(by: { $0.getGroupByField() < $1.getGroupByField() })
     }
     
     
@@ -57,20 +57,19 @@ public class FriendPresenter: BasePresenter {
         }
         
         if let filteredText  = filteredText {
-            tempFriends = friends.filter({$0.getSortingField().lowercased().contains(filteredText.lowercased())})
+            tempFriends = friends.filter({$0.getGroupByField().lowercased().contains(filteredText.lowercased())})
         } else {
             tempFriends = friends
         }
         
         var groupingProps: [String] = []
         for friend in tempFriends {
-            groupingProps.append( friend.getSortingField() )
+            groupingProps.append( friend.getGroupByField() )
         }
         return (tempFriends, groupingProps)
     }
     
 
-    
     func prepareCompletion()-> (Data, Int, Int)->Void  {
         let completion: (Data, Int, Int)->Void = { [weak self] (data, idx, imageFieldIndex) in
             let friend = self?.sortedDataSource[idx] as! MyFriend
@@ -97,7 +96,7 @@ public class FriendPresenter: BasePresenter {
             else { return }
         
         for (idx, friend) in friends.enumerated() {
-            friend.updateXSortingField(val: friend.getSortingField())
+            friend.updateXGroupByField(val: friend.getGroupByField())
             let completion = prepareCompletion()
             
             if let val = friend.profilePictureURL50 {

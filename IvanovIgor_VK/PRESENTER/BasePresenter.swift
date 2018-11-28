@@ -39,8 +39,6 @@ public class BasePresenter: PresenterProtocol {
         loadModel(loadType, completion)
     }
     
-    
-    
 
     private final func loadModel(_ loadType: LoadModelType, _ completion: (()->Void)?) {
         switch loadType {
@@ -68,9 +66,6 @@ public class BasePresenter: PresenterProtocol {
             loadFromNetwork(completion: outerCompletion)
         }
     }
-    
-    
-  
     
     
     open func redrawUI(){
@@ -290,9 +285,9 @@ public class BasePresenter: PresenterProtocol {
                 if deletions.count == 0 && insertions.count == 0 && modifications.count > 0 {
                     for idx in modifications {
                         let obj = self?.sortedDataSource.first(where: {$0.getId() == results[idx].getId()}) as? MyFriend
-                        if results[idx].getSortingField() != obj?.getXSortingField() {
+                        if results[idx].getGroupByField() != obj?.getXGroupByField() {
                             
-                            obj?.updateXSortingField(val: results[idx].getSortingField())
+                            obj?.updateXGroupByField(val: results[idx].getGroupByField())
                             forceRealod = true
                         }
                     }

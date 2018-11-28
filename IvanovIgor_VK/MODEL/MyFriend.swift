@@ -59,7 +59,7 @@ class MyFriend : BaseModel{
         return [FriendGroupByType.firstName.rawValue]
     }
     
-    override func getSortingField()->String {
+    override func getGroupByField()->String {
         switch groupBy {
         case .firstName:
             return self.firstName
@@ -68,7 +68,7 @@ class MyFriend : BaseModel{
         }
     }
     
-    func getXSortingField()->String {
+    override func getXGroupByField()->String {
         switch groupBy {
         case .firstName:
             return self.xFirstName
@@ -76,8 +76,9 @@ class MyFriend : BaseModel{
             return self.xLastName
         }
     }
+
     
-    func updateXSortingField(val: String) {
+    override func updateXGroupByField(val: String) {
         switch groupBy {
         case .firstName:
             xFirstName = val

@@ -77,7 +77,7 @@ public class MyPhotosPresenter: BasePresenter {
             else { return }
         
         for (idx, photo) in photos.enumerated() {
-            photo.updateXSortingField(val: photo.getSortingField())
+            photo.updateXSortingField(val: photo.getGroupByField())
             let completion = prepareCompletion()
             
             if let val = photo.imageURL {

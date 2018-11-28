@@ -38,14 +38,14 @@ class MyPhotos : BaseModel{
         }
     }
     
-    override func getSortingField()->String {
+    override func getGroupByField()->String {
         switch groupBy {
         case .id:
             return "\(self.getId())"
         }
     }
     
-    func getXSortingField()->String {
+    override func getXGroupByField()->String {
         switch groupBy {
         case .id:
             return "\(self.getId())"

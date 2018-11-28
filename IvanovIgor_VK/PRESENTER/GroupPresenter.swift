@@ -48,7 +48,7 @@ public class GroupPresenter: BasePresenter {
     override func sortModel(_ ds: [ModelProtocol]) -> [ModelProtocol] {
         guard let groups = ds as? [Group]
             else {return ds}
-        return groups.sorted(by: { $0.getSortingField() < $1.getSortingField() })
+        return groups.sorted(by: { $0.getGroupByField() < $1.getGroupByField() })
     }
 
     
@@ -60,13 +60,13 @@ public class GroupPresenter: BasePresenter {
         
         if let filteredText  = filteredText {
             tempGroups = tempGroups.filter({
-                $0.getSortingField().lowercased().contains(filteredText.lowercased())
+                $0.getGroupByField().lowercased().contains(filteredText.lowercased())
             })
         }
         
         var groupingProps: [String] = []
         for group in tempGroups {
-            groupingProps.append( group.getSortingField() )
+            groupingProps.append( group.getGroupByField() )
         }
         return (tempGroups, groupingProps)
     }
@@ -98,7 +98,7 @@ public class GroupPresenter: BasePresenter {
             else { return }
         
         for (idx, group) in groups.enumerated() {
-            group.updateXSortingField(val: group.getSortingField())
+            group.updateXGroupByField(val: group.getGroupByField())
             let completion = prepareCompletion()
             
             if let val = group.imageURL50 {

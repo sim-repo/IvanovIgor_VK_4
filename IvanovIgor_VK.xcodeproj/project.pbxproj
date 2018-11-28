@@ -70,6 +70,8 @@
 		1636C94E21623E6900F8B68D /* RoundedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1636C94D21623E6900F8B68D /* RoundedImage.swift */; };
 		1636C95121623F0500F8B68D /* MySettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1636C95021623F0500F8B68D /* MySettingsController.swift */; };
 		164473922177C5F700625120 /* CircularTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164473912177C5F700625120 /* CircularTransition.swift */; };
+		1662676121AF366500E207CD /* CAGradientLayer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1662676021AF366500E207CD /* CAGradientLayer+Extensions.swift */; };
+		1662676321AF369C00E207CD /* UIControls+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1662676221AF369C00E207CD /* UIControls+Extensions.swift */; };
 		16C24955216BF3BB00ACA20D /* StickyFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C24954216BF3BB00ACA20D /* StickyFlowLayout.swift */; };
 		16DFC5BE2195C80100C86A3D /* ModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DFC5BD2195C80100C86A3D /* ModelProtocol.swift */; };
 		16E9409D21784C7400390927 /* MyPhotos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E9409C21784C7400390927 /* MyPhotos.swift */; };
@@ -146,6 +148,8 @@
 		1636C94D21623E6900F8B68D /* RoundedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedImage.swift; sourceTree = "<group>"; };
 		1636C95021623F0500F8B68D /* MySettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySettingsController.swift; sourceTree = "<group>"; };
 		164473912177C5F700625120 /* CircularTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularTransition.swift; sourceTree = "<group>"; };
+		1662676021AF366500E207CD /* CAGradientLayer+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CAGradientLayer+Extensions.swift"; sourceTree = "<group>"; };
+		1662676221AF369C00E207CD /* UIControls+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControls+Extensions.swift"; sourceTree = "<group>"; };
 		16C24954216BF3BB00ACA20D /* StickyFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickyFlowLayout.swift; sourceTree = "<group>"; };
 		16DFC5BD2195C80100C86A3D /* ModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelProtocol.swift; sourceTree = "<group>"; };
 		16E9409C21784C7400390927 /* MyPhotos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPhotos.swift; sourceTree = "<group>"; };
@@ -387,6 +391,8 @@
 			children = (
 				049B67A7219D99670066428B /* NotificationCenter+Extensions.swift */,
 				04E71EA621A43E06006553F4 /* Realm+Extensions.swift */,
+				1662676021AF366500E207CD /* CAGradientLayer+Extensions.swift */,
+				1662676221AF369C00E207CD /* UIControls+Extensions.swift */,
 			);
 			path = EXTENSIONS;
 			sourceTree = "<group>";
@@ -599,6 +605,7 @@
 				160C90A621678AF200535DB2 /* FriendPresenter.swift in Sources */,
 				1636C9402162065C00F8B68D /* NewsCollectionController.swift in Sources */,
 				049540A2216B5D9D001D008A /* News4PhotosCell.swift in Sources */,
+				1662676321AF369C00E207CD /* UIControls+Extensions.swift in Sources */,
 				160455662157C0FA003A6ED7 /* LoginViewController.swift in Sources */,
 				044766B1216CDA1400B465E9 /* News6PhotosCell.swift in Sources */,
 				049B67A8219D99670066428B /* NotificationCenter+Extensions.swift in Sources */,
@@ -639,6 +646,7 @@
 				044766AF216CC83F00B465E9 /* UserActivityRegControl.swift in Sources */,
 				16C24955216BF3BB00ACA20D /* StickyFlowLayout.swift in Sources */,
 				049540A4216B7C85001D008A /* GroupFlowLayout.swift in Sources */,
+				1662676121AF366500E207CD /* CAGradientLayer+Extensions.swift in Sources */,
 				161D8305218F3A0300FA83B4 /* Session.swift in Sources */,
 				04B8144721650EDC00491859 /* MyGroupCollectionCell.swift in Sources */,
 				1636C95121623F0500F8B68D /* MySettingsController.swift in Sources */,

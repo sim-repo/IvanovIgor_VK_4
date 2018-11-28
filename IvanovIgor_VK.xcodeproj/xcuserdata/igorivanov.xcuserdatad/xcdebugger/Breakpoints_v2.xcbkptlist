@@ -234,13 +234,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IvanovIgor_VK/UI/ViewControllers/friends/FriendsController.swift"
-            timestampString = "564954886.201544"
+            timestampString = "565133649.277514"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
+            startingLineNumber = "244"
+            endingLineNumber = "244"
             landmarkName = "FriendsController"
-            landmarkType = "21">
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

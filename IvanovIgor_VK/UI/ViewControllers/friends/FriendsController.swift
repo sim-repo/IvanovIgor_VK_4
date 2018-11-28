@@ -32,6 +32,14 @@ class FriendsController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        var colors = [UIColor]()
+        colors.append(UIColor(red: 0/255, green: 31/255, blue: 0/255, alpha: 1))
+        colors.append(UIColor(red: 79/255, green: 153/255, blue: 0, alpha: 1))
+        colors.append(UIColor(red: 0/255, green: 31/255, blue: 0/255, alpha: 1))
+        navigationController?.navigationBar.setGradientBackground(colors: colors)
+        
+        
         setupPresenter()
         setupAlphabetSearchControl()
      //   setupStandardSearchController()
@@ -40,6 +48,96 @@ class FriendsController: UIViewController {
         
         pickerView.dataSource = self
         pickerView.delegate = self
+    }
+    
+    
+    func changeColor(){
+        var colors = [UIColor]()
+        colors.append(UIColor(red: r1/255, green: g1/255, blue: b1/255, alpha: 1))
+        colors.append(UIColor(red: r2/255, green: g2/255, blue: b2/255, alpha: 1))
+        colors.append(UIColor(red: r3/255, green: g3/255, blue: b3/255, alpha: 1))
+        navigationController?.navigationBar.setGradientBackground(colors: colors)
+        
+    }
+    
+    var r1: CGFloat = 0
+    var g1: CGFloat = 0
+    var b1: CGFloat = 0
+    
+    var r2: CGFloat = 0
+    var g2: CGFloat = 0
+    var b2: CGFloat = 0
+    
+    var r3: CGFloat = 0
+    var g3: CGFloat = 0
+    var b3: CGFloat = 0
+    
+    
+    @IBOutlet weak var lr1: UILabel!
+    @IBOutlet weak var lg1: UILabel!
+    @IBOutlet weak var lb1: UILabel!
+    @IBOutlet weak var lr2: UILabel!
+    @IBOutlet weak var lg2: UILabel!
+    @IBOutlet weak var lb2: UILabel!
+    @IBOutlet weak var lr3: UILabel!
+    @IBOutlet weak var lg3: UILabel!
+    @IBOutlet weak var lb3: UILabel!
+    
+    
+    
+    @IBAction func doSlide1(_ sender: UISlider) {
+        r1 = CGFloat(sender.value)
+        lr1.text = "\(r1)"
+        changeColor()
+    }
+    
+    @IBAction func doSlide2(_ sender: UISlider) {
+        g1 = CGFloat(sender.value)
+        lg1.text = "\(g1)"
+        changeColor()
+    }
+    
+    @IBAction func doSlide3(_ sender: UISlider) {
+        b1 = CGFloat(sender.value)
+        lb1.text = "\(b1)"
+        changeColor()
+    }
+    
+    @IBAction func doSlide4(_ sender: UISlider) {
+        r2 = CGFloat(sender.value)
+        lr2.text = "\(r2)"
+        changeColor()
+    }
+    
+    @IBAction func doSlide5(_ sender: UISlider) {
+        g2 = CGFloat(sender.value)
+        lg2.text = "\(g2)"
+        changeColor()
+    }
+    
+    @IBAction func doSlide6(_ sender: UISlider) {
+        b2 = CGFloat(sender.value)
+        lb2.text = "\(b2)"
+        changeColor()
+    }
+    
+    
+    @IBAction func doSlide7(_ sender: UISlider) {
+        r3 = CGFloat(sender.value)
+        lr3.text = "\(r3)"
+        changeColor()
+    }
+    
+    @IBAction func doSlide8(_ sender: UISlider) {
+        g3 = CGFloat(sender.value)
+        lg3.text = "\(g3)"
+        changeColor()
+    }
+    
+    @IBAction func doSlide9(_ sender: UISlider) {
+        b3 = CGFloat(sender.value)
+        lb3.text = "\(b3)"
+        changeColor()
     }
     
     deinit {

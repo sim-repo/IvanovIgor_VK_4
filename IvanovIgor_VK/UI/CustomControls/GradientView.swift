@@ -7,12 +7,12 @@ import UIKit
         }
     }
     
-    @IBInspectable var firstColor: UIColor = UIColor.clear {
+    @IBInspectable var firstColor2: UIColor = UIColor.clear {
         didSet {
             updateView()
         }
     }
-    @IBInspectable var secondColor: UIColor = UIColor.clear {
+    @IBInspectable var secondColor2: UIColor = UIColor.clear {
         didSet {
             updateView()
         }
@@ -26,10 +26,10 @@ import UIKit
     
     func updateView() {
         let layer = self.layer as! CAGradientLayer
-        layer.colors = [firstColor, secondColor].map{$0.cgColor}
+        layer.colors = [firstColor2, secondColor2].map{$0.cgColor}
         if (self.isHorizontal) {
-            layer.startPoint = CGPoint(x: 0, y: 0.5)
-            layer.endPoint = CGPoint (x: 1, y: 0.5)
+            layer.startPoint = CGPoint(x: 0.25, y: 0)
+            layer.endPoint = CGPoint (x: 0.7, y: 0.75)
         } else {
             layer.startPoint = CGPoint(x: 0.5, y: 0)
             layer.endPoint = CGPoint (x: 0.5, y: 1)

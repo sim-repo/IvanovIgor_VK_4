@@ -30,19 +30,24 @@ class FriendsController: UIViewController {
     
     let searchController = UISearchController(searchResultsController: nil)
     
+    var headerCell: HeaderCell?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+       headerCell = Bundle.main.loadNibNamed("HeaderCell", owner: self, options: nil)?.first as! HeaderCell
+        
         var colors = [UIColor]()
-        colors.append(UIColor(red: 0/255, green: 31/255, blue: 0/255, alpha: 1))
-        colors.append(UIColor(red: 79/255, green: 153/255, blue: 0, alpha: 1))
-        colors.append(UIColor(red: 0/255, green: 31/255, blue: 0/255, alpha: 1))
+        colors.append(UIColor(red: 0/255, green: 31/255, blue: 0/255, alpha: 0.1))
+        colors.append(UIColor(red: 79/255, green: 153/255, blue: 0, alpha: 0.1))
+        colors.append(UIColor(red: 0/255, green: 31/255, blue: 0/255, alpha: 0.1))
         navigationController?.navigationBar.setGradientBackground(colors: colors)
         
         
         setupPresenter()
         setupAlphabetSearchControl()
-     //   setupStandardSearchController()
+      // setupStandardSearchController()
         searchTextField.delegate = self  // Задание 6.5: анимация
         searchTextWidth = searchTextWidthConstraint.constant // Задание 6.5: анимация
         
@@ -72,74 +77,7 @@ class FriendsController: UIViewController {
     var g3: CGFloat = 0
     var b3: CGFloat = 0
     
-    
-    @IBOutlet weak var lr1: UILabel!
-    @IBOutlet weak var lg1: UILabel!
-    @IBOutlet weak var lb1: UILabel!
-    @IBOutlet weak var lr2: UILabel!
-    @IBOutlet weak var lg2: UILabel!
-    @IBOutlet weak var lb2: UILabel!
-    @IBOutlet weak var lr3: UILabel!
-    @IBOutlet weak var lg3: UILabel!
-    @IBOutlet weak var lb3: UILabel!
-    
-    
-    
-    @IBAction func doSlide1(_ sender: UISlider) {
-        r1 = CGFloat(sender.value)
-        lr1.text = "\(r1)"
-        changeColor()
-    }
-    
-    @IBAction func doSlide2(_ sender: UISlider) {
-        g1 = CGFloat(sender.value)
-        lg1.text = "\(g1)"
-        changeColor()
-    }
-    
-    @IBAction func doSlide3(_ sender: UISlider) {
-        b1 = CGFloat(sender.value)
-        lb1.text = "\(b1)"
-        changeColor()
-    }
-    
-    @IBAction func doSlide4(_ sender: UISlider) {
-        r2 = CGFloat(sender.value)
-        lr2.text = "\(r2)"
-        changeColor()
-    }
-    
-    @IBAction func doSlide5(_ sender: UISlider) {
-        g2 = CGFloat(sender.value)
-        lg2.text = "\(g2)"
-        changeColor()
-    }
-    
-    @IBAction func doSlide6(_ sender: UISlider) {
-        b2 = CGFloat(sender.value)
-        lb2.text = "\(b2)"
-        changeColor()
-    }
-    
-    
-    @IBAction func doSlide7(_ sender: UISlider) {
-        r3 = CGFloat(sender.value)
-        lr3.text = "\(r3)"
-        changeColor()
-    }
-    
-    @IBAction func doSlide8(_ sender: UISlider) {
-        g3 = CGFloat(sender.value)
-        lg3.text = "\(g3)"
-        changeColor()
-    }
-    
-    @IBAction func doSlide9(_ sender: UISlider) {
-        b3 = CGFloat(sender.value)
-        lb3.text = "\(b3)"
-        changeColor()
-    }
-    
+
     deinit {
         presenter?.viewDeinit()
         presenter = nil
@@ -265,14 +203,14 @@ extension FriendsController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FriendsTableCell", for: indexPath) as! FriendTableCell
-        
+       // cell.layer.backgroundColor = UIColor.clear.cgColor
         guard let data = presenter?.getData(indexPath: indexPath)
             else {
                 return UITableViewCell()
             }
         
         let friend = data as! MyFriend
-        cell.name = friend.firstName + " "+friend.lastName
+        cell.name = friend.firstName + " " + friend.lastName
         cell.photoImage = friend.image50
 
         return cell
@@ -287,8 +225,9 @@ extension FriendsController: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: "HeaderView")
-        return view
+        let headerCell = Bundle.main.loadNibNamed("HeaderCell", owner: self, options: nil)?.first as! HeaderCell
+        headerCell.titleLabel.text = presenter?.sectionName(section: section)
+        return headerCell
     }
     
     
@@ -296,6 +235,12 @@ extension FriendsController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return presenter?.sectionName(section: section)
     }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return headerCell?.frame.size.height ?? 50
+    }
+    
+    
     
 // commented out 8.1 >>>
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

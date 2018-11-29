@@ -35,6 +35,9 @@
 		04B8144721650EDC00491859 /* MyGroupCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B8144621650EDC00491859 /* MyGroupCollectionCell.swift */; };
 		04E71EA421A4026C006553F4 /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E71EA321A4026C006553F4 /* DatabaseService.swift */; };
 		04E71EA721A43E06006553F4 /* Realm+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E71EA621A43E06006553F4 /* Realm+Extensions.swift */; };
+		04E71EAE21B033E9006553F4 /* HeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E71EAC21B033E9006553F4 /* HeaderCell.swift */; };
+		04E71EAF21B033E9006553F4 /* HeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E71EAD21B033E9006553F4 /* HeaderCell.xib */; };
+		04E71EB121B04223006553F4 /* FrostyTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E71EB021B04223006553F4 /* FrostyTabBar.swift */; };
 		04EDA93C215A510B00426C8C /* Friends.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04EDA93B215A510B00426C8C /* Friends.storyboard */; };
 		04EDA93E215A51A000426C8C /* Groups.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04EDA93D215A51A000426C8C /* Groups.storyboard */; };
 		04EDA944215A735100426C8C /* FriendDetailsCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EDA943215A735100426C8C /* FriendDetailsCollectionController.swift */; };
@@ -110,6 +113,9 @@
 		04B8144621650EDC00491859 /* MyGroupCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupCollectionCell.swift; sourceTree = "<group>"; };
 		04E71EA321A4026C006553F4 /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
 		04E71EA621A43E06006553F4 /* Realm+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Realm+Extensions.swift"; sourceTree = "<group>"; };
+		04E71EAC21B033E9006553F4 /* HeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCell.swift; sourceTree = "<group>"; };
+		04E71EAD21B033E9006553F4 /* HeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderCell.xib; sourceTree = "<group>"; };
+		04E71EB021B04223006553F4 /* FrostyTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrostyTabBar.swift; sourceTree = "<group>"; };
 		04EDA93B215A510B00426C8C /* Friends.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Friends.storyboard; sourceTree = "<group>"; };
 		04EDA93D215A51A000426C8C /* Groups.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Groups.storyboard; sourceTree = "<group>"; };
 		04EDA943215A735100426C8C /* FriendDetailsCollectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendDetailsCollectionController.swift; sourceTree = "<group>"; };
@@ -207,6 +213,8 @@
 				1636C94621621C9B00F8B68D /* CustomControls */,
 				04EDA949215A748300426C8C /* Cells */,
 				04EDA940215A729C00426C8C /* ViewControllers */,
+				04E71EAC21B033E9006553F4 /* HeaderCell.swift */,
+				04E71EAD21B033E9006553F4 /* HeaderCell.xib */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -242,6 +250,7 @@
 				04EDA952215A765100426C8C /* login */,
 				04EDA946215A73CB00426C8C /* groups */,
 				04EDA945215A73B800426C8C /* friends */,
+				04E71EB021B04223006553F4 /* FrostyTabBar.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -391,8 +400,6 @@
 			children = (
 				049B67A7219D99670066428B /* NotificationCenter+Extensions.swift */,
 				04E71EA621A43E06006553F4 /* Realm+Extensions.swift */,
-				1662676021AF366500E207CD /* CAGradientLayer+Extensions.swift */,
-				1662676221AF369C00E207CD /* UIControls+Extensions.swift */,
 			);
 			path = EXTENSIONS;
 			sourceTree = "<group>";
@@ -424,6 +431,8 @@
 			isa = PBXGroup;
 			children = (
 				044B5BFC217745C800B79291 /* Custom Nav Controller */,
+				1662676021AF366500E207CD /* CAGradientLayer+Extensions.swift */,
+				1662676221AF369C00E207CD /* UIControls+Extensions.swift */,
 				1636C94921622D4800F8B68D /* LikeControl.swift */,
 				1636C94D21623E6900F8B68D /* RoundedImage.swift */,
 				04EDA9C32163977300426C8C /* LettersSearchControl.swift */,
@@ -532,6 +541,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04E71EAF21B033E9006553F4 /* HeaderCell.xib in Resources */,
 				04EDA93E215A51A000426C8C /* Groups.storyboard in Resources */,
 				1636C93D2162040200F8B68D /* News.storyboard in Resources */,
 				1636C94C21623C9C00F8B68D /* Settings.storyboard in Resources */,
@@ -656,8 +666,10 @@
 				04E71EA721A43E06006553F4 /* Realm+Extensions.swift in Sources */,
 				044766B7216DEFB400B465E9 /* CarouselFlowLayout.swift in Sources */,
 				160455642157C0FA003A6ED7 /* AppDelegate.swift in Sources */,
+				04E71EB121B04223006553F4 /* FrostyTabBar.swift in Sources */,
 				16103F0C2168D28B009AC52A /* AllGroupPresenter.swift in Sources */,
 				160455772157F186003A6ED7 /* MyFriend.swift in Sources */,
+				04E71EAE21B033E9006553F4 /* HeaderCell.swift in Sources */,
 				044766B3216CDE1F00B465E9 /* News5PhotosCell.swift in Sources */,
 				044B5BFB217745C400B79291 /* NavForwardAnimator.swift in Sources */,
 				044B5C06217768E600B79291 /* FriendPhotoController.swift in Sources */,

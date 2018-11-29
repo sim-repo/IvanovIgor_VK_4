@@ -38,7 +38,6 @@ enum Alphabet: Int, CaseIterable {
 }
 
 
-
 // Протокол таргетного UIView в кач-ве делегата
 public protocol AlphabetSearchViewControlProtocol : class {
     func didChange(indexPath: IndexPath)
@@ -78,6 +77,14 @@ public protocol AlphabetSearchViewControlProtocol : class {
         }
     }
     
+    @IBInspectable var fontColor: CGFloat = 10 {
+        didSet {
+            if fontSize >= 8 {
+                changeButtonFont()
+            }
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setupView()
@@ -91,6 +98,7 @@ public protocol AlphabetSearchViewControlProtocol : class {
     private func changeButtonFont(){
         for button in buttons {
             button.titleLabel?.font = UIFont.boldSystemFont(ofSize: fontSize)
+            button.setTitleColor(.white, for: .normal)
             setNeedsDisplay()
         }
     }
@@ -149,7 +157,7 @@ public protocol AlphabetSearchViewControlProtocol : class {
             let button = UIButton(type: .system)
             button.titleLabel?.font =  UIFont.boldSystemFont(ofSize: fontSize)
             button.setTitle(String(ch), for: .normal)
-            button.setTitleColor(.black, for: .normal)
+            button.setTitleColor(.white, for: .normal)
             button.setTitleColor(.white, for: .selected)
             button.isEnabled = false
             self.buttons.append(button)

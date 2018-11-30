@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		041D76A021B17F4600B31C6D /* FIBUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041D769F21B17F4600B31C6D /* FIBUser.swift */; };
+		041D76A221B1821600B31C6D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 041D76A121B1821600B31C6D /* GoogleService-Info.plist */; };
 		0445073F216B91C800803508 /* NewsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0445073E216B91C800803508 /* NewsPresenter.swift */; };
 		044766AF216CC83F00B465E9 /* UserActivityRegControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044766AE216CC83F00B465E9 /* UserActivityRegControl.swift */; };
 		044766B1216CDA1400B465E9 /* News6PhotosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044766B0216CDA1400B465E9 /* News6PhotosCell.swift */; };
@@ -85,6 +87,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		041D769F21B17F4600B31C6D /* FIBUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIBUser.swift; sourceTree = "<group>"; };
+		041D76A121B1821600B31C6D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0445073E216B91C800803508 /* NewsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsPresenter.swift; sourceTree = "<group>"; };
 		044766AE216CC83F00B465E9 /* UserActivityRegControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserActivityRegControl.swift; sourceTree = "<group>"; };
 		044766B0216CDA1400B465E9 /* News6PhotosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News6PhotosCell.swift; sourceTree = "<group>"; };
@@ -344,8 +348,7 @@
 		160455622157C0FA003A6ED7 /* IvanovIgor_VK */ = {
 			isa = PBXGroup;
 			children = (
-				161D8303218F2DAF00FA83B4 /* IvanovIgor_VK.entitlements */,
-				160455632157C0FA003A6ED7 /* AppDelegate.swift */,
+				041D76A121B1821600B31C6D /* GoogleService-Info.plist */,
 				04E71EA521A40275006553F4 /* PERSISTENCE SERVICE */,
 				162D958D219F71D6008A896B /* EXTENSIONS */,
 				049B67A9219DCBCD0066428B /* CONFIGURATOR */,
@@ -354,6 +357,8 @@
 				160455752157F168003A6ED7 /* MODEL */,
 				04EDA939215A50C700426C8C /* UI */,
 				04EDA93F215A724800426C8C /* Resources */,
+				161D8303218F2DAF00FA83B4 /* IvanovIgor_VK.entitlements */,
+				160455632157C0FA003A6ED7 /* AppDelegate.swift */,
 				1604556F2157C0FB003A6ED7 /* Info.plist */,
 			);
 			path = IvanovIgor_VK;
@@ -367,6 +372,7 @@
 				1604557D2157F8B8003A6ED7 /* Group.swift */,
 				1636C9412162067B00F8B68D /* News.swift */,
 				16E9409C21784C7400390927 /* MyPhotos.swift */,
+				041D769F21B17F4600B31C6D /* FIBUser.swift */,
 			);
 			path = MODEL;
 			sourceTree = "<group>";
@@ -547,6 +553,7 @@
 				1636C94C21623C9C00F8B68D /* Settings.storyboard in Resources */,
 				04EDA93C215A510B00426C8C /* Friends.storyboard in Resources */,
 				1604556E2157C0FB003A6ED7 /* LaunchScreen.storyboard in Resources */,
+				041D76A221B1821600B31C6D /* GoogleService-Info.plist in Resources */,
 				1604556B2157C0FB003A6ED7 /* Assets.xcassets in Resources */,
 				160455692157C0FA003A6ED7 /* Main.storyboard in Resources */,
 			);
@@ -587,18 +594,26 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-IvanovIgor_VK/Pods-IvanovIgor_VK-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -657,6 +672,7 @@
 				16C24955216BF3BB00ACA20D /* StickyFlowLayout.swift in Sources */,
 				049540A4216B7C85001D008A /* GroupFlowLayout.swift in Sources */,
 				1662676121AF366500E207CD /* CAGradientLayer+Extensions.swift in Sources */,
+				041D76A021B17F4600B31C6D /* FIBUser.swift in Sources */,
 				161D8305218F3A0300FA83B4 /* Session.swift in Sources */,
 				04B8144721650EDC00491859 /* MyGroupCollectionCell.swift in Sources */,
 				1636C95121623F0500F8B68D /* MySettingsController.swift in Sources */,

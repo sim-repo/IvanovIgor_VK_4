@@ -8,4 +8,7 @@ target 'IvanovIgor_VK' do
   pod 'Alamofire'
   pod 'SwiftyJSON'
   pod 'RealmSwift'
+  pod 'Firebase/Core'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Database'
 end

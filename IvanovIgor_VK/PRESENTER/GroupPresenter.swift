@@ -1,6 +1,8 @@
 import Foundation
 import Alamofire
 import RealmSwift
+import Firebase
+
 
 var gGroups: [Group] = []
 
@@ -147,7 +149,13 @@ public class GroupPresenter: BasePresenter {
     
     override func update(object: AnyObject)->Void {
         let group = object as! Group
-        group.isMember = true
+       // group.isMember = true
+        Session.shared.user.groupsName.append(FIBGroup(groupName:group.name))
+        let data = Session.shared.user.toAnyObject()
+        
+        let dbLink = Database.database().reference()
+        dbLink.child("Humans").setValue(data)
+
     }
     
     

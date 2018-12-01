@@ -99,7 +99,7 @@ public class FriendPresenter: BasePresenter {
     
     
     
-    override func modelLoadImages(arr: [ModelProtocol]?, index: Int? = nil){
+    override func modelLoadImages(arr: [ModelProtocol]?){
         print("async loading images...")
         guard let friends = arr as? [MyFriend]
             else {
@@ -107,12 +107,6 @@ public class FriendPresenter: BasePresenter {
                 return
             }
         
-        if arr?.count == 1 {
-            guard index != nil
-                else {
-                   fatalError("only for test")
-                }
-        }
         
         for friend in friends {
             friend.updateXGroupByField(val: friend.getGroupByField())

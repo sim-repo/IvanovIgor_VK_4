@@ -27,8 +27,8 @@ class Group : BaseModel{
    
     
     
-    @objc dynamic var imageURL50:  String?
-    @objc dynamic var imageURL200: String?
+    @objc dynamic var imageURL50:  String = ""
+    @objc dynamic var imageURL200: String = ""
     @objc dynamic var isMember: Bool = false
 
     // service fields >>>
@@ -39,6 +39,20 @@ class Group : BaseModel{
     var xImageURL50: String?
     var xImageURL200: String?
     // service fields <<<
+    
+    
+    convenience init(id: Int, name: String, desc: String, imageURL50: String, imageURL200: String) {
+        self.init()
+        self.id = id
+        self.name = name
+        self.desc = desc
+        self.imageURL50 = imageURL50
+        self.imageURL200 = imageURL200
+        
+        xName = name
+        xImageURL50 = imageURL50
+        xImageURL200 = imageURL200
+    }
     
     convenience init(json: JSON?) {
         self.init()

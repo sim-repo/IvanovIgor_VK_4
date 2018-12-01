@@ -256,8 +256,6 @@ extension FriendsController: UITableViewDelegate, UITableViewDataSource {
             dest.prepareForRun(with: friend)
         }
     }
-    
-    
 }
 
 extension FriendsController: AlphabetSearchViewControlProtocol {

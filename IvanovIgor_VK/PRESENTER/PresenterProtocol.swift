@@ -49,6 +49,12 @@ enum LoadModelType{
     case diskFirst
 }
 
+enum StatePresenterType{
+    case initial
+    case noChanged
+    case modelDidUpdated
+}
+
 protocol PresenterProtocol: class {
     
     var numberOfSections: Int {get}
@@ -82,5 +88,9 @@ protocol PresenterProtocol: class {
     func changeGroupBy(by fieldName: String)
     
     func getGroupByDataSource()->[String]
+    
+    func setAlien(with object: ModelProtocol)
+    
+    func setState(state: StatePresenterType)
     
 }

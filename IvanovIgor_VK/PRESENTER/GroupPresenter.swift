@@ -97,37 +97,28 @@ public class GroupPresenter: BasePresenter {
     
     
     
-    override func modelLoadImages(arr: [ModelProtocol]?, index: Int? = nil){
+    override func modelLoadImages(arr: [ModelProtocol]?){
         print("async loading images...")
         guard let groups = arr as? [Group]
             else {
                 fatalError("only for test")
                 return
         }
-        
-        if arr?.count == 1 {
-            guard index != nil
-                else {
-                    fatalError("only for test")
-            }
-        }
-        
+                
         for group in groups {
             group.updateXGroupByField(val: group.getGroupByField())
             let completion = prepareCompletion()
+
+            var url = URL(string: group.imageURL50)
+            AlamofireNetworkManager.downloadImage(url: url, id: group.getId(),
+                                                  imageFieldIndex: Group.GroupImagesType.image50.rawValue,
+                                                  completion)
             
-            if let val = group.imageURL50 {
-                let url = URL(string: val)!
-                AlamofireNetworkManager.downloadImage(url: url, id: group.getId(),
-                                                      imageFieldIndex: Group.GroupImagesType.image50.rawValue,
-                                                      completion)
-            }
-            if let val = group.imageURL200 {
-                let url = URL(string: val)!
-                AlamofireNetworkManager.downloadImage(url: url, id: group.getId(),
-                                                      imageFieldIndex: Group.GroupImagesType.image200.rawValue,
-                                                      completion)
-            }
+            url = URL(string: group.imageURL200)
+            AlamofireNetworkManager.downloadImage(url: url, id: group.getId(),
+                                                  imageFieldIndex: Group.GroupImagesType.image200.rawValue,
+                                                  completion)
+
         }
     }
     
@@ -147,21 +138,36 @@ public class GroupPresenter: BasePresenter {
     }
     
     
+    
+    //TODO Refactor
     override func update(object: AnyObject)->Void {
-        let group = object as! Group
-       // group.isMember = true
+        let group = object as! SearchedGroup
+        
         Session.shared.user.groupsName.append(FIBGroup(groupName:group.name))
         let data = Session.shared.user.toAnyObject()
         
         let dbLink = Database.database().reference()
         dbLink.child("Humans").setValue(data)
-
+        let myGroup = Group(id: group.id,
+                            name: group.name,
+                            desc: group.desc,
+                            imageURL50: group.imageURL50,
+                            imageURL200: group.imageURL200)
+        self.sortedDataSource.append(myGroup)
+        self.saveModel(ds: [myGroup])
+        self.modelLoadImages(arr: [myGroup])
+        self.redrawUI()
     }
     
     
     override func remove(object: AnyObject) {
         let group = object as! Group
         group.isMember = false
+    }
+    
+    //TODO Refactor
+    override func setAlien(with object: ModelProtocol) {
+        update(object: object)
     }
  
 }

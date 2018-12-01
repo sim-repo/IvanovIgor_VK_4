@@ -57,11 +57,12 @@
 		1604556E2157C0FB003A6ED7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1604556C2157C0FB003A6ED7 /* LaunchScreen.storyboard */; };
 		160455772157F186003A6ED7 /* MyFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160455762157F186003A6ED7 /* MyFriend.swift */; };
 		1604557E2157F8B8003A6ED7 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1604557D2157F8B8003A6ED7 /* Group.swift */; };
+		1607DA9421B1C2DA00F37595 /* SearchedGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1607DA9321B1C2DA00F37595 /* SearchedGroup.swift */; };
 		160C90A321678A6A00535DB2 /* PresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160C90A221678A6A00535DB2 /* PresenterProtocol.swift */; };
 		160C90A621678AF200535DB2 /* FriendPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160C90A521678AF200535DB2 /* FriendPresenter.swift */; };
 		16103F082168ACD0009AC52A /* GroupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16103F072168ACD0009AC52A /* GroupPresenter.swift */; };
 		16103F0A2168AD72009AC52A /* BasePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16103F092168AD72009AC52A /* BasePresenter.swift */; };
-		16103F0C2168D28B009AC52A /* AllGroupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16103F0B2168D28B009AC52A /* AllGroupPresenter.swift */; };
+		16103F0C2168D28B009AC52A /* SearchedGroupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16103F0B2168D28B009AC52A /* SearchedGroupPresenter.swift */; };
 		16103F0E2168EE7A009AC52A /* GroupSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16103F0D2168EE7A009AC52A /* GroupSectionHeader.swift */; };
 		16103F1421691060009AC52A /* FriendTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16103F1321691060009AC52A /* FriendTableCell.swift */; };
 		161D8305218F3A0300FA83B4 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161D8304218F3A0300FA83B4 /* Session.swift */; };
@@ -139,11 +140,12 @@
 		1604556F2157C0FB003A6ED7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		160455762157F186003A6ED7 /* MyFriend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFriend.swift; sourceTree = "<group>"; };
 		1604557D2157F8B8003A6ED7 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		1607DA9321B1C2DA00F37595 /* SearchedGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedGroup.swift; sourceTree = "<group>"; };
 		160C90A221678A6A00535DB2 /* PresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterProtocol.swift; sourceTree = "<group>"; };
 		160C90A521678AF200535DB2 /* FriendPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendPresenter.swift; sourceTree = "<group>"; };
 		16103F072168ACD0009AC52A /* GroupPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupPresenter.swift; sourceTree = "<group>"; };
 		16103F092168AD72009AC52A /* BasePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePresenter.swift; sourceTree = "<group>"; };
-		16103F0B2168D28B009AC52A /* AllGroupPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGroupPresenter.swift; sourceTree = "<group>"; };
+		16103F0B2168D28B009AC52A /* SearchedGroupPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedGroupPresenter.swift; sourceTree = "<group>"; };
 		16103F0D2168EE7A009AC52A /* GroupSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSectionHeader.swift; sourceTree = "<group>"; };
 		16103F1321691060009AC52A /* FriendTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendTableCell.swift; sourceTree = "<group>"; };
 		161D8303218F2DAF00FA83B4 /* IvanovIgor_VK.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = IvanovIgor_VK.entitlements; sourceTree = "<group>"; };
@@ -348,7 +350,6 @@
 		160455622157C0FA003A6ED7 /* IvanovIgor_VK */ = {
 			isa = PBXGroup;
 			children = (
-				041D76A121B1821600B31C6D /* GoogleService-Info.plist */,
 				04E71EA521A40275006553F4 /* PERSISTENCE SERVICE */,
 				162D958D219F71D6008A896B /* EXTENSIONS */,
 				049B67A9219DCBCD0066428B /* CONFIGURATOR */,
@@ -358,6 +359,7 @@
 				04EDA939215A50C700426C8C /* UI */,
 				04EDA93F215A724800426C8C /* Resources */,
 				161D8303218F2DAF00FA83B4 /* IvanovIgor_VK.entitlements */,
+				041D76A121B1821600B31C6D /* GoogleService-Info.plist */,
 				160455632157C0FA003A6ED7 /* AppDelegate.swift */,
 				1604556F2157C0FB003A6ED7 /* Info.plist */,
 			);
@@ -369,6 +371,7 @@
 			children = (
 				16DFC5BD2195C80100C86A3D /* ModelProtocol.swift */,
 				160455762157F186003A6ED7 /* MyFriend.swift */,
+				1607DA9321B1C2DA00F37595 /* SearchedGroup.swift */,
 				1604557D2157F8B8003A6ED7 /* Group.swift */,
 				1636C9412162067B00F8B68D /* News.swift */,
 				16E9409C21784C7400390927 /* MyPhotos.swift */,
@@ -385,7 +388,7 @@
 				160C90A521678AF200535DB2 /* FriendPresenter.swift */,
 				16103F072168ACD0009AC52A /* GroupPresenter.swift */,
 				0474124D2191867400C4CC0B /* MyPhotosPresenter.swift */,
-				16103F0B2168D28B009AC52A /* AllGroupPresenter.swift */,
+				16103F0B2168D28B009AC52A /* SearchedGroupPresenter.swift */,
 				0445073E216B91C800803508 /* NewsPresenter.swift */,
 			);
 			path = PRESENTER;
@@ -678,12 +681,13 @@
 				1636C95121623F0500F8B68D /* MySettingsController.swift in Sources */,
 				04EDA944215A735100426C8C /* FriendDetailsCollectionController.swift in Sources */,
 				16103F0A2168AD72009AC52A /* BasePresenter.swift in Sources */,
+				1607DA9421B1C2DA00F37595 /* SearchedGroup.swift in Sources */,
 				16DFC5BE2195C80100C86A3D /* ModelProtocol.swift in Sources */,
 				04E71EA721A43E06006553F4 /* Realm+Extensions.swift in Sources */,
 				044766B7216DEFB400B465E9 /* CarouselFlowLayout.swift in Sources */,
 				160455642157C0FA003A6ED7 /* AppDelegate.swift in Sources */,
 				04E71EB121B04223006553F4 /* FrostyTabBar.swift in Sources */,
-				16103F0C2168D28B009AC52A /* AllGroupPresenter.swift in Sources */,
+				16103F0C2168D28B009AC52A /* SearchedGroupPresenter.swift in Sources */,
 				160455772157F186003A6ED7 /* MyFriend.swift in Sources */,
 				04E71EAE21B033E9006553F4 /* HeaderCell.swift in Sources */,
 				044766B3216CDE1F00B465E9 /* News5PhotosCell.swift in Sources */,

@@ -4,6 +4,7 @@ import UIKit
 class AllGroupsTableController: UITableViewController {
     
     var presenter: PresenterProtocol?
+    var alienPresenter: PresenterProtocol?
     
     let searchController = UISearchController(searchResultsController: nil)
     
@@ -12,10 +13,6 @@ class AllGroupsTableController: UITableViewController {
         setupPresenter()
         setupStandardSearchController()
         refreshDataSource()
-    }
-    
-    deinit {
-        presenter = nil
     }
     
     private func setupPresenter(){
@@ -79,13 +76,22 @@ extension AllGroupsTableController {
             else {
                 return UITableViewCell()
             }
-        let allGroup = data as! Group
+        let allGroup = data as! SearchedGroup
         cell.logo50ImageView.image = allGroup.image50
         cell.groupNameLabel.text = allGroup.name
         return cell
     }
     
-   
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let data = presenter?.getData(indexPath: indexPath) as! SearchedGroup
+        alienPresenter?.setAlien(with: data)
+        
+        let cell = tableView.cellForRow(at: indexPath)
+        let view = cell?.viewWithTag(1100) as? UIView
+        view?.backgroundColor = UIColor.orange
+    }
+
 }
 
 

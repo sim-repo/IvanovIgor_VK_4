@@ -29,7 +29,7 @@ class Configurator {
             case is MyGroupsController :
                 presenter = GroupPresenter()
             case is AllGroupsTableController:
-                presenter = AllGroupPresenter()
+                presenter = SearchedGroupPresenter()
             case is MyPhotosCollectionController :
                 presenter = MyPhotosPresenter()
             case is NewsCollectionController:
@@ -55,7 +55,7 @@ class Configurator {
         case String(describing: MyGroupsController.self):
             presenter = GroupPresenter(loadType, completion: completion)
         case String(describing: AllGroupsTableController.self):
-            presenter = AllGroupPresenter(loadType, completion: completion)
+            presenter = SearchedGroupPresenter(loadType, completion: completion)
         case String(describing: MyPhotoController.self):
             presenter = MyPhotosPresenter(loadType, completion: completion)
         default:
@@ -67,4 +67,5 @@ class Configurator {
         view2presenter[String(describing: futureViewController)] = res
         return res
     }
+    
 }

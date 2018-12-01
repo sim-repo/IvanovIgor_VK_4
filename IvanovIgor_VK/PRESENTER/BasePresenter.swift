@@ -16,6 +16,9 @@ public class BasePresenter: PresenterProtocol {
     internal var filteredText: String?
     internal var realmToken: NotificationToken?
     
+    internal var state: StatePresenterType = .initial
+    
+    
     
     var numberOfSections: Int {
         return sectionsOffset.count
@@ -113,6 +116,10 @@ public class BasePresenter: PresenterProtocol {
     }
     
     
+    func setState(state: StatePresenterType) {
+        self.state = state
+    }
+    
      //MARK: ***** overriding functions *****
     
     func loadFromDisk(completion: (()->Void)? = nil){
@@ -170,10 +177,14 @@ public class BasePresenter: PresenterProtocol {
         fatalError("Override Error: this method must be overriding by child classes")
     }
     
-    func modelLoadImages(arr: [ModelProtocol]?, index: Int? = nil){
+    func modelLoadImages(arr: [ModelProtocol]?){
         fatalError("Override Error: this method must be overriding by child classes")
     }
     
+    
+    func setAlien(with object: ModelProtocol) {
+        fatalError("Override Error: this method must be overriding by child classes")
+    }
     
     //MARK: ***** final functions *****
     
@@ -295,7 +306,7 @@ public class BasePresenter: PresenterProtocol {
                         }
                         if results[idx].isImageURLChanged() {
                             let obj = results[idx]
-                            self?.modelLoadImages(arr: [obj], index: idx)
+                            self?.modelLoadImages(arr: [obj])
                         }
                         if obj?.isURLlessChanded() ?? false {
                             reloadRightNow = true

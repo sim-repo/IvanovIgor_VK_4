@@ -30,6 +30,11 @@ class MyGroupsController: UIViewController {
         setupShowLetter()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        print("viewWillAppear")
+        collectionView.reloadData()
+    }
+    
     deinit {
         presenter = nil
     }
@@ -121,13 +126,13 @@ class MyGroupsController: UIViewController {
         }
     }
     
-    private func addGroup(indexPath: IndexPath){
-        guard let presenter = presenter
-            else {return}
+    
+    private func addGroup(_ alienPresenter: PresenterProtocol ,indexPath: IndexPath){
+      
+        let data = alienPresenter.getData(indexPath: indexPath)
+        let group = data as! SearchedGroup
         
-        let data = presenter.getData(indexPath: indexPath)
-        let group = data as! Group
-        updateData(group: group, .add)
+        presenter?.update(object: group)
         collectionView.reloadData()
         
         //        let rowIndex = myPubSubGroups.count - 1
@@ -150,8 +155,18 @@ class MyGroupsController: UIViewController {
         
         if segue.identifier == "AddGroupSegue",
         let allGroupController = segue.source as? AllGroupsTableController,
+        let alienPresenter = allGroupController.presenter,
         let indexPath = allGroupController.tableView.indexPathForSelectedRow{
-            addGroup(indexPath: indexPath)
+            addGroup(alienPresenter, indexPath: indexPath)
+        }
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowAllGroupsSegue",
+            let dest = segue.destination as? AllGroupsTableController {
+            
+            dest.alienPresenter = presenter
         }
     }
 

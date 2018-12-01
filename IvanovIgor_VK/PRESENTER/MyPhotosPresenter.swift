@@ -79,19 +79,13 @@ public class MyPhotosPresenter: BasePresenter {
     
     
     
-    override func modelLoadImages(arr: [ModelProtocol]?, index: Int? = nil){
+    override func modelLoadImages(arr: [ModelProtocol]?){
         print("async loading images...")
         guard let photos = arr as? [MyPhotos]
             else {
                 fatalError("only for test")
             }
         
-        if arr?.count == 1 {
-            guard index != nil
-                else {
-                    fatalError("only for test")
-                }
-        }
         
         for photo in photos {
             photo.updateXSortingField(val: photo.getGroupByField())

@@ -4,7 +4,6 @@ import UIKit
 class AllGroupsTableController: UITableViewController {
     
     var presenter: PresenterProtocol?
-    var alienPresenter: PresenterProtocol?
     
     let searchController = UISearchController(searchResultsController: nil)
     
@@ -84,14 +83,11 @@ extension AllGroupsTableController {
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let data = presenter?.getData(indexPath: indexPath) as! SearchedGroup
-        alienPresenter?.setAlien(with: data)
-        
+        presenter?.setDML(indexPath: indexPath, dml: .insert)
         let cell = tableView.cellForRow(at: indexPath)
         let view = cell?.viewWithTag(1100) as? UIView
         view?.backgroundColor = UIColor.orange
     }
-
 }
 
 
@@ -139,6 +135,10 @@ extension AllGroupsTableController: ViewProtocolDelegate {
         let indexPaths = tableView.indexPathsForVisibleRows!
         tableView.reloadRows(at: indexPaths, with: .automatic)
         tableView.endUpdates();
+    }
+    
+    func insertNewSections(sections: IndexSet){
+        tableView.insertSections(sections, with: .automatic)
     }
 }
 

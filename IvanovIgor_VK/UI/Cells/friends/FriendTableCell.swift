@@ -13,7 +13,7 @@ class FriendTableCell: UITableViewCell {
 
     @IBOutlet private weak var photoImageView: UIImageView! {
         didSet {
-            self.photoImageView.layer.borderColor = UIColor.black.cgColor
+            self.photoImageView.layer.borderColor = UIColor(displayP3Red: 222/255, green: 71/255, blue: 227/255, alpha: 1.0).cgColor
             self.photoImageView.layer.borderWidth = 1
         }
     }

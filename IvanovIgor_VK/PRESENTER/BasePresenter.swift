@@ -3,8 +3,7 @@ import UIKit
 import RealmSwift
 
 public class BasePresenter: PresenterProtocol {
-   
-
+  
     weak var view: ViewProtocolDelegate?
     
     var sortedDataSource: [ModelProtocol] = []
@@ -16,10 +15,9 @@ public class BasePresenter: PresenterProtocol {
     internal var filteredText: String?
     internal var realmToken: NotificationToken?
     
-    internal var state: StatePresenterType = .initial
+    public var state: StatePresenterType = .initial
     
-    
-    
+    var txt = "ini"
     var numberOfSections: Int {
         return sectionsOffset.count
     }
@@ -77,7 +75,7 @@ public class BasePresenter: PresenterProtocol {
     }
     
     
-    func onDidModelChanged<T: ModelProtocol>(_ results: Results<T>, _ deletions: [Int], _ insertions: [Int], _ modifications: [Int], forceFullReload: Bool){
+    func onDidModelChanged<T: ModelProtocol>(_ results: [T], _ deletions: [Int], _ insertions: [Int], _ modifications: [Int], forceFullReload: Bool){
         
         // changed key or grouping field
         if forceFullReload || insertions.count > 0 || deletions.count > 0 {
@@ -263,6 +261,8 @@ public class BasePresenter: PresenterProtocol {
     }
     
     
+    
+    
     public final func sectionName(section: Int)->String {
         let idx = sectionsTitle[section].rawValue
         return String(Alphabet.titles[idx])
@@ -315,7 +315,7 @@ public class BasePresenter: PresenterProtocol {
                 }
                 if reloadRightNow || forceRealod {
                     print("reload right now!")
-                    self?.onDidModelChanged(results, deletions, insertions, modifications, forceFullReload: forceRealod)
+                    self?.onDidModelChanged(results.toArray(ofType: T.self), deletions, insertions, modifications, forceFullReload: forceRealod)
                 }
                 
             case .error(let error):
@@ -344,6 +344,30 @@ public class BasePresenter: PresenterProtocol {
         sortedDataSource.removeAll()
     }
     
+    func viewWillAppear() {
+        switch state {
+        case .modelDidUpdated:
+            self.redrawUI()
+        default:
+            return
+        }
+    }
     
     
+    func setDML(indexPath: IndexPath, dml: DML) {
+        guard let data = getData(indexPath: indexPath)
+            else {
+                fatalError() //TODO
+            }
+        handleEmit(with: data, dml: dml)
+    }
+    
+    
+    func handleEmit(with model: ModelProtocol, dml: DML) {
+        Configurator.shared.emit(source: self, model: model, dml: dml)
+    }
+    
+    func className() -> String {
+        return String(describing: BasePresenter.self)
+    }
 }

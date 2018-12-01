@@ -21,28 +21,28 @@ class MyGroupsController: UIViewController {
     let searchController = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
+        print("viewDidLoad")
         super.viewDidLoad()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("viewWillAppear")
+        
         setupPresenter()
+       // presenter?.viewWillAppear()
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.sectionHeadersPinToVisibleBounds = true
         setupAlphabetSearchControl()
         setupStandardSearchController()
         setupShowLetter()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        print("viewWillAppear")
-        collectionView.reloadData()
-    }
-    
-    deinit {
-        presenter = nil
+        presenter!.viewWillAppear()
+
     }
     
     private func setupPresenter(){
         presenter = Configurator.shared.getPresenter(viewController: self, loadType: .diskFirst) //TODO loadType перенести в координатор
         self.refreshDataSource()
-       // self.collectionView.reloadData()
     }
     
     private func setupShowLetter(){
@@ -126,20 +126,6 @@ class MyGroupsController: UIViewController {
         }
     }
     
-    
-    private func addGroup(_ alienPresenter: PresenterProtocol ,indexPath: IndexPath){
-      
-        let data = alienPresenter.getData(indexPath: indexPath)
-        let group = data as! SearchedGroup
-        
-        presenter?.update(object: group)
-        collectionView.reloadData()
-        
-        //        let rowIndex = myPubSubGroups.count - 1
-        //        let indexPath = IndexPath(row: rowIndex, section: 0)
-        //        tableView.insertRows(at: [indexPath], with: .fade)
-    }
-    
     private func deleteGroup(indexPath: IndexPath) {
         guard let presenter = presenter
             else {return}
@@ -150,23 +136,9 @@ class MyGroupsController: UIViewController {
         collectionView.deleteItems(at: [indexPath])
     }
     
-    
-    @IBAction func addGroup(segue: UIStoryboardSegue){
-        
-        if segue.identifier == "AddGroupSegue",
-        let allGroupController = segue.source as? AllGroupsTableController,
-        let alienPresenter = allGroupController.presenter,
-        let indexPath = allGroupController.tableView.indexPathForSelectedRow{
-            addGroup(alienPresenter, indexPath: indexPath)
-        }
-    }
-    
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowAllGroupsSegue",
             let dest = segue.destination as? AllGroupsTableController {
-            
-            dest.alienPresenter = presenter
         }
     }
 
@@ -176,6 +148,7 @@ class MyGroupsController: UIViewController {
 extension MyGroupsController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+       // print("viewForSupplementaryElementOfKind")
         guard let presenter = presenter
             else {return UICollectionReusableView()}
         let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "myGroupSectionHeader", for: indexPath) as! GroupSectionHeader
@@ -185,14 +158,17 @@ extension MyGroupsController: UICollectionViewDataSource, UICollectionViewDelega
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
+       // print("numberOfSections")
         return presenter?.numberOfSections ?? 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+      //  print("collectionView")
         return presenter?.numberOfRowsInSection(section: section) ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+      //  print("cellForItemAt")
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myGroupCell", for: indexPath) as! MyGroupCollectionCell
         guard let data = presenter?.getData(indexPath: indexPath)
             else {
@@ -299,5 +275,9 @@ extension MyGroupsController: ViewProtocolDelegate {
     func reloadCells() {
         refreshDataSource()
         collectionView.reloadData()
+    }
+    
+    func insertNewSections(sections: IndexSet){
+        collectionView.insertSections(sections)
     }
 }

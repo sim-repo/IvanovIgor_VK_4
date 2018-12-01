@@ -49,7 +49,7 @@ enum LoadModelType{
     case diskFirst
 }
 
-enum StatePresenterType{
+public enum StatePresenterType{
     case initial
     case noChanged
     case modelDidUpdated
@@ -89,8 +89,14 @@ protocol PresenterProtocol: class {
     
     func getGroupByDataSource()->[String]
     
-    func setAlien(with object: ModelProtocol)
     
-    func setState(state: StatePresenterType)
+    
+    func setDML(indexPath: IndexPath, dml: DML)
+    
+    func handleEmit(with object: ModelProtocol, dml: DML)
+    
+    
+    
+    func viewWillAppear()
     
 }

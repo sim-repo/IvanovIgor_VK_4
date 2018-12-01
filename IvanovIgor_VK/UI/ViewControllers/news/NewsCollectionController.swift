@@ -206,4 +206,8 @@ extension NewsCollectionController: ViewProtocolDelegate {
         let indexPaths = collectionView.indexPathsForVisibleItems
         collectionView.reloadItems(at: indexPaths)
     }
+    
+    func insertNewSections(sections: IndexSet){
+        collectionView.insertSections(sections)
+    }
 }

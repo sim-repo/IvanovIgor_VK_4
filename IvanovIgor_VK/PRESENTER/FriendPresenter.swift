@@ -141,4 +141,9 @@ public class FriendPresenter: BasePresenter {
         }
         self.redrawUI()
     }
+    
+    
+    override func className() -> String {
+        return String(describing: FriendPresenter.self)
+    }
 }

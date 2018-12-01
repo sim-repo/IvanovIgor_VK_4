@@ -11,7 +11,9 @@ class FriendsController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var lettersSearchControl: LettersSearchControl!
     @IBOutlet weak var letterShowConstraint: NSLayoutConstraint!
+    @IBOutlet weak var showLetterView: UIView!
     
+    @IBOutlet weak var showLetterLabel: UILabel!
     @IBOutlet weak var pickerView: UIPickerView!
     private let sortingViewDS = ["Apple","Microsoft","Samsung","Android", "Google"]
     
@@ -53,6 +55,8 @@ class FriendsController: UIViewController {
         
         pickerView.dataSource = self
         pickerView.delegate = self
+        
+        setupShowLetter()
     }
     
     
@@ -78,6 +82,35 @@ class FriendsController: UIViewController {
     var b3: CGFloat = 0
     
 
+    
+    private func setupShowLetter(){
+        showLetterView.alpha = 0.0
+        showLetterLabel.alpha = 0.0
+    }
+    
+    private func hideLetter(){
+        UIView.animate(withDuration: 1.0, animations: {
+            self.showLetterView.layer.cornerRadius = 40.0
+            self.showLetterView.alpha = 0.0
+        })
+    }
+    
+    private func changeLetter(title: String){
+        showLetterLabel.text = title
+        showLetterLabel.alpha = 1.0
+        self.showLetterView.layer.cornerRadius = 10.0
+        if showLetterView.alpha == 0.0 {
+            let cornerAnimation = CABasicAnimation(keyPath: #keyPath(CALayer.cornerRadius))
+            cornerAnimation.duration = 1.0
+            cornerAnimation.fromValue = 40.0
+            cornerAnimation.toValue = 10.0
+            showLetterView.layer.add(cornerAnimation, forKey: #keyPath(CALayer.cornerRadius))
+            UIView.animate(withDuration: 1.0, animations: {
+                self.showLetterView.alpha = 1.0
+            })
+        }
+    }
+    
     deinit {
         presenter?.viewDeinit()
         presenter = nil
@@ -203,7 +236,6 @@ extension FriendsController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FriendsTableCell", for: indexPath) as! FriendTableCell
-       // cell.layer.backgroundColor = UIColor.clear.cgColor
         guard let data = presenter?.getData(indexPath: indexPath)
             else {
                 return UITableViewCell()
@@ -212,13 +244,19 @@ extension FriendsController: UITableViewDelegate, UITableViewDataSource {
         let friend = data as! MyFriend
         cell.name = friend.firstName + " " + friend.lastName
         cell.photoImage = friend.image50
-
+        
+        if indexPath.row % 2 == 0{
+            cell.backgroundColor = UIColor(displayP3Red: 0/255, green: 0/255, blue: 0/255, alpha: 0.1)
+        } else {
+            cell.backgroundColor = UIColor(displayP3Red: 50/255, green: 50/255, blue: 50/255, alpha: 0.25)
+        }
         return cell
     }
     
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         performSegue(withIdentifier: "DetailsFriendSegue", sender: indexPath)
     }
     
@@ -260,11 +298,15 @@ extension FriendsController: UITableViewDelegate, UITableViewDataSource {
 
 extension FriendsController: AlphabetSearchViewControlProtocol {
     func didEndTouch() {
-        // TODO
+        hideLetter()
     }
     
     func didChange(indexPath: IndexPath) {
+        guard let presenter = presenter
+            else {return}
         tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+        let title = presenter.sectionName(section: indexPath.section)
+        changeLetter(title: title)
     }
     
     func getView() -> UIView {
@@ -375,7 +417,11 @@ extension FriendsController: ViewProtocolDelegate{
     // called when changed grouping field
     func reloadCells() {
         refreshDataSource()
-        self.tableView.reloadData()
+        tableView.reloadData()
+    }
+    
+    func insertNewSections(sections: IndexSet){
+        tableView.insertSections(sections, with: .automatic)
     }
     
 }

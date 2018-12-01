@@ -141,4 +141,8 @@ extension MyPhotosCollectionController: ViewProtocolDelegate{
         refreshDataSource()
         collectionView?.reloadData()
     }
+    
+    func insertNewSections(sections: IndexSet){
+        collectionView?.insertSections(sections)
+    }
 }

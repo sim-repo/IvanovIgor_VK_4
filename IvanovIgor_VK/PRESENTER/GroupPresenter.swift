@@ -4,8 +4,6 @@ import RealmSwift
 import Firebase
 
 
-var gGroups: [Group] = []
-
 public class GroupPresenter: BasePresenter {
     
     let urlPath: String = "groups.get"
@@ -145,7 +143,8 @@ public class GroupPresenter: BasePresenter {
         
         Session.shared.user.groupsName.append(FIBGroup(groupName:group.name))
         let data = Session.shared.user.toAnyObject()
-        
+        state = .modelDidUpdated
+        txt = " Hello"
         let dbLink = Database.database().reference()
         dbLink.child("Humans").setValue(data)
         let myGroup = Group(id: group.id,
@@ -156,7 +155,12 @@ public class GroupPresenter: BasePresenter {
         self.sortedDataSource.append(myGroup)
         self.saveModel(ds: [myGroup])
         self.modelLoadImages(arr: [myGroup])
-        self.redrawUI()
+        refreshDataSource(with: nil)
+        
+       // let section = [self.numberOfSections + 1]
+        
+       // view?.insertNewSections(sections: IndexSet(section))
+       //self.redrawUI()
     }
     
     
@@ -165,9 +169,17 @@ public class GroupPresenter: BasePresenter {
         group.isMember = false
     }
     
-    //TODO Refactor
-    override func setAlien(with object: ModelProtocol) {
-        update(object: object)
+    override func handleEmit(with model: ModelProtocol, dml: DML) {
+        switch model {
+        case is SearchedGroup:
+            update(object: model)
+        default:
+            print("upset")
+        }
+    }
+    
+    override func className() -> String {
+        return String(describing: GroupPresenter.self)
     }
  
 }

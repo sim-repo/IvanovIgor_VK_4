@@ -113,4 +113,8 @@ public class SearchedGroupPresenter: BasePresenter {
         }
     }
     
+    override func className() -> String {
+        return String(describing: SearchedGroupPresenter.self)
+    }
+    
 }

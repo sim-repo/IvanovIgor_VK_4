@@ -1,11 +1,17 @@
 import UIKit
- // Задание 5: рефакторинг >>>
+
+
+enum DML {
+    case insert, update, delete
+}
+
+
 class Configurator {
     static let shared = Configurator()
     private init(){}
     
     private lazy var view2presenter: [String:BasePresenter] = [:]
-    
+    private lazy var presenters: [String:BasePresenter] = [:]
     
     func getPresenter(viewController: ViewProtocolDelegate, loadType: LoadModelType, completion: (()->Void)? = nil)->BasePresenter?{
         let clazz = viewController.className()
@@ -40,7 +46,9 @@ class Configurator {
         guard let res = presenter
             else { return nil }
         
-        view2presenter[String(describing: viewController.self)] = res
+        let clazz = viewController.className()
+        view2presenter[clazz] = res
+        presenters[res.className()] = res
         res.setup(view: viewController, loadType, completion: completion)
         return res
     }
@@ -66,6 +74,18 @@ class Configurator {
         
         view2presenter[String(describing: futureViewController)] = res
         return res
+    }
+    
+    
+    public func emit(source presenter: PresenterProtocol, model: ModelProtocol, dml: DML){
+        
+        switch presenter {
+        case is SearchedGroupPresenter:
+            let p1 = presenters[String(describing: GroupPresenter.self)]
+            print("presenter p 1: \(presenter)")
+            p1?.handleEmit(with: model, dml: dml)
+        default: return
+        }
     }
     
 }

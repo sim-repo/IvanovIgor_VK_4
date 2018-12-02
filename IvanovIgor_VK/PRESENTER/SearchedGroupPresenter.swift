@@ -40,15 +40,10 @@ public class SearchedGroupPresenter: BasePresenter {
     
     override func refreshData()->( [ModelProtocol], [String] ){
         
-        guard let tempGroups = getModel() as? [SearchedGroup] else {
+        guard let ds = getModel() as? [SearchedGroup] else {
             return ([], [])
         }
-        
-        var groupingProps: [String] = []
-        for group in tempGroups {
-            groupingProps.append(group.name )
-        }
-        return (tempGroups, groupingProps)
+        return (ds, [])
     }
     
     

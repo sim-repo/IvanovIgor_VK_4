@@ -17,7 +17,6 @@ public class BasePresenter: PresenterProtocol {
     
     public var state: StatePresenterType = .initial
     
-    var txt = "ini"
     var numberOfSections: Int {
         return sectionsOffset.count
     }
@@ -199,10 +198,20 @@ public class BasePresenter: PresenterProtocol {
     
    
     
-    public final func refreshDataSource(with completion: (([String])->Void)? ) {
+    public final func refreshDataSource(with completion: (([String])->Void)? = nil) {
         (sortedDataSource,groupingProperties) = refreshData()
         setup(_sortedDataSource: sortedDataSource, _groupingProperties: groupingProperties)
         completion?(groupingProperties)
+    }
+    
+    
+    public func filterData(_ filterText: String, fromView completion: (([String])->Void)? = nil) {
+        filteredText = !filterText.isEmpty ? filterText : nil
+        let outerCompletion: ([String])->Void = {[weak self] (name) in
+            completion?(name)
+            self?.view?.reloadCells()
+        }
+        refreshDataSource(with: outerCompletion)
     }
     
     
@@ -331,10 +340,7 @@ public class BasePresenter: PresenterProtocol {
     }
     
     
-    public func filterData(_ filterText: String) {
-        filteredText = !filterText.isEmpty ? filterText : nil
-    }
-    
+  
     
     func getModel()->[ModelProtocol] {
         return sortedDataSource
@@ -347,6 +353,7 @@ public class BasePresenter: PresenterProtocol {
     func viewWillAppear() {
         switch state {
         case .modelDidUpdated:
+            state = .noChanged
             self.redrawUI()
         default:
             return

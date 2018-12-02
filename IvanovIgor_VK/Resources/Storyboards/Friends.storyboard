@@ -36,7 +36,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="white" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Zgs-gl-RFK">
-                                <rect key="frame" x="0.0" y="128" width="375" height="601"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -96,68 +96,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HHR-BF-0Mq" userLabel="SearchView">
-                                <rect key="frame" x="0.0" y="88" width="375" height="40"/>
-                                <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="26r-xs-MTS">
-                                        <rect key="frame" x="37.666666666666657" y="8" width="300" height="24"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="search"/>
-                                        <connections>
-                                            <action selector="searchTextEditingChange:" destination="wy2-9j-26N" eventType="editingChanged" id="Sp1-ZL-Mm9"/>
-                                        </connections>
-                                    </textField>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search" translatesAutoresizingMaskIntoConstraints="NO" id="GF5-3E-TcN">
-                                        <rect key="frame" x="178.66666666666666" y="11" width="18" height="18"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="18" id="CxX-CQ-tHY"/>
-                                            <constraint firstAttribute="height" constant="18" id="anw-7Y-WjM"/>
-                                        </constraints>
-                                    </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="huH-ON-3HO" userLabel="Cancel">
-                                        <rect key="frame" x="345.66666666666669" y="6.6666666666666714" width="60" height="27"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="60" id="twU-pC-g6E"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <state key="normal" title="Отменить">
-                                            <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="pressButtonSearchCancel:" destination="wy2-9j-26N" eventType="touchUpInside" id="7yo-bN-6EU"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kdT-GW-n5W">
-                                        <rect key="frame" x="8" y="8" width="23" height="23"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="filter"/>
-                                        <connections>
-                                            <action selector="pressFilterButton:" destination="wy2-9j-26N" eventType="touchUpInside" id="1mr-9Y-sHY"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="26r-xs-MTS" firstAttribute="centerY" secondItem="HHR-BF-0Mq" secondAttribute="centerY" id="GNa-3U-Rm2"/>
-                                    <constraint firstItem="GF5-3E-TcN" firstAttribute="centerX" secondItem="HHR-BF-0Mq" secondAttribute="centerX" id="H6i-xJ-Bpf"/>
-                                    <constraint firstItem="26r-xs-MTS" firstAttribute="top" secondItem="HHR-BF-0Mq" secondAttribute="top" constant="8" id="INe-8R-1DU"/>
-                                    <constraint firstItem="26r-xs-MTS" firstAttribute="leading" secondItem="GF5-3E-TcN" secondAttribute="trailing" constant="16" id="Np8-ld-nLb"/>
-                                    <constraint firstItem="26r-xs-MTS" firstAttribute="centerX" secondItem="HHR-BF-0Mq" secondAttribute="centerX" id="S5N-U3-Akh"/>
-                                    <constraint firstAttribute="height" constant="40" id="f3h-3q-qIE"/>
-                                    <constraint firstItem="26r-xs-MTS" firstAttribute="width" secondItem="HHR-BF-0Mq" secondAttribute="width" multiplier="0.8" id="fkS-ZY-Wib"/>
-                                    <constraint firstItem="26r-xs-MTS" firstAttribute="centerX" secondItem="HHR-BF-0Mq" secondAttribute="centerX" id="oNq-pf-BoA"/>
-                                    <constraint firstItem="huH-ON-3HO" firstAttribute="leading" secondItem="26r-xs-MTS" secondAttribute="trailing" constant="8" id="sSM-Cf-a9p"/>
-                                    <constraint firstItem="huH-ON-3HO" firstAttribute="centerY" secondItem="HHR-BF-0Mq" secondAttribute="centerY" id="suE-Ua-ZXh"/>
-                                    <constraint firstItem="GF5-3E-TcN" firstAttribute="centerY" secondItem="HHR-BF-0Mq" secondAttribute="centerY" id="yGy-dG-LXi"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="Np8-ld-nLb"/>
-                                        <exclude reference="oNq-pf-BoA"/>
-                                    </mask>
-                                </variation>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZQf-h3-tCK">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZQf-h3-tCK">
                                 <rect key="frame" x="137.66666666666666" y="192" width="100" height="100"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="L" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lRD-om-Ymo">
@@ -181,17 +120,13 @@
                             <constraint firstItem="K78-3M-rwq" firstAttribute="top" secondItem="as6-xi-Gks" secondAttribute="top" id="1Hu-T6-4JD"/>
                             <constraint firstItem="K78-3M-rwq" firstAttribute="trailing" secondItem="as6-xi-Gks" secondAttribute="trailing" id="2Js-Jg-mB1"/>
                             <constraint firstAttribute="trailing" secondItem="Zgs-gl-RFK" secondAttribute="trailing" id="5rP-lP-tPf"/>
-                            <constraint firstItem="ZQf-h3-tCK" firstAttribute="top" secondItem="HHR-BF-0Mq" secondAttribute="bottom" constant="64" id="7Jn-fW-Ra5"/>
-                            <constraint firstItem="HHR-BF-0Mq" firstAttribute="leading" secondItem="as6-xi-Gks" secondAttribute="leading" id="8LK-jT-FhE"/>
                             <constraint firstItem="K78-3M-rwq" firstAttribute="bottom" secondItem="as6-xi-Gks" secondAttribute="bottom" id="ASX-pK-4Cu"/>
-                            <constraint firstItem="HHR-BF-0Mq" firstAttribute="top" secondItem="fK0-9c-YTY" secondAttribute="top" id="Rfn-1d-cI4"/>
                             <constraint firstAttribute="bottomMargin" secondItem="Zgs-gl-RFK" secondAttribute="bottom" id="XPu-rb-X9A"/>
                             <constraint firstItem="hW6-Lh-N0x" firstAttribute="leading" secondItem="as6-xi-Gks" secondAttribute="trailing" constant="-25" id="Xc2-In-fac"/>
                             <constraint firstItem="ZQf-h3-tCK" firstAttribute="centerX" secondItem="as6-xi-Gks" secondAttribute="centerX" id="b6U-IY-e5p"/>
                             <constraint firstItem="Zgs-gl-RFK" firstAttribute="leading" secondItem="as6-xi-Gks" secondAttribute="leading" id="f1p-DU-qVe"/>
-                            <constraint firstAttribute="trailing" secondItem="HHR-BF-0Mq" secondAttribute="trailing" id="jkl-yE-c0C"/>
-                            <constraint firstItem="Zgs-gl-RFK" firstAttribute="top" secondItem="HHR-BF-0Mq" secondAttribute="bottom" id="sFW-Hn-gbq"/>
                             <constraint firstItem="hW6-Lh-N0x" firstAttribute="trailing" secondItem="as6-xi-Gks" secondAttribute="trailing" id="uZf-kL-hBV"/>
+                            <constraint firstItem="Zgs-gl-RFK" firstAttribute="top" secondItem="fK0-9c-YTY" secondAttribute="top" id="v06-PC-OOw"/>
                             <constraint firstItem="K78-3M-rwq" firstAttribute="leading" secondItem="as6-xi-Gks" secondAttribute="leading" id="vZt-Fl-Agr"/>
                             <constraint firstItem="hW6-Lh-N0x" firstAttribute="centerY" secondItem="as6-xi-Gks" secondAttribute="centerY" id="xW8-Np-Po9"/>
                         </constraints>
@@ -199,17 +134,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="Друзья" id="zOV-Dg-d2v"/>
                     <connections>
-                        <outlet property="buttonSearchCancel" destination="huH-ON-3HO" id="RM2-50-rpB"/>
                         <outlet property="letterShowConstraint" destination="uZf-kL-hBV" id="DbL-JP-x4X"/>
                         <outlet property="lettersSearchControl" destination="hW6-Lh-N0x" id="gxO-FY-gBm"/>
-                        <outlet property="loupeCenterXConstraint" destination="H6i-xJ-Bpf" id="v5f-Xu-9K9"/>
-                        <outlet property="loupeImageView" destination="GF5-3E-TcN" id="BE7-TQ-IKa"/>
-                        <outlet property="loupeLeadingXConstraint" destination="Np8-ld-nLb" id="EeB-Fi-DPP"/>
                         <outlet property="pickerView" destination="K78-3M-rwq" id="5nw-xv-OyL"/>
-                        <outlet property="searchTextCenterDxConstraint" destination="S5N-U3-Akh" id="6T7-4I-LnM"/>
-                        <outlet property="searchTextCenterXConstraint" destination="oNq-pf-BoA" id="8Qd-bO-BhX"/>
-                        <outlet property="searchTextField" destination="26r-xs-MTS" id="k86-vw-t7h"/>
-                        <outlet property="searchTextWidthConstraint" destination="fkS-ZY-Wib" id="6uj-oP-RWc"/>
                         <outlet property="showLetterLabel" destination="lRD-om-Ymo" id="9ry-od-rCT"/>
                         <outlet property="showLetterView" destination="ZQf-h3-tCK" id="taU-Tg-tdG"/>
                         <outlet property="tableView" destination="Zgs-gl-RFK" id="3xf-CA-Gsh"/>
@@ -454,9 +381,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="filter" width="25.600000381469727" height="25.600000381469727"/>
         <image name="girl" width="1200" height="675"/>
-        <image name="search" width="32" height="32"/>
         <image name="tb_oval" width="26" height="26"/>
     </resources>
 </document>

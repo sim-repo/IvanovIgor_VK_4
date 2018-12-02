@@ -29,6 +29,7 @@ class MyGroupsController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         print("viewWillAppear")
         
+        setupNavigationBarColor()
         setupPresenter()
        // presenter?.viewWillAppear()
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
@@ -40,9 +41,18 @@ class MyGroupsController: UIViewController {
 
     }
     
+    private func setupNavigationBarColor(){
+        var colors = [UIColor]()
+        colors.append(UIColor(red: 0/255, green: 31/255, blue: 0/255, alpha: 0.1))
+        colors.append(UIColor(red: 79/255, green: 153/255, blue: 0, alpha: 0.1))
+        colors.append(UIColor(red: 0/255, green: 31/255, blue: 0/255, alpha: 0.1))
+        navigationController?.navigationBar.setGradientBackground(colors: colors)
+    }
+    
     private func setupPresenter(){
         presenter = Configurator.shared.getPresenter(viewController: self, loadType: .diskFirst) //TODO loadType перенести в координатор
         self.refreshDataSource()
+        self.collectionView.reloadData()
     }
     
     private func setupShowLetter(){
@@ -84,20 +94,23 @@ class MyGroupsController: UIViewController {
     private func setupStandardSearchController(){
         navigationItem.searchController = searchController
         navigationItem.searchController?.searchBar.delegate = self
+ 
+        if let navigationbar = self.navigationController?.navigationBar {
+            navigationbar.setBackgroundImage(UIImage(), for: .default)
+            navigationbar.shadowImage = UIImage()
+            navigationbar.isTranslucent = true
+            self.navigationController?.view.backgroundColor = .clear
+        }
         searchController.delegate = self
-        
         // cancel-button text color
         searchController.searchBar.tintColor = .white
-        
         // white color input text
         searchController.searchBar.barStyle = .default
-        
+       // searchController.searchBar.barTintColor = .red
         // handle press cancel-button
         definesPresentationContext = true
-        
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.dimsBackgroundDuringPresentation = false
-
        // searchController.searchBar.searchBarStyle = .default
         navigationItem.hidesSearchBarWhenScrolling = true
         searchController.hidesNavigationBarDuringPresentation = false
@@ -105,7 +118,7 @@ class MyGroupsController: UIViewController {
         if let textfield = searchController.searchBar.value(forKey: "searchField") as? UITextField {
             if let backgroundview = textfield.subviews.first {
                 backgroundview.backgroundColor = UIColor.white
-                backgroundview.layer.cornerRadius = 10;
+                backgroundview.layer.cornerRadius = 15;
                 backgroundview.clipsToBounds = true;
             }
         }

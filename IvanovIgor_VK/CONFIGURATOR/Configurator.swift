@@ -34,7 +34,7 @@ class Configurator {
                 presenter = FriendPresenter()
             case is MyGroupsController :
                 presenter = GroupPresenter()
-            case is AllGroupsTableController:
+            case is AllGroupsController:
                 presenter = SearchedGroupPresenter()
             case is MyPhotosCollectionController :
                 presenter = MyPhotosPresenter()

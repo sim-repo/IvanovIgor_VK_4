@@ -144,7 +144,6 @@ public class GroupPresenter: BasePresenter {
         Session.shared.user.groupsName.append(FIBGroup(groupName:group.name))
         let data = Session.shared.user.toAnyObject()
         state = .modelDidUpdated
-        txt = " Hello"
         let dbLink = Database.database().reference()
         dbLink.child("Humans").setValue(data)
         let myGroup = Group(id: group.id,
@@ -156,11 +155,6 @@ public class GroupPresenter: BasePresenter {
         self.saveModel(ds: [myGroup])
         self.modelLoadImages(arr: [myGroup])
         refreshDataSource(with: nil)
-        
-       // let section = [self.numberOfSections + 1]
-        
-       // view?.insertNewSections(sections: IndexSet(section))
-       //self.redrawUI()
     }
     
     

@@ -16,7 +16,7 @@ public class BasePresenter: PresenterProtocol {
     internal var realmToken: NotificationToken?
     
     public var state: StatePresenterType = .initial
-    
+    var isViewAppeared = false
     var numberOfSections: Int {
         return sectionsOffset.count
     }
@@ -74,7 +74,7 @@ public class BasePresenter: PresenterProtocol {
     }
     
     
-    func onDidModelChanged<T: ModelProtocol>(_ results: [T], _ deletions: [Int], _ insertions: [Int], _ modifications: [Int], forceFullReload: Bool){
+    func redrawViewWnenModelChanged<T: ModelProtocol>(_ results: [T], _ deletions: [Int], _ insertions: [Int], _ modifications: [Int], forceFullReload: Bool){
         
         // changed key or grouping field
         if forceFullReload || insertions.count > 0 || deletions.count > 0 {
@@ -103,7 +103,7 @@ public class BasePresenter: PresenterProtocol {
     func setModel(ds: [ModelProtocol], didLoadedFrom: LoadModelType) {
       
         self.sortedDataSource = sortModel(ds)
-        
+        guard ds.count != 0 else {fatalError()}
         switch didLoadedFrom {
             case .diskFirst:
                 return // data stored already
@@ -161,6 +161,10 @@ public class BasePresenter: PresenterProtocol {
         fatalError("Override Error: this method must be overriding by child classes")
     }
     
+    func deleteModel(ds: [ModelProtocol]) {
+        fatalError("Override Error: this method must be overriding by child classes")
+    }
+    
     func sortModel(_ ds: [ModelProtocol]) -> [ModelProtocol]{
         fatalError("Override Error: this method must be overriding by child classes")
     }
@@ -205,13 +209,8 @@ public class BasePresenter: PresenterProtocol {
     }
     
     
-    public func filterData(_ filterText: String, fromView completion: (([String])->Void)? = nil) {
+    public func filterData(_ filterText: String) {
         filteredText = !filterText.isEmpty ? filterText : nil
-        let outerCompletion: ([String])->Void = {[weak self] (name) in
-            completion?(name)
-            self?.view?.reloadCells()
-        }
-        refreshDataSource(with: outerCompletion)
     }
     
     
@@ -300,15 +299,20 @@ public class BasePresenter: PresenterProtocol {
         self.realmToken = realmData?.observe { [weak self] (changes: RealmCollectionChange) in
             switch changes {
             case .initial(_):
+                guard self?.sortedDataSource.count != 0
+                    else {return}
                 self?.modelLoadImages(arr: self?.sortedDataSource)
                 
             case let .update(results, deletions, insertions, modifications):
                 var forceRealod = false
                 var reloadRightNow = false
                 
+                guard self?.sortedDataSource.count != 0
+                    else {fatalError()}
+                
                 if deletions.count == 0 && insertions.count == 0 && modifications.count > 0 {
                     for idx in modifications {
-                        let obj = self?.sortedDataSource.first(where: {$0.getId() == results[idx].getId()}) as? MyFriend
+                        let obj = self?.sortedDataSource.first(where: {$0.getId() == results[idx].getId()}) as? T
                         if results[idx].getGroupByField() != obj?.getXGroupByField() {
                             obj?.updateXGroupByField(val: results[idx].getGroupByField())
                             forceRealod = true
@@ -321,10 +325,18 @@ public class BasePresenter: PresenterProtocol {
                             reloadRightNow = true
                         }
                     }
+                } else {
+                    for idx in insertions {
+                        let obj = self?.sortedDataSource.first(where: {$0.getId() == results[idx].getId()}) as? T
+                        if let o = obj {
+                            self?.modelLoadImages(arr: [o])
+                        }
+                    }
+                    reloadRightNow = true
                 }
                 if reloadRightNow || forceRealod {
                     print("reload right now!")
-                    self?.onDidModelChanged(results.toArray(ofType: T.self), deletions, insertions, modifications, forceFullReload: forceRealod)
+                    self?.redrawViewWnenModelChanged(results.toArray(ofType: T.self), deletions, insertions, modifications, forceFullReload: forceRealod)
                 }
                 
             case .error(let error):
@@ -339,9 +351,6 @@ public class BasePresenter: PresenterProtocol {
         return DatabaseService.realmLoad(clazz: clazz)
     }
     
-    
-  
-    
     func getModel()->[ModelProtocol] {
         return sortedDataSource
     }
@@ -351,6 +360,7 @@ public class BasePresenter: PresenterProtocol {
     }
     
     func viewWillAppear() {
+        isViewAppeared = true
         switch state {
         case .modelDidUpdated:
             state = .noChanged
@@ -360,18 +370,24 @@ public class BasePresenter: PresenterProtocol {
         }
     }
     
+    func viewDidDisappear(){
+        isViewAppeared = false
+    }
     
     func setDML(indexPath: IndexPath, dml: DML) {
         guard let data = getData(indexPath: indexPath)
             else {
                 fatalError() //TODO
             }
-        handleEmit(with: data, dml: dml)
+        emit(with: data, dml: dml)
     }
     
+    private func emit(with model: ModelProtocol, dml: DML) {
+        Configurator.shared.emit(source: self, model: model, dml: dml)
+    }
     
     func handleEmit(with model: ModelProtocol, dml: DML) {
-        Configurator.shared.emit(source: self, model: model, dml: dml)
+        fatalError("Override Error: this method must be overriding by child classes")
     }
     
     func className() -> String {

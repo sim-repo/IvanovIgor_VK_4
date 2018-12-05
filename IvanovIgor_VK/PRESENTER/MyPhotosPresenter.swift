@@ -26,7 +26,7 @@ public class MyPhotosPresenter: BasePresenter {
     
     override func saveModel(ds: [ModelProtocol]) {
         if let photos = ds as? [MyPhotos] {
-            DatabaseService.realmSave(items: photos, config: DatabaseService.configuration, update: true)
+            DatabaseService.realmSave(items: photos, config: DatabaseService.configuration, update: true, dml: .insert)
             realmNotify(realmData: &realmData)
         }
     }

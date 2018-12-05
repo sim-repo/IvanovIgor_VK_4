@@ -23,22 +23,24 @@ class MyGroupsController: UIViewController {
     override func viewDidLoad() {
         print("viewDidLoad")
         super.viewDidLoad()
-        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        print("viewWillAppear")
-        
         setupNavigationBarColor()
         setupPresenter()
-       // presenter?.viewWillAppear()
+        // presenter?.viewWillAppear()
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.sectionHeadersPinToVisibleBounds = true
         setupAlphabetSearchControl()
         setupStandardSearchController()
         setupShowLetter()
-        presenter!.viewWillAppear()
-
+        //presenter!.viewWillAppear()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        presenter?.viewWillAppear()
+    }
+    
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        presenter?.viewDidDisappear()
     }
     
     private func setupNavigationBarColor(){
@@ -50,9 +52,16 @@ class MyGroupsController: UIViewController {
     }
     
     private func setupPresenter(){
-        presenter = Configurator.shared.getPresenter(viewController: self, loadType: .diskFirst) //TODO loadType перенести в координатор
+        presenter = Configurator.shared.getPresenter(viewController: self, loadType: .diskFirst)
         self.refreshDataSource()
-        self.collectionView.reloadData()
+    }
+    
+    public func refreshDataSource(){
+        presenter?.refreshDataSource(){ [unowned self] (titles) in
+            self.lettersSearchControl.updateControl(with: titles)
+            self.collectionView.reloadData()
+        }
+        
     }
     
     private func setupShowLetter(){
@@ -124,12 +133,7 @@ class MyGroupsController: UIViewController {
         }
     }
     
-    public func refreshDataSource(){
-        presenter?.refreshDataSource(){ [unowned self] (titles) in
-            self.lettersSearchControl.updateControl(with: titles)
-        }
-    }
-    
+
     private func updateData(group: Group, _ operation : OperationType){
         switch operation {
         case .add:
@@ -148,12 +152,6 @@ class MyGroupsController: UIViewController {
         updateData(group: group, .delete)
         collectionView.deleteItems(at: [indexPath])
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ShowAllGroupsSegue",
-            let dest = segue.destination as? AllGroupsTableController {
-        }
-    }
 
 }
 
@@ -171,17 +169,17 @@ extension MyGroupsController: UICollectionViewDataSource, UICollectionViewDelega
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-       // print("numberOfSections")
+        print("numberOfSections: \(presenter?.numberOfSections )")
         return presenter?.numberOfSections ?? 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-      //  print("collectionView")
+        print("collectionView")
         return presenter?.numberOfRowsInSection(section: section) ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-      //  print("cellForItemAt")
+       print("cellForItemAt")
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myGroupCell", for: indexPath) as! MyGroupCollectionCell
         guard let data = presenter?.getData(indexPath: indexPath)
             else {
@@ -273,7 +271,7 @@ extension MyGroupsController: ViewProtocolDelegate {
     }
 
     func optimReloadCell(indexPath: IndexPath) {
-        collectionView.reloadItems(at: [indexPath])
+       collectionView.reloadItems(at: [indexPath])
     }
     
     func optimReloadCells(_ deletions: [IndexPath], _ insertions: [IndexPath], _ updates: [IndexPath]) {
@@ -287,7 +285,6 @@ extension MyGroupsController: ViewProtocolDelegate {
     // called when changed grouping field
     func reloadCells() {
         refreshDataSource()
-        collectionView.reloadData()
     }
     
     func insertNewSections(sections: IndexSet){

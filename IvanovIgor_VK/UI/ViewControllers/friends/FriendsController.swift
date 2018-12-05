@@ -34,6 +34,11 @@ class FriendsController: UIViewController {
         pickerView.delegate = self
         
         setupShowLetter()
+        presenter?.viewWillAppear()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        presenter?.viewDidDisappear()
     }
     
     
@@ -250,9 +255,7 @@ extension FriendsController: UISearchBarDelegate{
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         presenter?.filterData(searchText)
-        refreshDataSource() { [weak self] (name) in
-            self.reload
-        }
+        refreshDataSource()
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -283,9 +286,7 @@ extension FriendsController: ViewProtocolDelegate{
     
     // called when changed grouping field
     func reloadCells() {
-        refreshDataSource() {
-            tableView.reloadData()
-        }
+        refreshDataSource()
     }
     
     func insertNewSections(sections: IndexSet){

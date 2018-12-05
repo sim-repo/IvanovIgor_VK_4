@@ -26,7 +26,7 @@ public class FriendPresenter: BasePresenter {
     
     override func saveModel(ds: [ModelProtocol]) {
         if let friends = ds as? [MyFriend] {
-            DatabaseService.realmSave(items: friends, config: DatabaseService.configuration, update: true)
+            DatabaseService.realmSave(items: friends, config: DatabaseService.configuration, update: true, dml: .insert)
             realmNotify(realmData: &realmData)
         }
     }

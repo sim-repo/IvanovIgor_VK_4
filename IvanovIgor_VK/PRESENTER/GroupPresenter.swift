@@ -28,7 +28,15 @@ public class GroupPresenter: BasePresenter {
     
     override func saveModel(ds: [ModelProtocol]) {
         if let groups = ds as? [Group] {
-            DatabaseService.realmSave(items: groups, config: DatabaseService.configuration, update: true)
+            DatabaseService.realmSave(items: groups, config: DatabaseService.configuration, update: true, dml: .insert)
+            realmNotify(realmData: &realmData)
+        }
+    }
+    
+    
+    override func deleteModel(ds: [ModelProtocol]) {
+        if let groups = ds as? [Group] {
+            DatabaseService.realmSave(items: groups, config: DatabaseService.configuration, update: true, dml: .delete)
             realmNotify(realmData: &realmData)
         }
     }
@@ -39,7 +47,9 @@ public class GroupPresenter: BasePresenter {
             else { return }
         realmData = data
         let ds = data.toArray(ofType: Group.self)
-        setModel(ds: ds, didLoadedFrom: .diskFirst)
+        if ds.count != 0 {
+            setModel(ds: ds, didLoadedFrom: .diskFirst)
+        }
         realmNotify(realmData: &realmData)
         completion?()
     }
@@ -88,7 +98,8 @@ public class GroupPresenter: BasePresenter {
                 fatalError("prepareCompletion") // only for test
             }
             guard let indexPath = self?.getIndexPath(model: group) else {return}
-            self?.view?.optimReloadCell(indexPath: indexPath)
+            
+            self!.view!.optimReloadCell(indexPath: indexPath)
         }
         return completion
     }
@@ -97,8 +108,9 @@ public class GroupPresenter: BasePresenter {
     
     override func modelLoadImages(arr: [ModelProtocol]?){
         print("async loading images...")
-        guard let groups = arr as? [Group]
-            else {
+        guard let groups = arr as? [Group],
+              groups.count != 0
+        else {
                 fatalError("only for test")
                 return
         }
@@ -116,7 +128,6 @@ public class GroupPresenter: BasePresenter {
             AlamofireNetworkManager.downloadImage(url: url, id: group.getId(),
                                                   imageFieldIndex: Group.GroupImagesType.image200.rawValue,
                                                   completion)
-
         }
     }
     
@@ -132,14 +143,20 @@ public class GroupPresenter: BasePresenter {
                 obj.groupBy = Group.MyGroupByType(rawValue: fieldName)! //TODO
             }
         }
-        self.redrawUI()
+        redrawUI()
     }
     
     
     
     //TODO Refactor
     override func update(object: AnyObject)->Void {
+        
+        
         let group = object as! SearchedGroup
+        
+        guard !sortedDataSource.contains(where: {$0.getId() == group.getId()})
+        else {return}
+        
         
         Session.shared.user.groupsName.append(FIBGroup(groupName:group.name))
         let data = Session.shared.user.toAnyObject()
@@ -151,10 +168,18 @@ public class GroupPresenter: BasePresenter {
                             desc: group.desc,
                             imageURL50: group.imageURL50,
                             imageURL200: group.imageURL200)
-        self.sortedDataSource.append(myGroup)
-        self.saveModel(ds: [myGroup])
-        self.modelLoadImages(arr: [myGroup])
+        
+        sortedDataSource.append(myGroup)
+        saveModel(ds: [myGroup])
+        modelLoadImages(arr: [myGroup])
         refreshDataSource(with: nil)
+    }
+    
+    func delete(object: AnyObject)->Void {
+        let searchedGroup = object as! SearchedGroup
+        guard let group = sortedDataSource.first(where: {$0.getId() == searchedGroup.getId()})
+            else {fatalError()}
+        deleteModel(ds: [group])
     }
     
     
@@ -166,7 +191,12 @@ public class GroupPresenter: BasePresenter {
     override func handleEmit(with model: ModelProtocol, dml: DML) {
         switch model {
         case is SearchedGroup:
-            update(object: model)
+            if dml == .insert {
+                update(object: model)
+            }
+            if dml == .delete {
+                delete(object: model)
+            }
         default:
             print("upset")
         }

@@ -67,7 +67,7 @@ protocol PresenterProtocol: class {
     
     func sectionName(section: Int)->String
     
-    func refreshDataSource(with completion: (([String])->Void)?  )
+    func refreshDataSource(with completion: (([String])->Void)? )
     
     func update(object: AnyObject)->Void
     
@@ -80,6 +80,8 @@ protocol PresenterProtocol: class {
     func searchData(searchText: String, completion: (()->Void)?)
     
     func saveModel(ds: [ModelProtocol])
+    
+    func deleteModel(ds: [ModelProtocol])
     
     func viewDeinit()
     
@@ -95,8 +97,12 @@ protocol PresenterProtocol: class {
     
     func handleEmit(with object: ModelProtocol, dml: DML)
     
-    
-    
     func viewWillAppear()
+    func viewDidDisappear()
     
+}
+
+
+extension PresenterProtocol {
+    func refreshDataSource(with completion: (([String])->Void)? = nil) {}
 }

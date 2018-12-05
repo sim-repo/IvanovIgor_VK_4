@@ -14,6 +14,17 @@ class AllGroupsController: UIViewController {
         refreshDataSource()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        presenter?.viewWillAppear()
+    }
+    
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        presenter?.viewDidDisappear()
+    }
+    
+    
+    
     private func setupPresenter(){
         presenter = Configurator.shared.getPresenter(viewController: self, loadType: .networkFirst){ //TODO loadType перенести в координатор
             self.refreshDataSource()
@@ -90,9 +101,15 @@ extension AllGroupsController : UICollectionViewDataSource, UICollectionViewDele
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        presenter?.setDML(indexPath: indexPath, dml: .insert)
+        
         let cell = collectionView.cellForItem(at: indexPath)
-        cell?.contentView.backgroundColor = UIColor.orange
+        if cell?.contentView.backgroundColor == UIColor.orange {
+            cell?.contentView.backgroundColor = UIColor.clear
+            presenter?.setDML(indexPath: indexPath, dml: .delete)
+        } else {
+            presenter?.setDML(indexPath: indexPath, dml: .insert)
+            cell?.contentView.backgroundColor = UIColor.orange
+        }
     }
 }
 

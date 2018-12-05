@@ -62,7 +62,7 @@ class Configurator {
             presenter = FriendPresenter(loadType, completion: completion)
         case String(describing: MyGroupsController.self):
             presenter = GroupPresenter(loadType, completion: completion)
-        case String(describing: AllGroupsTableController.self):
+        case String(describing: AllGroupsController.self):
             presenter = SearchedGroupPresenter(loadType, completion: completion)
         case String(describing: MyPhotoController.self):
             presenter = MyPhotosPresenter(loadType, completion: completion)
@@ -82,7 +82,6 @@ class Configurator {
         switch presenter {
         case is SearchedGroupPresenter:
             let p1 = presenters[String(describing: GroupPresenter.self)]
-            print("presenter p 1: \(presenter)")
             p1?.handleEmit(with: model, dml: dml)
         default: return
         }

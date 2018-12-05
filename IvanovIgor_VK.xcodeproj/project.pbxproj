@@ -45,7 +45,6 @@
 		04EDA944215A735100426C8C /* FriendDetailsCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EDA943215A735100426C8C /* FriendDetailsCollectionController.swift */; };
 		04EDA94F215A75F400426C8C /* FriendDetailsCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EDA94E215A75F400426C8C /* FriendDetailsCollectionCell.swift */; };
 		04EDA951215A762000426C8C /* AllGroupsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EDA950215A762000426C8C /* AllGroupsTableCell.swift */; };
-		04EDA958215A7E6400426C8C /* AllGroupsTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EDA957215A7E6400426C8C /* AllGroupsTableController.swift */; };
 		04EDA95A215A90CE00426C8C /* BaseTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EDA959215A90CE00426C8C /* BaseTableCell.swift */; };
 		04EDA95E215BA90A00426C8C /* BaseCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EDA95D215BA90A00426C8C /* BaseCollectionCell.swift */; };
 		04EDA9C42163977300426C8C /* LettersSearchControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EDA9C32163977300426C8C /* LettersSearchControl.swift */; };
@@ -127,7 +126,6 @@
 		04EDA943215A735100426C8C /* FriendDetailsCollectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendDetailsCollectionController.swift; sourceTree = "<group>"; };
 		04EDA94E215A75F400426C8C /* FriendDetailsCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendDetailsCollectionCell.swift; sourceTree = "<group>"; };
 		04EDA950215A762000426C8C /* AllGroupsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGroupsTableCell.swift; sourceTree = "<group>"; };
-		04EDA957215A7E6400426C8C /* AllGroupsTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGroupsTableController.swift; sourceTree = "<group>"; };
 		04EDA959215A90CE00426C8C /* BaseTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableCell.swift; sourceTree = "<group>"; };
 		04EDA95D215BA90A00426C8C /* BaseCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionCell.swift; sourceTree = "<group>"; };
 		04EDA9C32163977300426C8C /* LettersSearchControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LettersSearchControl.swift; sourceTree = "<group>"; };
@@ -277,7 +275,6 @@
 		04EDA946215A73CB00426C8C /* groups */ = {
 			isa = PBXGroup;
 			children = (
-				04EDA957215A7E6400426C8C /* AllGroupsTableController.swift */,
 				04B8144421650CD700491859 /* MyGroupsController.swift */,
 				1623854621B3D13700D6098D /* AllGroupsController.swift */,
 			);
@@ -361,8 +358,8 @@
 				160455752157F168003A6ED7 /* MODEL */,
 				04EDA939215A50C700426C8C /* UI */,
 				04EDA93F215A724800426C8C /* Resources */,
-				161D8303218F2DAF00FA83B4 /* IvanovIgor_VK.entitlements */,
 				041D76A121B1821600B31C6D /* GoogleService-Info.plist */,
+				161D8303218F2DAF00FA83B4 /* IvanovIgor_VK.entitlements */,
 				160455632157C0FA003A6ED7 /* AppDelegate.swift */,
 				1604556F2157C0FB003A6ED7 /* Info.plist */,
 			);
@@ -647,7 +644,6 @@
 				044B5C022177631C00B79291 /* FriendPhotosCollectionCell.swift in Sources */,
 				1623854721B3D13700D6098D /* AllGroupsController.swift in Sources */,
 				16103F1421691060009AC52A /* FriendTableCell.swift in Sources */,
-				04EDA958215A7E6400426C8C /* AllGroupsTableController.swift in Sources */,
 				16103F0E2168EE7A009AC52A /* GroupSectionHeader.swift in Sources */,
 				0466361F2174812500630FBE /* CloudControl.swift in Sources */,
 				04EDA9C42163977300426C8C /* LettersSearchControl.swift in Sources */,
@@ -858,7 +854,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.neogeowild.IvanovIgorVK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -879,7 +875,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.neogeowild.IvanovIgorVK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

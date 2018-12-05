@@ -8,16 +8,24 @@ class DatabaseService {
     }
     
     @discardableResult
-    static func realmSave<Element: Object>(items: [Element], config: Realm.Configuration = Realm.Configuration.defaultConfiguration, update: Bool = true) -> Realm? {
+    static func realmSave<Element: Object>(items: [Element], config: Realm.Configuration = Realm.Configuration.defaultConfiguration, update: Bool = true, dml: DML) -> Realm? {
         
         do {
             let realm = try Realm(configuration: config)
             
             print(realm.configuration.fileURL ?? "")
             
-            try realm.write {
-                realm.add(items, update: update)
+            switch dml {
+            case .insert, .update:
+                try realm.write {
+                    realm.add(items, update: update)
+                }
+            case .delete:
+                try realm.write {
+                    realm.delete(items)
+                }
             }
+            
             
             return realm
         } catch {
@@ -26,6 +34,8 @@ class DatabaseService {
         
         return nil
     }
+    
+    
     
     static func realmLoad<Element: Object>(clazz: Element.Type) -> Results<Element>? {
         var res: Results<Element>?
